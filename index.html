@@ -5,274 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Minecraft Lyn</title>
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        body {
-            background-color: #0f172a;
-            color: #f8fafc;
-        }
-        /* Header */
-        header {
-            background-color: #1e293b;
-            padding: 12px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            border-bottom: 2px solid #00bcd4;
-        }
-        .menu-btn, .search-icon-btn {
-            background: none;
-            border: none;
-            color: #00bcd4;
-            font-size: 24px;
-            cursor: pointer;
-        }
-        .logo-img {
-            height: 32px;
-            object-fit: contain;
-            cursor: pointer;
-        }
-
-        .main-container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 15px 15px 50px 15px;
-        }
-
-        /* Banner */
-        .hero {
-            background: linear-gradient(180deg, rgba(15,23,42,0.4) 0%, rgba(15,23,42,0.95) 100%), 
-                        url('https://github.com/minecraftlyn/Mcphoto/blob/1f9da41800bc4e29cdea3b6a12b25b1ee239b5c9/pixel-minecraft-style-land-background-concept-game-ground-pixelated-horizontal-blue-sky-sun-cloud-vector-illustration-212305683.jpg?raw=true') no-repeat center center;
-            background-size: cover;
-            padding: 25px 15px;
-            border-radius: 12px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
-            border: 1px solid #334155;
-        }
-        .hero h1 {
-            font-size: 24px;
-            font-weight: 900;
-            letter-spacing: 2px;
-            color: #38bdf8;
-            text-shadow: 0 2px 8px rgba(0,0,0,0.8);
-            margin-bottom: 6px;
-        }
-        .hero p {
-            font-size: 13px;
-            color: #e2e8f0;
-            font-weight: 500;
-        }
-
-        /* Search Box */
-        .search-box {
-            position: relative;
-            margin-bottom: 25px;
-        }
-        .search-box input {
-            width: 100%;
-            padding: 12px 20px;
-            background: #1e293b;
-            border: 1px solid #334155;
-            border-radius: 25px;
-            outline: none;
-            color: #fff;
-            font-size: 14px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-        }
-        .search-box input::placeholder {
-            color: #94a3b8;
-        }
-
-        /* Page Layout */
-        .page-section {
-            display: none;
-        }
-        .page-section.active {
-            display: block;
-        }
-        .section-title {
-            font-size: 18px;
-            font-weight: bold;
-            color: #38bdf8;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .section-title::after {
-            content: '';
-            flex: 1;
-            height: 2px;
-            background: #334155;
-        }
-
-        /* Cards Grid Layout */
-        .card-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-            gap: 20px;
-        }
-        .card {
-            background: #1e293b;
-            border-radius: 12px;
-            overflow: hidden;
-            border: 1px solid #334155;
-            transition: transform 0.2s, box-shadow 0.2s;
-            cursor: pointer;
-            display: flex;
-            flex-direction: column;
-        }
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0,188,212,0.2);
-            border-color: #00bcd4;
-        }
-        .card img {
-            width: 100%;
-            height: 160px;
-            object-fit: cover;
-        }
-        .card-content {
-            padding: 14px;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-        .card-title {
-            font-size: 15px;
-            font-weight: bold;
-            color: #f1f5f9;
-            margin-bottom: 6px;
-            line-height: 1.3;
-        }
-        .card-desc {
-            font-size: 12px;
-            color: #94a3b8;
-            margin-bottom: 12px;
-            line-height: 1.4;
-        }
-        .card-footer {
-            font-size: 11px;
-            color: #64748b;
-            display: flex;
-            justify-content: space-between;
-            border-top: 1px solid #334155;
-            padding-top: 8px;
-        }
-
-        /* Detail View Page */
-        .post-detail-card {
-            background: #1e293b;
-            border-radius: 12px;
-            padding: 20px;
-            border: 1px solid #334155;
-        }
-        .post-detail-img {
-            width: 100%;
-            max-height: 380px;
-            object-fit: cover;
-            border-radius: 8px;
-            margin-bottom: 20px;
-        }
-        .post-detail-title {
-            font-size: 20px;
-            color: #38bdf8;
-            margin-bottom: 15px;
-            font-weight: bold;
-        }
-        .post-detail-review {
-            color: #cbd5e1;
-            font-size: 14px;
-            line-height: 1.7;
-            margin-bottom: 25px;
-        }
-        .download-btn {
-            display: inline-block;
-            background: #00bcd4;
-            color: #0f172a;
-            padding: 12px 25px;
-            font-weight: bold;
-            text-decoration: none;
-            border-radius: 25px;
-            font-size: 15px;
-            transition: background 0.2s, transform 0.2s;
-            box-shadow: 0 4px 12px rgba(0, 188, 212, 0.3);
-        }
-        .download-btn:hover {
-            background: #38bdf8;
-            transform: scale(1.03);
-        }
-        .back-btn {
-            background: none;
-            border: 1px solid #334155;
-            color: #94a3b8;
-            padding: 8px 16px;
-            border-radius: 20px;
-            cursor: pointer;
-            margin-bottom: 15px;
-            font-size: 13px;
-        }
-        .back-btn:hover {
-            color: #fff;
-            border-color: #00bcd4;
-        }
-
-        /* Info Box */
-        .info-box {
-            background: #1e293b;
-            padding: 20px;
-            border-radius: 12px;
-            border: 1px solid #334155;
-            color: #cbd5e1;
-            line-height: 1.6;
-        }
-
-        /* Navigation Drawer */
-        .nav-overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-color: rgba(15, 23, 42, 0.98);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            display: none;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #0f172a; color: #f8fafc; }
+        header { background-color: #1e293b; padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; border-bottom: 2px solid #00bcd4; }
+        .menu-btn, .search-icon-btn { background: none; border: none; color: #00bcd4; font-size: 24px; cursor: pointer; }
+        .logo-img { height: 32px; object-fit: contain; cursor: pointer; }
+        .main-container { max-width: 900px; margin: 0 auto; padding: 15px 15px 50px 15px; }
+        .hero { background: linear-gradient(180deg, rgba(15,23,42,0.4) 0%, rgba(15,23,42,0.95) 100%), url('https://github.com/minecraftlyn/Mcphoto/blob/1f9da41800bc4e29cdea3b6a12b25b1ee239b5c9/pixel-minecraft-style-land-background-concept-game-ground-pixelated-horizontal-blue-sky-sun-cloud-vector-illustration-212305683.jpg?raw=true') no-repeat center center; background-size: cover; padding: 25px 15px; border-radius: 12px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.4); border: 1px solid #334155; }
+        .hero h1 { font-size: 24px; font-weight: 900; letter-spacing: 2px; color: #38bdf8; text-shadow: 0 2px 8px rgba(0,0,0,0.8); margin-bottom: 6px; }
+        .hero p { font-size: 13px; color: #e2e8f0; font-weight: 500; }
+        .search-box { position: relative; margin-bottom: 25px; }
+        .search-box input { width: 100%; padding: 12px 20px; background: #1e293b; border: 1px solid #334155; border-radius: 25px; outline: none; color: #fff; font-size: 14px; box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
+        .search-box input::placeholder { color: #94a3b8; }
+        .page-section { display: none; }
+        .page-section.active { display: block; }
+        .section-title { font-size: 18px; font-weight: bold; color: #38bdf8; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
+        .section-title::after { content: ''; flex: 1; height: 2px; background: #334155; }
+        .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; }
+        .card { background: #1e293b; border-radius: 12px; overflow: hidden; border: 1px solid #334155; transition: transform 0.2s, box-shadow 0.2s; cursor: pointer; display: flex; flex-direction: column; }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,188,212,0.2); border-color: #00bcd4; }
+        .card img { width: 100%; height: 160px; object-fit: cover; }
+        .card-content { padding: 14px; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
+        .card-title { font-size: 15px; font-weight: bold; color: #f1f5f9; margin-bottom: 6px; line-height: 1.3; }
+        .card-desc { font-size: 12px; color: #94a3b8; margin-bottom: 12px; line-height: 1.4; }
+        .card-footer { font-size: 11px; color: #64748b; display: flex; justify-content: space-between; border-top: 1px solid #334155; padding-top: 8px; }
+        .post-detail-card { background: #1e293b; border-radius: 12px; padding: 20px; border: 1px solid #334155; }
+        .post-detail-img { width: 100%; max-height: 380px; object-fit: cover; border-radius: 8px; margin-bottom: 20px; }
+        .post-detail-title { font-size: 20px; color: #38bdf8; margin-bottom: 15px; font-weight: bold; }
+        .post-detail-review { color: #cbd5e1; font-size: 14px; line-height: 1.7; margin-bottom: 25px; }
+        .post-detail-review ul { margin-left: 20px; margin-top: 10px; margin-bottom: 15px; }
+        .post-detail-review li { margin-bottom: 5px; }
+        .download-btn { display: inline-block; background: #00bcd4; color: #0f172a; padding: 12px 25px; font-weight: bold; text-decoration: none; border-radius: 25px; font-size: 15px; transition: background 0.2s, transform 0.2s; box-shadow: 0 4px 12px rgba(0, 188, 212, 0.3); }
+        .download-btn:hover { background: #38bdf8; transform: scale(1.03); }
+        .back-btn { background: none; border: 1px solid #334155; color: #94a3b8; padding: 8px 16px; border-radius: 20px; cursor: pointer; margin-bottom: 15px; font-size: 13px; }
+        .back-btn:hover { color: #fff; border-color: #00bcd4; }
+        .info-box { background: #1e293b; padding: 20px; border-radius: 12px; border: 1px solid #334155; color: #cbd5e1; line-height: 1.6; }
+        .nav-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(15, 23, 42, 0.98); display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 1000; display: none; }
         .nav-overlay.active { display: flex; }
-        .close-btn {
-            position: absolute; top: 20px; right: 20px;
-            background: none; border: none; color: #00bcd4;
-            font-size: 30px; cursor: pointer;
-        }
+        .close-btn { position: absolute; top: 20px; right: 20px; background: none; border: none; color: #00bcd4; font-size: 30px; cursor: pointer; }
         .nav-links { list-style: none; text-align: center; }
         .nav-links li { margin: 15px 0; }
-        .nav-links a {
-            color: #f8fafc; text-decoration: none;
-            font-size: 18px; font-weight: bold;
-            letter-spacing: 1px; cursor: pointer;
-        }
+        .nav-links a { color: #f8fafc; text-decoration: none; font-size: 18px; font-weight: bold; letter-spacing: 1px; cursor: pointer; }
         .nav-links a:hover { color: #00bcd4; }
-
-        footer {
-            text-align: center; padding: 20px;
-            font-size: 12px; color: #64748b;
-            border-top: 1px solid #1e293b; margin-top: 40px;
-        }
+        footer { text-align: center; padding: 20px; font-size: 12px; color: #64748b; border-top: 1px solid #1e293b; margin-top: 40px; }
     </style>
 </head>
 <body>
@@ -299,7 +74,22 @@
             <div class="section-title">Latest Updates</div>
 
             <div class="card-grid">
-                <!-- IRRITATOR ADDON CARD -->
+                <!-- Herobrine Lurking Card -->
+                <div class="card" onclick="switchPage('herobrine-post')">
+                    <img src="https://github.com/minecraftlyn/Mcphoto/blob/main/Herobrine-Lurking-Addon-Thumbnail-500x281.jpg?raw=true" alt="Herobrine Lurking">
+                    <div class="card-content">
+                        <div>
+                            <div class="card-title">Herobrine Lurking Addon (v1.3.9)</div>
+                            <div class="card-desc">A horror addon that brings the mysterious Herobrine back into your world with scary events...</div>
+                        </div>
+                        <div class="card-footer">
+                            <span>👁 45 Views</span>
+                            <span>🕒 Just now</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Irritator Addon Card -->
                 <div class="card" onclick="switchPage('irritator-post')">
                     <img src="https://github.com/minecraftlyn/Mcphoto/blob/ae9a1f11eeb8e954f9580b782f0b0dc5786a5d1a/1000011603_orig.png?raw=true" alt="IRRITATOR NEW">
                     <div class="card-content">
@@ -309,7 +99,7 @@
                         </div>
                         <div class="card-footer">
                             <span>👁 12 Views</span>
-                            <span>🕒 Just now</span>
+                            <span>🕒 1 day ago</span>
                         </div>
                     </div>
                 </div>
@@ -320,7 +110,22 @@
         <div id="addon-page" class="page-section">
             <div class="section-title">Minecraft Addons</div>
             <div class="card-grid">
-                <!-- Addon Page မှာပါ ပြသမည့် IRRITATOR CARD -->
+                <!-- Herobrine Addon in Addon Page -->
+                <div class="card" onclick="switchPage('herobrine-post')">
+                    <img src="https://github.com/minecraftlyn/Mcphoto/blob/main/Herobrine-Lurking-Addon-Thumbnail-500x281.jpg?raw=true" alt="Herobrine Lurking">
+                    <div class="card-content">
+                        <div>
+                            <div class="card-title">Herobrine Lurking Addon (v1.3.9)</div>
+                            <div class="card-desc">A horror addon that brings the mysterious Herobrine back into your world with scary events...</div>
+                        </div>
+                        <div class="card-footer">
+                            <span>👁 45 Views</span>
+                            <span>🕒 Just now</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Irritator Addon in Addon Page -->
                 <div class="card" onclick="switchPage('irritator-post')">
                     <img src="https://github.com/minecraftlyn/Mcphoto/blob/ae9a1f11eeb8e954f9580b782f0b0dc5786a5d1a/1000011603_orig.png?raw=true" alt="IRRITATOR NEW">
                     <div class="card-content">
@@ -330,7 +135,7 @@
                         </div>
                         <div class="card-footer">
                             <span>👁 12 Views</span>
-                            <span>🕒 Just now</span>
+                            <span>🕒 1 day ago</span>
                         </div>
                     </div>
                 </div>
@@ -340,31 +145,65 @@
         <!-- SHADER PAGE -->
         <div id="shader-page" class="page-section">
             <div class="section-title">Minecraft Shaders</div>
-            <div class="info-box">
-                <p>No Shaders available yet. Check back soon!</p>
-            </div>
+            <div class="info-box"><p>No Shaders available yet. Check back soon!</p></div>
         </div>
 
         <!-- MAP PAGE -->
         <div id="map-page" class="page-section">
             <div class="section-title">Minecraft Maps</div>
-            <div class="info-box">
-                <p>No Maps available yet. Check back soon!</p>
+            <div class="info-box"><p>No Maps available yet. Check back soon!</p></div>
+        </div>
+
+        <!-- HEROBRINE POST PAGE -->
+        <div id="herobrine-post-page" class="page-section">
+            <button class="back-btn" onclick="switchPage('home')">← Back to Home</button>
+            <div class="post-detail-card">
+                <img src="https://github.com/minecraftlyn/Mcphoto/blob/main/Herobrine-Lurking-Addon-Thumbnail-500x281.jpg?raw=true" alt="Herobrine Lurking" class="post-detail-img">
+                <h2 class="post-detail-title">Herobrine Lurking Addon Review</h2>
+                <div class="post-detail-review">
+                    <p><b>Minecraft Version:</b> 26.x / 26.20+</p>
+                    <p><b>Addon Version:</b> 1.3.9</p>
+                    <p><b>Platform:</b> Minecraft Bedrock Edition</p>
+                    <br>
+                    <p>Herobrine Lurking is a horror addon that brings the mysterious Herobrine back into your Minecraft world. Instead of simply adding a new mob, it creates random and unexpected events that make normal survival gameplay much more scary and exciting.</p>
+                    <br>
+                    <p>Herobrine can suddenly appear, watch you from a distance, attack you, or disappear without warning. The addon also includes creepy sounds, mysterious signs, strange tunnels, torch changes, possessed animals, jumpscares, and other unexpected events.</p>
+                    <br>
+                    <p>One of the best things about this addon is that it makes you feel like you are being watched while playing Minecraft. 😨👁️</p>
+                    <br>
+                    <h3>⭐ Features</h3>
+                    <ul>
+                        <li>👁️ Herobrine stalking and watching events</li>
+                        <li>😱 Random jumpscares</li>
+                        <li>🔥 Random fires</li>
+                        <li>🐑 Possessed animals</li>
+                        <li>🪧 Mysterious signs</li>
+                        <li>⛏️ Strange underground tunnels</li>
+                        <li>🔴 Torches can mysteriously change</li>
+                        <li>💬 Creepy messages in chat</li>
+                        <li>🌑 Dark and mysterious atmosphere</li>
+                        <li>📱 Supports Mobile & PC Bedrock</li>
+                    </ul>
+                    <br>
+                    <p><b>⭐ Rating:</b> 8.5/10</p>
+                    <br>
+                    <h3>Final Verdict:</h3>
+                    <p>If you enjoy Minecraft horror, mystery, and creepy survival experiences, Herobrine Lurking is definitely an addon worth trying. It can turn an ordinary Minecraft survival world into an unpredictable horror experience where you never know when Herobrine might appear. 👁️🔥</p>
+                </div>
+                <a href="https://github.com/minecraftlyn/Mcphoto/blob/f290a378c8e9e22357e6f1db1df8afc04232563d/Herobrine-Lurking-Addon-26x.mcaddon?raw=true" class="download-btn" download>📥 Download Addon (.mcaddon)</a>
             </div>
         </div>
 
-        <!-- IRRITATOR SINGLE POST PAGE (Review & Download) -->
+        <!-- IRRITATOR POST PAGE -->
         <div id="irritator-post-page" class="page-section">
             <button class="back-btn" onclick="switchPage('home')">← Back to Home</button>
             <div class="post-detail-card">
                 <img src="https://github.com/minecraftlyn/Mcphoto/blob/ae9a1f11eeb8e954f9580b782f0b0dc5786a5d1a/1000011603_orig.png?raw=true" alt="IRRITATOR NEW" class="post-detail-img">
                 <h2 class="post-detail-title">IRRITATOR NEW ADDON</h2>
-                
                 <div class="post-detail-review">
                     <h3>Addon Review:</h3>
                     <p>The <b>IRRITATOR NEW Addon</b> brings an intense horror survival element to Minecraft. This entity actively hunts players with dynamic animations, custom sound effects, and unique attack behavior. Highly recommended for horror and survival map lovers!</p>
                 </div>
-
                 <a href="https://github.com/ayemarzin65-eng/Mc-file/raw/c882ce0711383fafb66fe3cd7fedbd1d39a7182a/IRRITATOR%20NEW.mcaddon" class="download-btn" download>📥 Download Addon (.mcaddon)</a>
             </div>
         </div>
@@ -372,17 +211,13 @@
         <!-- CONTACT PAGE -->
         <div id="contact-page" class="page-section">
             <div class="section-title">Contact Us</div>
-            <div class="info-box">
-                <p><b>TikTok:</b> @kaunglays58</p>
-            </div>
+            <div class="info-box"><p><b>TikTok:</b> @kaunglays58</p></div>
         </div>
 
         <!-- ABOUT PAGE -->
         <div id="about-page" class="page-section">
             <div class="section-title">About Website</div>
-            <div class="info-box">
-                <p>Minecraftlyn - Best Addons & Mods Resource for Minecraft Pocket Edition / Bedrock Edition.</p>
-            </div>
+            <div class="info-box"><p>Minecraftlyn - Best Addons & Mods Resource for Minecraft Pocket Edition / Bedrock Edition.</p></div>
         </div>
 
         <!-- OTHER PAGES -->
@@ -404,7 +239,7 @@
             <li><a onclick="navigate('news')">News</a></li>
             <li><a onclick="navigate('contact')">Contact</a></li>
             <li><a onclick="navigate('texturepack')">Texturepack</a></li>
-            <li><a onclick="navigate('photo')">Photo</a></li>
+            <li><a onclick="navigate('photo')">Photos</a></li>
         </ul>
     </div>
 
@@ -413,23 +248,15 @@
     </footer>
 
     <script>
-        function toggleMenu() {
-            document.getElementById('navOverlay').classList.toggle('active');
-        }
-
+        function toggleMenu() { document.getElementById('navOverlay').classList.toggle('active'); }
         function switchPage(pageId) {
             document.querySelectorAll('.page-section').forEach(p => p.classList.remove('active'));
             const target = document.getElementById(pageId + '-page');
             if (target) target.classList.add('active');
             window.scrollTo(0, 0);
         }
-
-        function navigate(pageId) {
-            toggleMenu();
-            switchPage(pageId);
-        }
+        function navigate(pageId) { toggleMenu(); switchPage(pageId); }
     </script>
 </body>
-            </html>
-
-
+    </html>
+    
