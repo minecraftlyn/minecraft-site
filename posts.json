@@ -1,19 +1,4 @@
 [ 
-    {
-    "id": "test-post-01",
-    "title": "Test Addon Post (စမ်းသပ်မှု)",
-    "category": "addon",
-    "image": "https://github.com/minecraftlyn/Mcphoto/blob/main/Herobrine-Lurking-Addon-Thumbnail-500x281.jpg?raw=true",
-    "shortDesc": "ဒါက ပို့စ်အသစ်တင်တာ အဆင်ပြေလား စမ်းသပ်တဲ့ Test Post ဖြစ်ပါတယ်။",
-    "views": "1 Views",
-    "date": "Just now",
-    "mcVersion": "1.20+",
-    "addonVersion": "1.0.0",
-    "platform": "Minecraft Bedrock",
-    "fullReview": "<p>ဒါကတော့ posts.json ကနေ ပို့စ်အသစ်တွေ စမ်းသပ် တင်ပြနေတာ ဖြစ်ပါတယ်။ Website မှာ ပုံမှန် ပေါ်လာရင် အောင်မြင်ပါပြီ။</p>",
-    "downloadLink": "https://github.com/minecraftlyn/Mcphoto"
-  },
-  
   {
     "id": "herobrine-lurking",
     "title": "Herobrine Lurking Addon (v1.3.9)",
