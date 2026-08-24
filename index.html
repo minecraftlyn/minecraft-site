@@ -3,103 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minecraft Lyn - Addons & Mods</title>
+    <title>Minecraft Lyn</title>
     <style>
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         body {
-            background-color: #f4f5f7;
-            color: #333;
+            background-color: #0f172a; /* Dark Navy Gaming BG */
+            color: #f8fafc;
         }
         /* Top Header */
         header {
-            background-color: #111827;
-            color: #ffffff;
-            padding: 10px 15px;
+            background-color: #1e293b;
+            padding: 12px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             position: sticky;
             top: 0;
             z-index: 100;
+            border-bottom: 2px solid #00bcd4;
         }
         .menu-btn, .search-icon-btn {
             background: none;
             border: none;
             color: #00bcd4;
-            font-size: 22px;
+            font-size: 24px;
             cursor: pointer;
         }
         .logo-img {
-            height: 28px;
+            height: 32px;
             object-fit: contain;
             cursor: pointer;
         }
 
-        /* Container */
         .main-container {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
-            padding-bottom: 50px;
+            padding: 20px 15px 50px 15px;
         }
 
-        /* Hero Banner - Slimmer with custom Minecraft Pixel background */
+        /* Modern Compact Banner */
         .hero {
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://github.com/minecraftlyn/Mcphoto/blob/1f9da41800bc4e29cdea3b6a12b25b1ee239b5c9/pixel-minecraft-style-land-background-concept-game-ground-pixelated-horizontal-blue-sky-sun-cloud-vector-illustration-212305683.jpg?raw=true') no-repeat center center;
+            background: linear-gradient(180deg, rgba(15,23,42,0.2) 0%, rgba(15,23,42,0.9) 100%), 
+                        url('https://github.com/minecraftlyn/Mcphoto/blob/1f9da41800bc4e29cdea3b6a12b25b1ee239b5c9/pixel-minecraft-style-land-background-concept-game-ground-pixelated-horizontal-blue-sky-sun-cloud-vector-illustration-212305683.jpg?raw=true') no-repeat center center;
             background-size: cover;
-            height: 140px; /* ကျဉ်းအောင် ပြင်ထားသည် */
+            height: 120px;
+            border-radius: 12px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            color: white;
             text-align: center;
-        }
-        .hero p {
-            font-size: 11px;
-            margin-bottom: 3px;
-            color: #e0f2fe;
-            font-weight: bold;
-            letter-spacing: 1px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
         .hero h1 {
-            font-size: 20px;
-            font-weight: bold;
-            letter-spacing: 2px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: 3px;
+            color: #38bdf8;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
         }
 
-        /* Search Bar */
-        .search-container {
-            padding: 12px 15px;
-            background: #fff;
-            display: flex;
-            justify-content: center;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-            margin-bottom: 20px;
-        }
+        /* Stylish Search Bar */
         .search-box {
             position: relative;
-            width: 100%;
-            max-width: 760px;
+            margin-bottom: 25px;
         }
         .search-box input {
             width: 100%;
-            padding: 9px 15px;
-            border: 1px solid #d1d5db;
-            border-radius: 4px;
+            padding: 12px 20px;
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 25px;
             outline: none;
+            color: #fff;
             font-size: 14px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        .search-box input::placeholder {
+            color: #94a3b8;
         }
 
-        /* Content Sections */
+        /* Sections */
         .page-section {
             display: none;
-            padding: 0 15px;
         }
         .page-section.active {
             display: block;
@@ -107,74 +99,80 @@
         .section-title {
             font-size: 18px;
             font-weight: bold;
-            color: #111827;
+            color: #38bdf8;
             margin-bottom: 15px;
-            border-left: 4px solid #00bcd4;
-            padding-left: 10px;
-            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 2px;
+            background: #334155;
         }
 
-        /* Post Card */
+        /* Modern Grid Cards Layout */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 20px;
+        }
         .card {
-            background: #ffffff;
-            border-radius: 6px;
+            background: #1e293b;
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.08);
-            margin-bottom: 20px;
+            border: 1px solid #334155;
+            transition: transform 0.2s, box-shadow 0.2s;
             cursor: pointer;
-            border: 1px solid #e5e7eb;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,188,212,0.2);
+            border-color: #00bcd4;
         }
         .card img {
             width: 100%;
-            height: 180px;
+            height: 150px;
             object-fit: cover;
         }
         .card-content {
-            padding: 15px;
+            padding: 12px;
         }
         .card-title {
-            font-size: 15px;
+            font-size: 14px;
             font-weight: bold;
-            color: #1f2937;
-            margin-bottom: 8px;
+            color: #f1f5f9;
+            margin-bottom: 6px;
+            line-height: 1.3;
         }
         .card-desc {
-            font-size: 13px;
-            color: #4b5563;
-            margin-bottom: 12px;
+            font-size: 12px;
+            color: #94a3b8;
+            margin-bottom: 10px;
             line-height: 1.4;
         }
         .card-footer {
-            font-size: 12px;
-            color: #9ca3af;
+            font-size: 11px;
+            color: #64748b;
             display: flex;
             justify-content: space-between;
         }
 
         /* Info Box */
         .info-box {
-            background: #ffffff;
+            background: #1e293b;
             padding: 20px;
-            border-radius: 6px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-            line-height: 1.6;
-            font-size: 14px;
-            color: #374151;
-        }
-        .info-box h3 {
-            color: #111827;
-            margin-bottom: 10px;
-            font-size: 16px;
+            border-radius: 12px;
+            border: 1px solid #334155;
+            color: #cbd5e1;
         }
 
-        /* Fullscreen Dark Menu Drawer */
+        /* Fullscreen Navigation */
         .nav-overlay {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.96);
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(15, 23, 42, 0.98);
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -182,165 +180,93 @@
             z-index: 1000;
             display: none;
         }
-        .nav-overlay.active {
-            display: flex;
-        }
+        .nav-overlay.active { display: flex; }
         .close-btn {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: none;
-            border: none;
-            color: #00bcd4;
-            font-size: 30px;
-            cursor: pointer;
+            position: absolute; top: 20px; right: 20px;
+            background: none; border: none; color: #00bcd4;
+            font-size: 30px; cursor: pointer;
         }
-        .nav-links {
-            list-style: none;
-            text-align: center;
-        }
-        .nav-links li {
-            margin: 15px 0;
-        }
+        .nav-links { list-style: none; text-align: center; }
+        .nav-links li { margin: 15px 0; }
         .nav-links a {
-            color: #00bcd4;
-            text-decoration: none;
-            font-size: 15px;
-            font-weight: bold;
-            letter-spacing: 1px;
-            cursor: pointer;
-            text-transform: uppercase;
+            color: #f8fafc; text-decoration: none;
+            font-size: 18px; font-weight: bold;
+            letter-spacing: 1px; cursor: pointer;
         }
-        .nav-links a:hover {
-            color: #ffffff;
-        }
+        .nav-links a:hover { color: #00bcd4; }
 
-        /* Footer */
         footer {
-            text-align: center;
-            padding: 20px;
-            font-size: 12px;
-            color: #9ca3af;
-            border-top: 1px solid #e5e7eb;
-            margin-top: 30px;
-            background: #fff;
+            text-align: center; padding: 20px;
+            font-size: 12px; color: #64748b;
+            border-top: 1px solid #1e293b; margin-top: 40px;
         }
     </style>
 </head>
 <body>
 
-    <!-- Top Header -->
     <header>
         <button class="menu-btn" onclick="toggleMenu()">☰</button>
-        <img src="https://raw.githubusercontent.com/minecraftlyn/Mcphoto/fadf178b72cb6a942deb3105ba06118e7a2d030f/bitmap2216761670976185018.png" alt="Minecraft Lyn Logo" class="logo-img" onclick="switchPage('home')">
+        <img src="https://raw.githubusercontent.com/minecraftlyn/Mcphoto/fadf178b72cb6a942deb3105ba06118e7a2d030f/bitmap2216761670976185018.png" alt="Logo" class="logo-img" onclick="switchPage('home')">
         <button class="search-icon-btn" onclick="switchPage('home')">🔍</button>
     </header>
 
     <div class="main-container">
-        <!-- Hero Banner -->
-        <div class="hero">
-            <p>Mc addon sharing by Lyn.</p>
-            <h1>WELCOME</h1>
-        </div>
-
-        <!-- Search Bar -->
-        <div class="search-container">
-            <div class="search-box">
-                <input type="text" placeholder="Search addons, shaders, maps...">
-            </div>
-        </div>
 
         <!-- HOME PAGE -->
         <div id="home-page" class="page-section active">
+            <div class="hero">
+                <h1>WELCOME</h1>
+            </div>
+
+            <div class="search-box">
+                <input type="text" placeholder="Search addons, shaders, maps...">
+            </div>
+
             <div class="section-title">Latest Addons</div>
-            <div class="card" onclick="alert('Irritator Dweller Addon သို့ ရောက်ပါပြီ!')">
-                <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600&auto=format&fit=crop&q=80" alt="Minecraft">
-                <div class="card-content">
-                    <div class="card-title">Irritator Dweller Addon (1.20.1) – Terrifying Horror Creature</div>
-                    <div class="card-desc">When it spots you on the horizon, it pauses before rapidly closing the distance. Extremely dangerous...</div>
-                    <div class="card-footer">
-                        <span>👁 125 Views</span>
-                        <span>🕒 1 hour ago</span>
+
+            <!-- Grid Layout for Posts -->
+            <div class="card-grid">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600&auto=format&fit=crop&q=80" alt="Minecraft">
+                    <div class="card-content">
+                        <div class="card-title">Irritator Dweller Addon (1.20.1)</div>
+                        <div class="card-desc">When it spots you on the horizon, it pauses before rapidly closing the distance...</div>
+                        <div class="card-footer">
+                            <span>👁 125 Views</span>
+                            <span>🕒 1 hour ago</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- ADDON PAGE -->
-        <div id="addon-page" class="page-section">
-            <div class="section-title">Minecraft Addons</div>
+        <!-- CONTACT PAGE -->
+        <div id="contact-page" class="page-section">
+            <div class="section-title">Contact Us</div>
             <div class="info-box">
-                <h3>All Addons Collection</h3>
-                <p>Explore all the latest and greatest addons for Minecraft.</p>
-            </div>
-        </div>
-
-        <!-- SHADER PAGE -->
-        <div id="shader-page" class="page-section">
-            <div class="section-title">Minecraft Shaders</div>
-            <div class="info-box">
-                <h3>Graphics & Shaders</h3>
-                <p>Enhance your visual gameplay experience with realistic shaders.</p>
-            </div>
-        </div>
-
-        <!-- MAP PAGE -->
-        <div id="map-page" class="page-section">
-            <div class="section-title">Minecraft Maps</div>
-            <div class="info-box">
-                <h3>Adventure & Survival Maps</h3>
-                <p>Download custom survival worlds and epic adventure maps.</p>
+                <p><b>TikTok:</b> @kaunglays58</p>
             </div>
         </div>
 
         <!-- ABOUT PAGE -->
         <div id="about-page" class="page-section">
-            <div class="section-title">About Website</div>
+            <div class="section-title">About</div>
             <div class="info-box">
-                <h3>Minecraftlyn</h3>
-                <p>This website is dedicated to sharing high-quality Minecraft addons, mods, and resources for players.</p>
+                <p>Minecraftlyn - Best Addons & Mods Resource.</p>
             </div>
         </div>
 
-        <!-- NEWS PAGE -->
-        <div id="news-page" class="page-section">
-            <div class="section-title">Latest News</div>
-            <div class="info-box">
-                <h3>Minecraft Updates</h3>
-                <p>Stay tuned for the latest news and updates about Minecraft.</p>
-            </div>
-        </div>
-
-        <!-- CONTACT PAGE (TikTok username only, no Burmese text) -->
-        <div id="contact-page" class="page-section">
-            <div class="section-title">Contact Us</div>
-            <div class="info-box">
-                <h3>TikTok</h3>
-                <p><b>TikTok:</b> @kaunglays58</p>
-            </div>
-        </div>
-
-        <!-- TEXTUREPACK PAGE -->
-        <div id="texturepack-page" class="page-section">
-            <div class="section-title">Texture Packs</div>
-            <div class="info-box">
-                <h3>Resource Packs</h3>
-                <p>Change the look of items, blocks, and UI with texture packs.</p>
-            </div>
-        </div>
-
-        <!-- PHOTO PAGE -->
-        <div id="photo-page" class="page-section">
-            <div class="section-title">Photo Gallery</div>
-            <div class="info-box">
-                <h3>Wallpapers & Screenshots</h3>
-                <p>Explore cool screenshots and Minecraft images.</p>
-            </div>
-        </div>
+        <!-- OTHER PAGES (ADDON, SHADER, MAP, etc.) -->
+        <div id="addon-page" class="page-section"><div class="section-title">Addons</div></div>
+        <div id="shader-page" class="page-section"><div class="section-title">Shaders</div></div>
+        <div id="map-page" class="page-section"><div class="section-title">Maps</div></div>
+        <div id="news-page" class="page-section"><div class="section-title">News</div></div>
+        <div id="texturepack-page" class="page-section"><div class="section-title">Texturepacks</div></div>
+        <div id="photo-page" class="page-section"><div class="section-title">Photos</div></div>
 
     </div>
 
-    <!-- Fullscreen Menu Drawer -->
+    <!-- Navigation Drawer -->
     <div class="nav-overlay" id="navOverlay">
         <button class="close-btn" onclick="toggleMenu()">✕</button>
         <ul class="nav-links">
@@ -356,25 +282,19 @@
         </ul>
     </div>
 
-    <!-- Footer -->
     <footer>
         <p>&copy; 2026 Minecraftlyn. All rights reserved.</p>
     </footer>
 
     <script>
         function toggleMenu() {
-            const overlay = document.getElementById('navOverlay');
-            overlay.classList.toggle('active');
+            document.getElementById('navOverlay').classList.toggle('active');
         }
 
         function switchPage(pageId) {
-            const pages = document.querySelectorAll('.page-section');
-            pages.forEach(p => p.classList.remove('active'));
-
+            document.querySelectorAll('.page-section').forEach(p => p.classList.remove('active'));
             const target = document.getElementById(pageId + '-page');
-            if (target) {
-                target.classList.add('active');
-            }
+            if (target) target.classList.add('active');
             window.scrollTo(0, 0);
         }
 
@@ -383,7 +303,5 @@
             switchPage(pageId);
         }
     </script>
-
 </body>
-                </html>
-                
+</html>
