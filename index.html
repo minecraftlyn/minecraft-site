@@ -3,92 +3,144 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minecraftlyn - Addons & Mods</title>
+    <title>Minecraft Lyn - Addons & Mods</title>
     <style>
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: sans-serif;
         }
         body {
             background-color: #f4f5f7;
             color: #333;
         }
-        /* App Header / Navbar */
+        /* Top Header */
         header {
-            background-color: #1f2937;
+            background-color: #111827;
             color: #ffffff;
-            padding: 15px 20px;
+            padding: 12px 15px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             position: sticky;
             top: 0;
             z-index: 100;
         }
-        .logo {
-            font-size: 20px;
-            font-weight: bold;
-            color: #10b981;
+        .menu-btn, .search-icon-btn {
+            background: none;
+            border: none;
+            color: #00bcd4;
+            font-size: 22px;
+            cursor: pointer;
         }
-        nav a {
-            color: #ffffff;
-            text-decoration: none;
-            margin-left: 15px;
+        .logo-title {
+            font-weight: 900;
+            letter-spacing: 2px;
+            font-size: 18px;
+            color: #fff;
+            text-align: center;
+            cursor: pointer;
+        }
+        .logo-title span {
+            display: block;
+            font-size: 10px;
+            color: #00bcd4;
+            letter-spacing: 3px;
+        }
+
+        /* Container */
+        .main-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding-bottom: 50px;
+        }
+
+        /* Hero Banner */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1627856013091-fed6e4e30e77?w=800&auto=format&fit=crop&q=80') no-repeat center center;
+            background-size: cover;
+            height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+        .hero p {
+            font-size: 12px;
+            margin-bottom: 5px;
+            color: #e2e8f0;
+        }
+        .hero h1 {
+            font-size: 22px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        /* Search Bar */
+        .search-container {
+            padding: 15px;
+            background: #fff;
+            display: flex;
+            justify-content: center;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+        }
+        .search-box {
+            position: relative;
+            width: 100%;
+            max-width: 760px;
+        }
+        .search-box input {
+            width: 100%;
+            padding: 10px 15px;
+            padding-right: 40px;
+            border: 1px solid #d1d5db;
+            border-radius: 4px;
+            outline: none;
             font-size: 14px;
         }
-        nav a:hover {
-            color: #10b981;
-        }
-        /* Container */
-        .container {
-            max-width: 800px;
-            margin: 20px auto;
+
+        /* Content Sections (Pages) */
+        .page-section {
+            display: none;
             padding: 0 15px;
         }
-        /* About Section */
-        .about-box {
-            background: #ffffff;
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        .page-section.active {
+            display: block;
         }
-        .about-box h2 {
+        .section-title {
             font-size: 18px;
-            margin-bottom: 8px;
-            color: #1f2937;
+            font-weight: bold;
+            color: #111827;
+            margin-bottom: 15px;
+            border-left: 4px solid #00bcd4;
+            padding-left: 10px;
+            text-transform: uppercase;
         }
-        .about-box p {
-            font-size: 14px;
-            color: #6b7280;
-            line-height: 1.5;
-        }
+
         /* Post Card */
         .card {
             background: #ffffff;
-            border-radius: 8px;
+            border-radius: 6px;
             overflow: hidden;
             box-shadow: 0 2px 5px rgba(0,0,0,0.08);
             margin-bottom: 20px;
             cursor: pointer;
-            transition: transform 0.2s;
-        }
-        .card:hover {
-            transform: translateY(-3px);
+            border: 1px solid #e5e7eb;
         }
         .card img {
             width: 100%;
-            height: 200px;
+            height: 180px;
             object-fit: cover;
         }
         .card-content {
             padding: 15px;
         }
         .card-title {
-            font-size: 16px;
+            font-size: 15px;
             font-weight: bold;
             color: #1f2937;
             margin-bottom: 8px;
@@ -105,48 +157,226 @@
             display: flex;
             justify-content: space-between;
         }
+
+        /* Info Box for About & Contact */
+        .info-box {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 6px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            line-height: 1.6;
+            font-size: 14px;
+            color: #374151;
+        }
+        .info-box h3 {
+            color: #111827;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        .info-box ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        /* Fullscreen Dark Menu Overlay */
+        .nav-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.96);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            display: none;
+        }
+        .nav-overlay.active {
+            display: flex;
+        }
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: #00bcd4;
+            font-size: 30px;
+            cursor: pointer;
+        }
+        .nav-links {
+            list-style: none;
+            text-align: center;
+        }
+        .nav-links li {
+            margin: 15px 0;
+        }
+        .nav-links a {
+            color: #00bcd4;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+        .nav-links a:hover {
+            color: #ffffff;
+        }
+
         /* Footer */
         footer {
             text-align: center;
             padding: 20px;
-            font-size: 13px;
+            font-size: 12px;
             color: #9ca3af;
             border-top: 1px solid #e5e7eb;
-            margin-top: 40px;
+            margin-top: 30px;
+            background: #fff;
         }
     </style>
 </head>
 <body>
 
-    <!-- Top Navigation Bar -->
+    <!-- Top Header -->
     <header>
-        <div class="logo">Minecraftlyn</div>
-        <nav>
-            <a href="#">Home</a>
-            <a href="#about">About</a>
-            <a href="#contact">Contact</a>
-        </nav>
+        <button class="menu-btn" onclick="toggleMenu()">☰</button>
+        <div class="logo-title" onclick="switchPage('home')">
+            MINECRAFT
+            <span>LYN</span>
+        </div>
+        <button class="search-icon-btn" onclick="switchPage('home')">🔍</button>
     </header>
 
-    <div class="container">
-        <!-- About / Intro Section -->
-        <div class="about-box" id="about">
-            <h2>Welcome to Minecraftlyn!</h2>
-            <p>ဒီဝဘ်ဆိုဒ်ကတော့ Minecraft ကစားသူတွေအတွက် အမိုက်စား Addons တွေ၊ Mods တွေနဲ့ သတင်းအချက်အလက်တွေကို စုစည်းတင်ဆက်ပေးနေတဲ့ ကိုယ်ပိုင်နေရာလေး ဖြစ်ပါတယ်။</p>
+    <div class="main-container">
+        <!-- Hero Banner -->
+        <div class="hero">
+            <p>Mc addon sharing by Lyn.</p>
+            <h1>WELCOME</h1>
         </div>
 
-        <!-- Post Item 1 -->
-        <div class="card" onclick="alert('Post ကို နှိပ်လိုက်ပါပြီ!')">
-            <img src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=600&auto=format&fit=crop&q=80" alt="Minecraft Addon">
-            <div class="card-content">
-                <div class="card-title">Irritator Dweller Addon (1.20.1) – Terrifying Horror Creature</div>
-                <div class="card-desc">When it spots you on the horizon, it pauses before rapidly closing the distance. Extremely dangerous with block-climbing abilities...</div>
-                <div class="card-footer">
-                    <span>👁 125 Views</span>
-                    <span>🕒 1 hour ago</span>
+        <!-- Search Bar -->
+        <div class="search-container">
+            <div class="search-box">
+                <input type="text" placeholder="Search addons, shaders, maps...">
+            </div>
+        </div>
+
+        <!-- ================= HOME PAGE CONTENT ================= -->
+        <div id="home-page" class="page-section active">
+            <div class="section-title">Latest Addons</div>
+            
+            <div class="card" onclick="alert('Irritator Dweller Addon အသေးစိတ်သို့ ရောက်ပါပြီ!')">
+                <img src="https://images.unsplash.com/photo-1627856013091-fed6e4e30e77?w=600&auto=format&fit=crop&q=80" alt="Minecraft Addon">
+                <div class="card-content">
+                    <div class="card-title">Irritator Dweller Addon (1.20.1) – Terrifying Horror Creature</div>
+                    <div class="card-desc">When it spots you on the horizon, it pauses before rapidly closing the distance. Extremely dangerous with block-climbing abilities...</div>
+                    <div class="card-footer">
+                        <span>👁 125 Views</span>
+                        <span>🕒 1 hour ago</span>
+                    </div>
                 </div>
             </div>
         </div>
+
+        <!-- ================= ADDON PAGE CONTENT ================= -->
+        <div id="addon-page" class="page-section">
+            <div class="section-title">Minecraft Addons</div>
+            <div class="info-box">
+                <h3>All Addons Collection</h3>
+                <p>ဤနေရာတွင် Minecraft ဗားရှင်းအမျိုးမျိုးအတွက် အမိုက်စား Addon များကို စုစည်းတင်ဆက်ပေးသွားမည် ဖြစ်ပါသည်။</p>
+            </div>
+        </div>
+
+        <!-- ================= SHADER PAGE CONTENT ================= -->
+        <div id="shader-page" class="page-section">
+            <div class="section-title">Minecraft Shaders</div>
+            <div class="info-box">
+                <h3>Graphics & Shaders</h3>
+                <p>သင့်ဂိမ်းကို ပိုမိုလှပကြည်လင်စေမည့် Realistic Shaders များနှင့် Lighting ဖိုင်များကို ဤနေရာတွင် ရယူနိုင်ပါသည်။</p>
+            </div>
+        </div>
+
+        <!-- ================= MAP PAGE CONTENT ================= -->
+        <div id="map-page" class="page-section">
+            <div class="section-title">Minecraft Maps</div>
+            <div class="info-box">
+                <h3>Adventure & Survival Maps</h3>
+                <p>စွန့်စားခန်းမြေပုံများ၊ Survival ကမ္ဘာများနှင့် Minigame Map များကို တင်ဆက်ပေးမည့် နေရာဖြစ်ပါသည်။</p>
+            </div>
+        </div>
+
+        <!-- ================= ABOUT PAGE CONTENT ================= -->
+        <div id="about-page" class="page-section">
+            <div class="section-title">About Website</div>
+            <div class="info-box">
+                <h3>Minecraftlyn အကြောင်း</h3>
+                <p>ဒီဝဘ်ဆိုဒ် (Minecraftlyn) ကတော့ Minecraft ကစားသူတွေအတွက် အကောင်းဆုံး Addons တွေ၊ Mods တွေ၊ Shaders တွေနဲ့ သတင်းအချက်အလက်တွေကို မြန်မာဘာသာနဲ့ လွယ်ကူစွာ ရှာဖွေဒေါင်းလုဒ်လုပ်နိုင်အောင် စုစည်းဖန်တီးထားတဲ့ ကိုယ်ပိုင်နေရာလေး ဖြစ်ပါတယ်။</p>
+                <br>
+                <p><b>ဖန်တီးသူ:</b> Lyn</p>
+                <p><b>ရည်ရွယ်ချက်:</b> မြန်မာ Minecraft တပ်ဆင်သူများအတွက် အဆင်ပြေလွယ်ကူစေရန်။</p>
+            </div>
+        </div>
+
+        <!-- ================= NEWS PAGE CONTENT ================= -->
+        <div id="news-page" class="page-section">
+            <div class="section-title">Latest News</div>
+            <div class="info-box">
+                <h3>Minecraft Updates & News</h3>
+                <p>Minecraft ဗားရှင်းအသစ်ထွက်ရှိမှုများနှင့် အခြားသော သတင်းအချက်အလက်အသစ်များကို ဤနေရာတွင် ဖတ်ရှုနိုင်ပါသည်။</p>
+            </div>
+        </div>
+
+        <!-- ================= CONTACT PAGE CONTENT ================= -->
+        <div id="contact-page" class="page-section">
+            <div class="section-title">Contact Us</div>
+            <div class="info-box">
+                <h3>ဆက်သွယ်ရန်</h3>
+                <p>ကျွန်ုပ်တို့နှင့် ဆက်သွယ်လိုပါက သို့မဟုတ် မေးမြန်းစရာရှိပါက အောက်ပါလိပ်စာများမှတစ်ဆင့် ဆက်သွယ်နိုင်ပါသည် -</p>
+                <ul>
+                    <li><b>Facebook Page:</b> Minecraftlyn Official</li>
+                    <li><b>Telegram:</b> @minecraftlyn</li>
+                    <li><b>Email:</b> contact@minecraftlyn.com</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ================= TEXTUREPACK PAGE CONTENT ================= -->
+        <div id="texturepack-page" class="page-section">
+            <div class="section-title">Texture Packs</div>
+            <div class="info-box">
+                <h3>Resource Packs</h3>
+                <p>ဂိမ်းတွင်းရှိ ပစ္စည်းပုံစံများနှင့် Block ဒီဇိုင်းများကို အလှဆင်ပေးမည့် Texture Pack များကို တင်ဆက်ပေးသွားပါမည်။</p>
+            </div>
+        </div>
+
+        <!-- ================= PHOTO PAGE CONTENT ================= -->
+        <div id="photo-page" class="page-section">
+            <div class="section-title">Photo Gallery</div>
+            <div class="info-box">
+                <h3>Screenshots & Wallpapers</h3>
+                <p>အမိုက်စား Minecraft ပုံရိပ်များနှင့် Wallpaper လှလှများကို ဤနေရာတွင် ကြည့်ရှုနိုင်ပါသည်။</p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Fullscreen Dark Menu (Drawer) -->
+    <div class="nav-overlay" id="navOverlay">
+        <button class="close-btn" onclick="toggleMenu()">✕</button>
+        <ul class="nav-links">
+            <li><a onclick="navigate('home')">Home</a></li>
+            <li><a onclick="navigate('addon')">Addon</a></li>
+            <li><a onclick="navigate('shader')">Shader</a></li>
+            <li><a onclick="navigate('map')">Map</a></li>
+            <li><a onclick="navigate('about')">About</a></li>
+            <li><a onclick="navigate('news')">News</a></li>
+            <li><a onclick="navigate('contact')">Contact</a></li>
+            <li><a onclick="navigate('texturepack')">Texturepack</a></li>
+            <li><a onclick="navigate('photo')">Photo</a></li>
+        </ul>
     </div>
 
     <!-- Footer -->
@@ -154,5 +384,31 @@
         <p>&copy; 2026 Minecraftlyn. All rights reserved.</p>
     </footer>
 
+    <script>
+        function toggleMenu() {
+            const overlay = document.getElementById('navOverlay');
+            overlay.classList.toggle('active');
+        }
+
+        function switchPage(pageId) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page-section');
+            pages.forEach(p => p.classList.remove('active'));
+
+            // Show selected page
+            const target = document.getElementById(pageId + '-page');
+            if (target) {
+                target.classList.add('active');
+            }
+            window.scrollTo(0, 0);
+        }
+
+        function navigate(pageId) {
+            toggleMenu();
+            switchPage(pageId);
+        }
+    </script>
+
 </body>
-</html>
+    </html>
+
