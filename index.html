@@ -19,7 +19,7 @@
         header {
             background-color: #111827;
             color: #ffffff;
-            padding: 12px 15px;
+            padding: 10px 15px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -34,19 +34,10 @@
             font-size: 22px;
             cursor: pointer;
         }
-        .logo-title {
-            font-weight: 900;
-            letter-spacing: 2px;
-            font-size: 18px;
-            color: #fff;
-            text-align: center;
+        .logo-img {
+            height: 28px;
+            object-fit: contain;
             cursor: pointer;
-        }
-        .logo-title span {
-            display: block;
-            font-size: 10px;
-            color: #00bcd4;
-            letter-spacing: 3px;
         }
 
         /* Container */
@@ -56,11 +47,11 @@
             padding-bottom: 50px;
         }
 
-        /* Hero Banner */
+        /* Hero Banner - Slimmer with custom Minecraft Pixel background */
         .hero {
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1627856013091-fed6e4e30e77?w=800&auto=format&fit=crop&q=80') no-repeat center center;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://github.com/minecraftlyn/Mcphoto/blob/1f9da41800bc4e29cdea3b6a12b25b1ee239b5c9/pixel-minecraft-style-land-background-concept-game-ground-pixelated-horizontal-blue-sky-sun-cloud-vector-illustration-212305683.jpg?raw=true') no-repeat center center;
             background-size: cover;
-            height: 200px;
+            height: 140px; /* ကျဉ်းအောင် ပြင်ထားသည် */
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -69,19 +60,22 @@
             text-align: center;
         }
         .hero p {
-            font-size: 12px;
-            margin-bottom: 5px;
-            color: #e2e8f0;
+            font-size: 11px;
+            margin-bottom: 3px;
+            color: #e0f2fe;
+            font-weight: bold;
+            letter-spacing: 1px;
         }
         .hero h1 {
-            font-size: 22px;
+            font-size: 20px;
             font-weight: bold;
             letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
         }
 
         /* Search Bar */
         .search-container {
-            padding: 15px;
+            padding: 12px 15px;
             background: #fff;
             display: flex;
             justify-content: center;
@@ -95,15 +89,14 @@
         }
         .search-box input {
             width: 100%;
-            padding: 10px 15px;
-            padding-right: 40px;
+            padding: 9px 15px;
             border: 1px solid #d1d5db;
             border-radius: 4px;
             outline: none;
             font-size: 14px;
         }
 
-        /* Content Sections (Pages) */
+        /* Content Sections */
         .page-section {
             display: none;
             padding: 0 15px;
@@ -158,7 +151,7 @@
             justify-content: space-between;
         }
 
-        /* Info Box for About & Contact */
+        /* Info Box */
         .info-box {
             background: #ffffff;
             padding: 20px;
@@ -173,12 +166,8 @@
             margin-bottom: 10px;
             font-size: 16px;
         }
-        .info-box ul {
-            margin-left: 20px;
-            margin-top: 10px;
-        }
 
-        /* Fullscreen Dark Menu Overlay */
+        /* Fullscreen Dark Menu Drawer */
         .nav-overlay {
             position: fixed;
             top: 0;
@@ -243,10 +232,7 @@
     <!-- Top Header -->
     <header>
         <button class="menu-btn" onclick="toggleMenu()">☰</button>
-        <div class="logo-title" onclick="switchPage('home')">
-            MINECRAFT
-            <span>LYN</span>
-        </div>
+        <img src="https://raw.githubusercontent.com/minecraftlyn/Mcphoto/fadf178b72cb6a942deb3105ba06118e7a2d030f/bitmap2216761670976185018.png" alt="Minecraft Lyn Logo" class="logo-img" onclick="switchPage('home')">
         <button class="search-icon-btn" onclick="switchPage('home')">🔍</button>
     </header>
 
@@ -264,15 +250,14 @@
             </div>
         </div>
 
-        <!-- ================= HOME PAGE CONTENT ================= -->
+        <!-- HOME PAGE -->
         <div id="home-page" class="page-section active">
             <div class="section-title">Latest Addons</div>
-            
-            <div class="card" onclick="alert('Irritator Dweller Addon အသေးစိတ်သို့ ရောက်ပါပြီ!')">
-                <img src="https://images.unsplash.com/photo-1627856013091-fed6e4e30e77?w=600&auto=format&fit=crop&q=80" alt="Minecraft Addon">
+            <div class="card" onclick="alert('Irritator Dweller Addon သို့ ရောက်ပါပြီ!')">
+                <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600&auto=format&fit=crop&q=80" alt="Minecraft">
                 <div class="card-content">
                     <div class="card-title">Irritator Dweller Addon (1.20.1) – Terrifying Horror Creature</div>
-                    <div class="card-desc">When it spots you on the horizon, it pauses before rapidly closing the distance. Extremely dangerous with block-climbing abilities...</div>
+                    <div class="card-desc">When it spots you on the horizon, it pauses before rapidly closing the distance. Extremely dangerous...</div>
                     <div class="card-footer">
                         <span>👁 125 Views</span>
                         <span>🕒 1 hour ago</span>
@@ -281,89 +266,81 @@
             </div>
         </div>
 
-        <!-- ================= ADDON PAGE CONTENT ================= -->
+        <!-- ADDON PAGE -->
         <div id="addon-page" class="page-section">
             <div class="section-title">Minecraft Addons</div>
             <div class="info-box">
                 <h3>All Addons Collection</h3>
-                <p>ဤနေရာတွင် Minecraft ဗားရှင်းအမျိုးမျိုးအတွက် အမိုက်စား Addon များကို စုစည်းတင်ဆက်ပေးသွားမည် ဖြစ်ပါသည်။</p>
+                <p>Explore all the latest and greatest addons for Minecraft.</p>
             </div>
         </div>
 
-        <!-- ================= SHADER PAGE CONTENT ================= -->
+        <!-- SHADER PAGE -->
         <div id="shader-page" class="page-section">
             <div class="section-title">Minecraft Shaders</div>
             <div class="info-box">
                 <h3>Graphics & Shaders</h3>
-                <p>သင့်ဂိမ်းကို ပိုမိုလှပကြည်လင်စေမည့် Realistic Shaders များနှင့် Lighting ဖိုင်များကို ဤနေရာတွင် ရယူနိုင်ပါသည်။</p>
+                <p>Enhance your visual gameplay experience with realistic shaders.</p>
             </div>
         </div>
 
-        <!-- ================= MAP PAGE CONTENT ================= -->
+        <!-- MAP PAGE -->
         <div id="map-page" class="page-section">
             <div class="section-title">Minecraft Maps</div>
             <div class="info-box">
                 <h3>Adventure & Survival Maps</h3>
-                <p>စွန့်စားခန်းမြေပုံများ၊ Survival ကမ္ဘာများနှင့် Minigame Map များကို တင်ဆက်ပေးမည့် နေရာဖြစ်ပါသည်။</p>
+                <p>Download custom survival worlds and epic adventure maps.</p>
             </div>
         </div>
 
-        <!-- ================= ABOUT PAGE CONTENT ================= -->
+        <!-- ABOUT PAGE -->
         <div id="about-page" class="page-section">
             <div class="section-title">About Website</div>
             <div class="info-box">
-                <h3>Minecraftlyn အကြောင်း</h3>
-                <p>ဒီဝဘ်ဆိုဒ် (Minecraftlyn) ကတော့ Minecraft ကစားသူတွေအတွက် အကောင်းဆုံး Addons တွေ၊ Mods တွေ၊ Shaders တွေနဲ့ သတင်းအချက်အလက်တွေကို မြန်မာဘာသာနဲ့ လွယ်ကူစွာ ရှာဖွေဒေါင်းလုဒ်လုပ်နိုင်အောင် စုစည်းဖန်တီးထားတဲ့ ကိုယ်ပိုင်နေရာလေး ဖြစ်ပါတယ်။</p>
-                <br>
-                <p><b>ဖန်တီးသူ:</b> Lyn</p>
-                <p><b>ရည်ရွယ်ချက်:</b> မြန်မာ Minecraft တပ်ဆင်သူများအတွက် အဆင်ပြေလွယ်ကူစေရန်။</p>
+                <h3>Minecraftlyn</h3>
+                <p>This website is dedicated to sharing high-quality Minecraft addons, mods, and resources for players.</p>
             </div>
         </div>
 
-        <!-- ================= NEWS PAGE CONTENT ================= -->
+        <!-- NEWS PAGE -->
         <div id="news-page" class="page-section">
             <div class="section-title">Latest News</div>
             <div class="info-box">
-                <h3>Minecraft Updates & News</h3>
-                <p>Minecraft ဗားရှင်းအသစ်ထွက်ရှိမှုများနှင့် အခြားသော သတင်းအချက်အလက်အသစ်များကို ဤနေရာတွင် ဖတ်ရှုနိုင်ပါသည်။</p>
+                <h3>Minecraft Updates</h3>
+                <p>Stay tuned for the latest news and updates about Minecraft.</p>
             </div>
         </div>
 
-        <!-- ================= CONTACT PAGE CONTENT ================= -->
+        <!-- CONTACT PAGE (TikTok username only, no Burmese text) -->
         <div id="contact-page" class="page-section">
             <div class="section-title">Contact Us</div>
             <div class="info-box">
-                <h3>ဆက်သွယ်ရန်</h3>
-                <p>ကျွန်ုပ်တို့နှင့် ဆက်သွယ်လိုပါက သို့မဟုတ် မေးမြန်းစရာရှိပါက အောက်ပါလိပ်စာများမှတစ်ဆင့် ဆက်သွယ်နိုင်ပါသည် -</p>
-                <ul>
-                    <li><b>Facebook Page:</b> Minecraftlyn Official</li>
-                    <li><b>Telegram:</b> @minecraftlyn</li>
-                    <li><b>Email:</b> contact@minecraftlyn.com</li>
-                </ul>
+                <h3>TikTok</h3>
+                <p><b>TikTok:</b> @kaunglays58</p>
             </div>
         </div>
 
-        <!-- ================= TEXTUREPACK PAGE CONTENT ================= -->
+        <!-- TEXTUREPACK PAGE -->
         <div id="texturepack-page" class="page-section">
             <div class="section-title">Texture Packs</div>
             <div class="info-box">
                 <h3>Resource Packs</h3>
-                <p>ဂိမ်းတွင်းရှိ ပစ္စည်းပုံစံများနှင့် Block ဒီဇိုင်းများကို အလှဆင်ပေးမည့် Texture Pack များကို တင်ဆက်ပေးသွားပါမည်။</p>
+                <p>Change the look of items, blocks, and UI with texture packs.</p>
             </div>
         </div>
 
-        <!-- ================= PHOTO PAGE CONTENT ================= -->
+        <!-- PHOTO PAGE -->
         <div id="photo-page" class="page-section">
             <div class="section-title">Photo Gallery</div>
             <div class="info-box">
-                <h3>Screenshots & Wallpapers</h3>
-                <p>အမိုက်စား Minecraft ပုံရိပ်များနှင့် Wallpaper လှလှများကို ဤနေရာတွင် ကြည့်ရှုနိုင်ပါသည်။</p>
+                <h3>Wallpapers & Screenshots</h3>
+                <p>Explore cool screenshots and Minecraft images.</p>
             </div>
         </div>
 
     </div>
 
-    <!-- Fullscreen Dark Menu (Drawer) -->
+    <!-- Fullscreen Menu Drawer -->
     <div class="nav-overlay" id="navOverlay">
         <button class="close-btn" onclick="toggleMenu()">✕</button>
         <ul class="nav-links">
@@ -391,11 +368,9 @@
         }
 
         function switchPage(pageId) {
-            // Hide all pages
             const pages = document.querySelectorAll('.page-section');
             pages.forEach(p => p.classList.remove('active'));
 
-            // Show selected page
             const target = document.getElementById(pageId + '-page');
             if (target) {
                 target.classList.add('active');
@@ -410,5 +385,5 @@
     </script>
 
 </body>
-    </html>
-
+                </html>
+                
