@@ -12,7 +12,7 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         body {
-            background-color: #0f172a; /* Dark Navy Gaming BG */
+            background-color: #0f172a;
             color: #f8fafc;
         }
         /* Top Header */
@@ -69,7 +69,7 @@
             text-shadow: 0 2px 4px rgba(0,0,0,0.8);
         }
 
-        /* Stylish Search Bar */
+        /* Search Bar */
         .search-box {
             position: relative;
             margin-bottom: 25px;
@@ -112,7 +112,7 @@
             background: #334155;
         }
 
-        /* Modern Grid Cards Layout */
+        /* Grid Cards Layout */
         .card-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -133,7 +133,7 @@
         }
         .card img {
             width: 100%;
-            height: 150px;
+            height: 160px;
             object-fit: cover;
         }
         .card-content {
@@ -159,6 +159,63 @@
             justify-content: space-between;
         }
 
+        /* Detailed Addon Post Page Style */
+        .post-detail-card {
+            background: #1e293b;
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid #334155;
+        }
+        .post-detail-img {
+            width: 100%;
+            max-height: 350px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .post-detail-title {
+            font-size: 20px;
+            color: #38bdf8;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        .post-detail-review {
+            color: #cbd5e1;
+            font-size: 14px;
+            line-height: 1.7;
+            margin-bottom: 25px;
+        }
+        .download-btn {
+            display: inline-block;
+            background: #00bcd4;
+            color: #0f172a;
+            padding: 12px 25px;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 15px;
+            transition: background 0.2s, transform 0.2s;
+            box-shadow: 0 4px 12px rgba(0, 188, 212, 0.3);
+        }
+        .download-btn:hover {
+            background: #38bdf8;
+            transform: scale(1.03);
+        }
+        .back-btn {
+            background: none;
+            border: 1px solid #334155;
+            color: #94a3b8;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            margin-bottom: 15px;
+            font-size: 13px;
+        }
+        .back-btn:hover {
+            color: #fff;
+            border-color: #00bcd4;
+        }
+
         /* Info Box */
         .info-box {
             background: #1e293b;
@@ -168,7 +225,7 @@
             color: #cbd5e1;
         }
 
-        /* Fullscreen Navigation */
+        /* Fullscreen Navigation Drawer */
         .nav-overlay {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -224,19 +281,36 @@
 
             <div class="section-title">Latest Addons</div>
 
-            <!-- Grid Layout for Posts -->
+            <!-- Card Grid -->
             <div class="card-grid">
-                <div class="card">
-                    <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600&auto=format&fit=crop&q=80" alt="Minecraft">
+                <!-- IRRITATOR ADDON CARD -->
+                <div class="card" onclick="switchPage('irritator-post')">
+                    <img src="https://github.com/minecraftlyn/Mcphoto/blob/ae9a1f11eeb8e954f9580b782f0b0dc5786a5d1a/1000011603_orig.png?raw=true" alt="IRRITATOR NEW">
                     <div class="card-content">
-                        <div class="card-title">Irritator Dweller Addon (1.20.1)</div>
-                        <div class="card-desc">When it spots you on the horizon, it pauses before rapidly closing the distance...</div>
+                        <div class="card-title">IRRITATOR NEW ADDON</div>
+                        <div class="card-desc">Experience horror in Minecraft with the terrifying Irritator creature...</div>
                         <div class="card-footer">
-                            <span>👁 125 Views</span>
-                            <span>🕒 1 hour ago</span>
+                            <span>👁 1 Views</span>
+                            <span>🕒 Just now</span>
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <!-- IRRITATOR SINGLE POST PAGE (Review & Download) -->
+        <div id="irritator-post-page" class="page-section">
+            <button class="back-btn" onclick="switchPage('home')">← Back to Home</button>
+            <div class="post-detail-card">
+                <img src="https://github.com/minecraftlyn/Mcphoto/blob/ae9a1f11eeb8e954f9580b782f0b0dc5786a5d1a/1000011603_orig.png?raw=true" alt="IRRITATOR NEW" class="post-detail-img">
+                <h2 class="post-detail-title">IRRITATOR NEW ADDON</h2>
+                
+                <div class="post-detail-review">
+                    <h3>Addon Review:</h3>
+                    <p>The <b>IRRITATOR NEW Addon</b> brings an intense horror survival element to Minecraft. This entity actively hunts players with dynamic animations, custom sound effects, and unique attack behavior. Highly recommended for horror and survival map lovers!</p>
+                </div>
+
+                <a href="https://github.com/ayemarzin65-eng/Mc-file/raw/c882ce0711383fafb66fe3cd7fedbd1d39a7182a/IRRITATOR%20NEW.mcaddon" class="download-btn" download>📥 Download Addon (.mcaddon)</a>
             </div>
         </div>
 
@@ -256,7 +330,7 @@
             </div>
         </div>
 
-        <!-- OTHER PAGES (ADDON, SHADER, MAP, etc.) -->
+        <!-- OTHER PAGES -->
         <div id="addon-page" class="page-section"><div class="section-title">Addons</div></div>
         <div id="shader-page" class="page-section"><div class="section-title">Shaders</div></div>
         <div id="map-page" class="page-section"><div class="section-title">Maps</div></div>
