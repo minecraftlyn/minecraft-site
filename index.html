@@ -19,7 +19,6 @@
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         body { background-color: var(--bg-dark); color: var(--text-main); }
 
-        /* HEADER */
         header { 
             background-color: rgba(11, 20, 38, 0.9); 
             backdrop-filter: blur(10px);
@@ -37,7 +36,6 @@
 
         .main-container { max-width: 1000px; margin: 0 auto; padding: 20px 15px 60px 15px; }
 
-        /* HERO & CATEGORIES */
         .hero { 
             background: linear-gradient(180deg, rgba(11, 20, 38, 0.3) 0%, var(--bg-dark) 100%), 
                         url('https://github.com/minecraftlyn/Mcphoto/blob/1f9da41800bc4e29cdea3b6a12b25b1ee239b5c9/pixel-minecraft-style-land-background-concept-game-ground-pixelated-horizontal-blue-sky-sun-cloud-vector-illustration-212305683.jpg?raw=true') no-repeat center center; 
@@ -48,11 +46,18 @@
         .hero p { font-size: 14px; color: var(--text-sub); }
 
         .search-box input { 
-            width: 100%; padding: 14px 22px; background: var(--card-bg); border: 1px solid var(--border); border-radius: 30px; outline: none; color: #fff; font-size: 14px; margin-bottom: 20px; 
+            width: 100%; padding: 14px 22px; background: var(--card-bg); border: 1px solid var(--border); border-radius: 30px; outline: none; color: #fff; font-size: 14px; margin-bottom: 15px; 
         }
         .search-box input:focus { border-color: var(--cyan); box-shadow: var(--glow); }
 
-        /* CARDS */
+        /* CATEGORY CHIPS */
+        .category-chips { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 10px; margin-bottom: 25px; scrollbar-width: none; }
+        .category-chips::-webkit-scrollbar { display: none; }
+        .chip { 
+            background: var(--card-bg); border: 1px solid var(--border); color: var(--text-sub); padding: 8px 18px; border-radius: 20px; font-size: 13px; font-weight: bold; white-space: nowrap; cursor: pointer; transition: 0.2s; 
+        }
+        .chip.active, .chip:hover { background: rgba(0, 217, 255, 0.1); border-color: var(--cyan); color: var(--cyan); box-shadow: var(--glow); }
+
         .page-section { display: none; }
         .page-section.active { display: block; }
         .section-title { font-size: 18px; font-weight: bold; color: var(--text-main); margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
@@ -66,6 +71,8 @@
         .card-title { font-size: 16px; font-weight: bold; color: var(--text-main); margin-bottom: 8px; }
         .card-desc { font-size: 13px; color: var(--text-sub); margin-bottom: 15px; line-height: 1.4; }
         .card-footer { font-size: 12px; color: var(--text-sub); display: flex; justify-content: space-between; border-top: 1px solid var(--border); padding-top: 10px; }
+
+        .empty-state { text-align: center; padding: 40px 20px; color: var(--text-sub); font-size: 15px; }
 
         /* UPGRADED DETAIL PAGE */
         .back-btn { background: var(--card-bg); border: 1px solid var(--border); color: var(--text-sub); padding: 8px 18px; border-radius: 20px; cursor: pointer; margin-bottom: 20px; font-size: 13px; font-weight: 600; }
@@ -120,10 +127,20 @@
                 <h1>WELCOME TO <span>MINECRAFT LYN</span></h1>
                 <p>Download Best Minecraft Bedrock Addons, Shaders & Maps</p>
             </div>
+            
             <div class="search-box">
-                <input type="text" placeholder="🔍 Search addons, shaders, maps...">
+                <input type="text" id="searchInput" oninput="handleSearch()" placeholder="🔍 Search addons, shaders, maps...">
             </div>
-            <div class="section-title">🆕 Latest Updates</div>
+
+            <!-- CATEGORY CHIPS -->
+            <div class="category-chips">
+                <div class="chip active" onclick="filterCategory('all', this)">🔥 All</div>
+                <div class="chip" onclick="filterCategory('addon', this)">🧩 Addons</div>
+                <div class="chip" onclick="filterCategory('shader', this)">✨ Shaders</div>
+                <div class="chip" onclick="filterCategory('map', this)">🗺️ Maps</div>
+            </div>
+
+            <div class="section-title" id="grid-title">🆕 Latest Updates</div>
             <div class="card-grid" id="home-grid"></div>
         </div>
 
@@ -157,6 +174,7 @@
 
     <script>
         let allPosts = [];
+        let currentCategory = 'all';
 
         function toggleMenu() { document.getElementById('navOverlay').classList.toggle('active'); }
         function switchPage(pageId) {
@@ -169,34 +187,68 @@
 
         fetch('posts.json')
             .then(res => res.json())
-            .then(data => { allPosts = data; renderPosts(); })
+            .then(data => { allPosts = data; renderPosts(allPosts); renderCategoryGrids(); })
             .catch(err => console.error("Error loading posts:", err));
 
-        function renderPosts() {
-            const homeGrid = document.getElementById('home-grid');
-            const addonGrid = document.getElementById('addon-grid');
-            const shaderGrid = document.getElementById('shader-grid');
-            const mapGrid = document.getElementById('map-grid');
-
-            allPosts.forEach(post => {
-                const cardHTML = `
-                    <div class="card" onclick="openPost('${post.id}')">
-                        <img src="${post.image}" alt="${post.title}">
-                        <div class="card-content">
-                            <div class="card-title">${post.title}</div>
-                            <div class="card-desc">${post.shortDesc}</div>
-                            <div class="card-footer">
-                                <span>👁 ${post.views}</span>
-                                <span>🕒 ${post.date}</span>
-                            </div>
+        function createCardHTML(post) {
+            return `
+                <div class="card" onclick="openPost('${post.id}')">
+                    <img src="${post.image}" alt="${post.title}">
+                    <div class="card-content">
+                        <div class="card-title">${post.title}</div>
+                        <div class="card-desc">${post.shortDesc}</div>
+                        <div class="card-footer">
+                            <span>👁 ${post.views}</span>
+                            <span>🕒 ${post.date}</span>
                         </div>
                     </div>
-                `;
-                homeGrid.innerHTML += cardHTML;
-                if(post.category === 'addon') addonGrid.innerHTML += cardHTML;
-                if(post.category === 'shader') shaderGrid.innerHTML += cardHTML;
-                if(post.category === 'map') mapGrid.innerHTML += cardHTML;
+                </div>
+            `;
+        }
+
+        function renderPosts(postsToRender) {
+            const homeGrid = document.getElementById('home-grid');
+            homeGrid.innerHTML = '';
+
+            if (postsToRender.length === 0) {
+                homeGrid.innerHTML = `<div class="empty-state">🔍 No addons found matching your search.</div>`;
+                return;
+            }
+
+            postsToRender.forEach(post => {
+                homeGrid.innerHTML += createCardHTML(post);
             });
+        }
+
+        function renderCategoryGrids() {
+            document.getElementById('addon-grid').innerHTML = allPosts.filter(p => p.category === 'addon').map(createCardHTML).join('');
+            document.getElementById('shader-grid').innerHTML = allPosts.filter(p => p.category === 'shader').map(createCardHTML).join('');
+            document.getElementById('map-grid').innerHTML = allPosts.filter(p => p.category === 'map').map(createCardHTML).join('');
+        }
+
+        function filterCategory(cat, element) {
+            currentCategory = cat;
+            document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+            element.classList.add('active');
+            handleSearch();
+        }
+
+        function handleSearch() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            let filtered = allPosts;
+
+            if (currentCategory !== 'all') {
+                filtered = filtered.filter(p => p.category === currentCategory);
+            }
+
+            if (query.trim() !== '') {
+                filtered = filtered.filter(p => 
+                    p.title.toLowerCase().includes(query) || 
+                    p.shortDesc.toLowerCase().includes(query)
+                );
+            }
+
+            renderPosts(filtered);
         }
 
         function openPost(postId) {
@@ -244,5 +296,5 @@
         }
     </script>
 </body>
-</html>
-
+    </html>
+    
