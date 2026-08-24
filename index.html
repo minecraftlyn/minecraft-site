@@ -161,10 +161,7 @@
                     </div>
                 `;
                 
-                // Add to Home
                 homeGrid.innerHTML += cardHTML;
-                
-                // Add to specific Category Page
                 if(post.category === 'addon') addonGrid.innerHTML += cardHTML;
                 if(post.category === 'shader') shaderGrid.innerHTML += cardHTML;
                 if(post.category === 'map') mapGrid.innerHTML += cardHTML;
@@ -193,3 +190,4 @@
     </script>
 </body>
 </html>
+
