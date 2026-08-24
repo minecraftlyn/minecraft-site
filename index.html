@@ -34,11 +34,9 @@
         .post-detail-title { font-size: 20px; color: #38bdf8; margin-bottom: 15px; font-weight: bold; }
         .post-detail-review { color: #cbd5e1; font-size: 14px; line-height: 1.7; margin-bottom: 25px; }
         .post-detail-review ul { margin-left: 20px; margin-top: 10px; margin-bottom: 15px; }
-        .post-detail-review li { margin-bottom: 5px; }
         .download-btn { display: inline-block; background: #00bcd4; color: #0f172a; padding: 12px 25px; font-weight: bold; text-decoration: none; border-radius: 25px; font-size: 15px; transition: background 0.2s, transform 0.2s; box-shadow: 0 4px 12px rgba(0, 188, 212, 0.3); }
         .download-btn:hover { background: #38bdf8; transform: scale(1.03); }
         .back-btn { background: none; border: 1px solid #334155; color: #94a3b8; padding: 8px 16px; border-radius: 20px; cursor: pointer; margin-bottom: 15px; font-size: 13px; }
-        .back-btn:hover { color: #fff; border-color: #00bcd4; }
         .info-box { background: #1e293b; padding: 20px; border-radius: 12px; border: 1px solid #334155; color: #cbd5e1; line-height: 1.6; }
         .nav-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(15, 23, 42, 0.98); display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 1000; display: none; }
         .nav-overlay.active { display: flex; }
@@ -46,7 +44,6 @@
         .nav-links { list-style: none; text-align: center; }
         .nav-links li { margin: 15px 0; }
         .nav-links a { color: #f8fafc; text-decoration: none; font-size: 18px; font-weight: bold; letter-spacing: 1px; cursor: pointer; }
-        .nav-links a:hover { color: #00bcd4; }
         footer { text-align: center; padding: 20px; font-size: 12px; color: #64748b; border-top: 1px solid #1e293b; margin-top: 40px; }
     </style>
 </head>
@@ -59,172 +56,49 @@
     </header>
 
     <div class="main-container">
-
         <!-- HOME PAGE -->
         <div id="home-page" class="page-section active">
             <div class="hero">
                 <h1>WELCOME TO MINECRAFT LYN</h1>
                 <p>Download Best Minecraft Addons, Shaders & Maps</p>
             </div>
-
             <div class="search-box">
                 <input type="text" placeholder="Search addons, shaders, maps...">
             </div>
-
             <div class="section-title">Latest Updates</div>
-
-            <div class="card-grid">
-                <!-- Herobrine Lurking Card -->
-                <div class="card" onclick="switchPage('herobrine-post')">
-                    <img src="https://github.com/minecraftlyn/Mcphoto/blob/main/Herobrine-Lurking-Addon-Thumbnail-500x281.jpg?raw=true" alt="Herobrine Lurking">
-                    <div class="card-content">
-                        <div>
-                            <div class="card-title">Herobrine Lurking Addon (v1.3.9)</div>
-                            <div class="card-desc">A horror addon that brings the mysterious Herobrine back into your world with scary events...</div>
-                        </div>
-                        <div class="card-footer">
-                            <span>👁 45 Views</span>
-                            <span>🕒 Just now</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Irritator Addon Card -->
-                <div class="card" onclick="switchPage('irritator-post')">
-                    <img src="https://github.com/minecraftlyn/Mcphoto/blob/ae9a1f11eeb8e954f9580b782f0b0dc5786a5d1a/1000011603_orig.png?raw=true" alt="IRRITATOR NEW">
-                    <div class="card-content">
-                        <div>
-                            <div class="card-title">IRRITATOR NEW ADDON</div>
-                            <div class="card-desc">Experience horror in Minecraft with the terrifying Irritator creature...</div>
-                        </div>
-                        <div class="card-footer">
-                            <span>👁 12 Views</span>
-                            <span>🕒 1 day ago</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <div class="card-grid" id="home-grid"></div>
         </div>
 
         <!-- ADDON PAGE -->
         <div id="addon-page" class="page-section">
             <div class="section-title">Minecraft Addons</div>
-            <div class="card-grid">
-                <!-- Herobrine Addon in Addon Page -->
-                <div class="card" onclick="switchPage('herobrine-post')">
-                    <img src="https://github.com/minecraftlyn/Mcphoto/blob/main/Herobrine-Lurking-Addon-Thumbnail-500x281.jpg?raw=true" alt="Herobrine Lurking">
-                    <div class="card-content">
-                        <div>
-                            <div class="card-title">Herobrine Lurking Addon (v1.3.9)</div>
-                            <div class="card-desc">A horror addon that brings the mysterious Herobrine back into your world with scary events...</div>
-                        </div>
-                        <div class="card-footer">
-                            <span>👁 45 Views</span>
-                            <span>🕒 Just now</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Irritator Addon in Addon Page -->
-                <div class="card" onclick="switchPage('irritator-post')">
-                    <img src="https://github.com/minecraftlyn/Mcphoto/blob/ae9a1f11eeb8e954f9580b782f0b0dc5786a5d1a/1000011603_orig.png?raw=true" alt="IRRITATOR NEW">
-                    <div class="card-content">
-                        <div>
-                            <div class="card-title">IRRITATOR NEW ADDON</div>
-                            <div class="card-desc">Experience horror in Minecraft with the terrifying Irritator creature...</div>
-                        </div>
-                        <div class="card-footer">
-                            <span>👁 12 Views</span>
-                            <span>🕒 1 day ago</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <div class="card-grid" id="addon-grid"></div>
         </div>
 
         <!-- SHADER PAGE -->
         <div id="shader-page" class="page-section">
             <div class="section-title">Minecraft Shaders</div>
-            <div class="info-box"><p>No Shaders available yet. Check back soon!</p></div>
+            <div class="card-grid" id="shader-grid"></div>
         </div>
 
         <!-- MAP PAGE -->
         <div id="map-page" class="page-section">
             <div class="section-title">Minecraft Maps</div>
-            <div class="info-box"><p>No Maps available yet. Check back soon!</p></div>
+            <div class="card-grid" id="map-grid"></div>
         </div>
 
-        <!-- HEROBRINE POST PAGE -->
-        <div id="herobrine-post-page" class="page-section">
+        <!-- SINGLE POST VIEW PAGE -->
+        <div id="post-detail-page" class="page-section">
             <button class="back-btn" onclick="switchPage('home')">← Back to Home</button>
-            <div class="post-detail-card">
-                <img src="https://github.com/minecraftlyn/Mcphoto/blob/main/Herobrine-Lurking-Addon-Thumbnail-500x281.jpg?raw=true" alt="Herobrine Lurking" class="post-detail-img">
-                <h2 class="post-detail-title">Herobrine Lurking Addon Review</h2>
-                <div class="post-detail-review">
-                    <p><b>Minecraft Version:</b> 26.x / 26.20+</p>
-                    <p><b>Addon Version:</b> 1.3.9</p>
-                    <p><b>Platform:</b> Minecraft Bedrock Edition</p>
-                    <br>
-                    <p>Herobrine Lurking is a horror addon that brings the mysterious Herobrine back into your Minecraft world. Instead of simply adding a new mob, it creates random and unexpected events that make normal survival gameplay much more scary and exciting.</p>
-                    <br>
-                    <p>Herobrine can suddenly appear, watch you from a distance, attack you, or disappear without warning. The addon also includes creepy sounds, mysterious signs, strange tunnels, torch changes, possessed animals, jumpscares, and other unexpected events.</p>
-                    <br>
-                    <p>One of the best things about this addon is that it makes you feel like you are being watched while playing Minecraft. 😨👁️</p>
-                    <br>
-                    <h3>⭐ Features</h3>
-                    <ul>
-                        <li>👁️ Herobrine stalking and watching events</li>
-                        <li>😱 Random jumpscares</li>
-                        <li>🔥 Random fires</li>
-                        <li>🐑 Possessed animals</li>
-                        <li>🪧 Mysterious signs</li>
-                        <li>⛏️ Strange underground tunnels</li>
-                        <li>🔴 Torches can mysteriously change</li>
-                        <li>💬 Creepy messages in chat</li>
-                        <li>🌑 Dark and mysterious atmosphere</li>
-                        <li>📱 Supports Mobile & PC Bedrock</li>
-                    </ul>
-                    <br>
-                    <p><b>⭐ Rating:</b> 8.5/10</p>
-                    <br>
-                    <h3>Final Verdict:</h3>
-                    <p>If you enjoy Minecraft horror, mystery, and creepy survival experiences, Herobrine Lurking is definitely an addon worth trying. It can turn an ordinary Minecraft survival world into an unpredictable horror experience where you never know when Herobrine might appear. 👁️🔥</p>
-                </div>
-                <a href="https://github.com/minecraftlyn/Mcphoto/blob/f290a378c8e9e22357e6f1db1df8afc04232563d/Herobrine-Lurking-Addon-26x.mcaddon?raw=true" class="download-btn" download>📥 Download Addon (.mcaddon)</a>
-            </div>
+            <div class="post-detail-card" id="post-detail-content"></div>
         </div>
 
-        <!-- IRRITATOR POST PAGE -->
-        <div id="irritator-post-page" class="page-section">
-            <button class="back-btn" onclick="switchPage('home')">← Back to Home</button>
-            <div class="post-detail-card">
-                <img src="https://github.com/minecraftlyn/Mcphoto/blob/ae9a1f11eeb8e954f9580b782f0b0dc5786a5d1a/1000011603_orig.png?raw=true" alt="IRRITATOR NEW" class="post-detail-img">
-                <h2 class="post-detail-title">IRRITATOR NEW ADDON</h2>
-                <div class="post-detail-review">
-                    <h3>Addon Review:</h3>
-                    <p>The <b>IRRITATOR NEW Addon</b> brings an intense horror survival element to Minecraft. This entity actively hunts players with dynamic animations, custom sound effects, and unique attack behavior. Highly recommended for horror and survival map lovers!</p>
-                </div>
-                <a href="https://github.com/ayemarzin65-eng/Mc-file/raw/c882ce0711383fafb66fe3cd7fedbd1d39a7182a/IRRITATOR%20NEW.mcaddon" class="download-btn" download>📥 Download Addon (.mcaddon)</a>
-            </div>
-        </div>
-
-        <!-- CONTACT PAGE -->
-        <div id="contact-page" class="page-section">
-            <div class="section-title">Contact Us</div>
-            <div class="info-box"><p><b>TikTok:</b> @kaunglays58</p></div>
-        </div>
-
-        <!-- ABOUT PAGE -->
-        <div id="about-page" class="page-section">
-            <div class="section-title">About Website</div>
-            <div class="info-box"><p>Minecraftlyn - Best Addons & Mods Resource for Minecraft Pocket Edition / Bedrock Edition.</p></div>
-        </div>
-
-        <!-- OTHER PAGES -->
+        <!-- CONTACT & ABOUT PAGES -->
+        <div id="contact-page" class="page-section"><div class="section-title">Contact Us</div><div class="info-box"><p><b>TikTok:</b> @kaunglays58</p></div></div>
+        <div id="about-page" class="page-section"><div class="section-title">About Website</div><div class="info-box"><p>Minecraftlyn - Best Addons & Mods Resource for Minecraft.</p></div></div>
         <div id="news-page" class="page-section"><div class="section-title">News</div><div class="info-box"><p>No news yet.</p></div></div>
         <div id="texturepack-page" class="page-section"><div class="section-title">Texturepacks</div><div class="info-box"><p>No texture packs yet.</p></div></div>
         <div id="photo-page" class="page-section"><div class="section-title">Photos</div><div class="info-box"><p>No photos yet.</p></div></div>
-
     </div>
 
     <!-- Navigation Drawer -->
@@ -238,16 +112,14 @@
             <li><a onclick="navigate('about')">About</a></li>
             <li><a onclick="navigate('news')">News</a></li>
             <li><a onclick="navigate('contact')">Contact</a></li>
-            <li><a onclick="navigate('texturepack')">Texturepack</a></li>
-            <li><a onclick="navigate('photo')">Photos</a></li>
         </ul>
     </div>
 
-    <footer>
-        <p>&copy; 2026 Minecraftlyn. All rights reserved.</p>
-    </footer>
+    <footer><p>&copy; 2026 Minecraftlyn. All rights reserved.</p></footer>
 
     <script>
+        let allPosts = [];
+
         function toggleMenu() { document.getElementById('navOverlay').classList.toggle('active'); }
         function switchPage(pageId) {
             document.querySelectorAll('.page-section').forEach(p => p.classList.remove('active'));
@@ -256,7 +128,68 @@
             window.scrollTo(0, 0);
         }
         function navigate(pageId) { toggleMenu(); switchPage(pageId); }
+
+        // Fetch Data from JSON File
+        fetch('posts.json')
+            .then(res => res.json())
+            .then(data => {
+                allPosts = data;
+                renderPosts();
+            })
+            .catch(err => console.error("Error loading posts:", err));
+
+        function renderPosts() {
+            const homeGrid = document.getElementById('home-grid');
+            const addonGrid = document.getElementById('addon-grid');
+            const shaderGrid = document.getElementById('shader-grid');
+            const mapGrid = document.getElementById('map-grid');
+
+            allPosts.forEach(post => {
+                const cardHTML = `
+                    <div class="card" onclick="openPost('${post.id}')">
+                        <img src="${post.image}" alt="${post.title}">
+                        <div class="card-content">
+                            <div>
+                                <div class="card-title">${post.title}</div>
+                                <div class="card-desc">${post.shortDesc}</div>
+                            </div>
+                            <div class="card-footer">
+                                <span>👁 ${post.views}</span>
+                                <span>🕒 ${post.date}</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                // Add to Home
+                homeGrid.innerHTML += cardHTML;
+                
+                // Add to specific Category Page
+                if(post.category === 'addon') addonGrid.innerHTML += cardHTML;
+                if(post.category === 'shader') shaderGrid.innerHTML += cardHTML;
+                if(post.category === 'map') mapGrid.innerHTML += cardHTML;
+            });
+        }
+
+        function openPost(postId) {
+            const post = allPosts.find(p => p.id === postId);
+            if (!post) return;
+
+            const detailContainer = document.getElementById('post-detail-content');
+            detailContainer.innerHTML = `
+                <img src="${post.image}" alt="${post.title}" class="post-detail-img">
+                <h2 class="post-detail-title">${post.title}</h2>
+                <div class="post-detail-review">
+                    <p><b>Minecraft Version:</b> ${post.mcVersion}</p>
+                    <p><b>Addon Version:</b> ${post.addonVersion}</p>
+                    <p><b>Platform:</b> ${post.platform}</p>
+                    <br>
+                    ${post.fullReview}
+                </div>
+                <a href="${post.downloadLink}" class="download-btn" download>📥 Download (.mcaddon)</a>
+            `;
+            switchPage('post-detail');
+        }
     </script>
 </body>
-    </html>
-    
+</html>
