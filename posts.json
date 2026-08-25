@@ -16,7 +16,7 @@
       "https://lh3.googleusercontent.com/d/1G7rVTvIo_s-leY8QQp1DI8moTYDWBqv8",
       "https://lh3.googleusercontent.com/d/1QFL3YypC57Tas_Z4OL_eVRTkJf_Ts3Rb"
     ],
-    "fullReview": "<p><b>Developer:</b> PnTMC<br><b>Type:</b> Horror / Survival / AI Companion Add-on</p><p>Verity is a unique Minecraft Bedrock add-on inspired by ThatMob's Verity ARG series. Unlike normal Minecraft mobs, Verity acts as a mysterious personal companion that can communicate with the player and react to different situations.</p><p>Verity can answer questions, help with mathematics and ore locations, recognize sounds, and interact with the player through voice features. The add-on also includes AI, voice chat, and text-to-speech features, making Verity feel much more interactive than a normal Minecraft mob.</p><p>However, Verity is not completely friendly. The add-on includes horror elements, and players should be careful about how they interact with Verity. Verity also cannot die, making the experience even more mysterious.</p><br><b>Main Features:</b><ul><li>AI-powered companion</li><li>Chat and interact with Verity</li><li>Voice Chat and Text-to-Speech</li><li>Can answer different questions</li><li>Can help with ore locations</li><li>Can recognize sounds</li><li>Horror and mysterious events</li><li>Verity can be carried in your inventory</li><li>Verity cannot die</li><li>Designed for survival and roleplay</li></ul><br><p><b>Requirements:</b><br>The add-on requires certain Experiments / Beta APIs and additional setup because it uses AI, voice chat, and text-to-speech features.</p><p><b>Rating:</b> 9.5/10</p>",
+    "fullReview": "Developer: PnTMC\nType: Horror / Survival / AI Companion Add-on\n\nVerity is a unique Minecraft Bedrock add-on inspired by ThatMob's Verity ARG series. Unlike normal Minecraft mobs, Verity acts as a mysterious personal companion that can communicate with the player and react to different situations.\n\nVerity can answer questions, help with mathematics and ore locations, recognize sounds, and interact with the player through voice features.\n\nMain Features:\n- AI-powered companion\n- Chat and interact with Verity\n- Voice Chat and Text-to-Speech\n- Can answer different questions\n- Can help with ore locations\n- Cannot die\n\nRequirements: Requires certain Experiments / Beta APIs.",
     "downloadLink": "https://drive.google.com/uc?export=download&id=14T72WN0kyTzR7g87CBxpa3QSh8XmdLLC"
   },
   {
@@ -35,7 +35,7 @@
     "screenshots": [
       "https://raw.githubusercontent.com/minecraftlyn/Mcphoto/13d071a1f9e8d47be85bf09c0587d559feee075a/IMG_20260216_205621_508.jpg"
     ],
-    "fullReview": "<p>Newb X Stellar Vision is a powerful shader designed for Bedrock Edition.</p>",
+    "fullReview": "Newb X Stellar Vision is a powerful shader designed for Bedrock Edition.",
     "downloadLink": "https://example.com"
   }
 ]
