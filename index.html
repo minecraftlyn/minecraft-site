@@ -73,9 +73,9 @@
         .card-desc { font-size: 12.5px; color: var(--text-sub); margin-bottom: 12px; line-height: 1.4; }
         .card-footer { font-size: 12px; color: var(--text-sub); display: flex; justify-content: space-between; border-top: 1px solid var(--border); padding-top: 10px; }
 
-        .empty-state { text-align: center; padding: 40px 20px; color: var(--text-sub); font-size: 15px; }
+        .empty-state { text-align: center; padding: 40px 20px; color: #ff6b6b; font-size: 14px; background: rgba(255, 107, 107, 0.1); border: 1px solid #ff6b6b; border-radius: 12px; grid-column: 1 / -1; }
 
-        /* COMPACT COMMUNITY BUTTONS */
+        /* COMMUNITY BUTTONS */
         .social-btns { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
         .btn-social { padding: 8px 16px; border-radius: 8px; font-size: 12.5px; font-weight: bold; text-decoration: none; color: #fff; display: flex; align-items: center; gap: 6px; transition: 0.2s; }
         .btn-discord { background: var(--discord); }
@@ -171,9 +171,11 @@
             </div>
 
             <div class="section-title" id="grid-title">🆕 Latest Updates</div>
-            <div class="card-grid" id="home-grid"></div>
+            <div class="card-grid" id="home-grid">
+                <div style="text-align: center; grid-column: 1 / -1; color: var(--text-sub);">⏳ Loading posts...</div>
+            </div>
 
-            <!-- COMPACT COMMUNITY BUTTONS -->
+            <!-- COMMUNITY BUTTONS -->
             <div style="text-align: center; margin: 35px 0 10px 0;">
                 <p style="font-size: 13px; color: var(--text-sub); margin-bottom: 12px; font-weight: 600;">💬 Join Our Minecraft Community</p>
                 <div class="social-btns">
@@ -235,29 +237,38 @@
     </footer>
 
     <script>
-        // Data hardcoded directly to fix fetch error
-        const allPosts = [
-            {
-                "id": "new-shader-2026",
-                "title": "Ultra Realistic Shader 2026",
-                "category": "shader",
-                "image": "https://raw.githubusercontent.com/minecraftlyn/Mcphoto/main/shader.jpg",
-                "shortDesc": "High quality realistic lighting, dynamic water, and soft shadows for Minecraft Bedrock.",
-                "fullReview": "Ultra Realistic Shader brings realistic graphics to your Minecraft Bedrock edition with minimal lag. Features dynamic lighting, real water reflection, and vibrant sky colors.",
-                "downloadLink": "https://t.me/minecraftlynweb",
-                "mcVersion": "1.20+",
-                "platform": "Android / iOS / Win",
-                "fileSize": "12 MB",
-                "views": 1540,
-                "downloads": 920
-            }
-        ];
-
+        let allPosts = [];
         let currentCategory = 'all';
 
-        function initApp() {
-            renderPosts(allPosts);
-            renderCategoryGrids();
+        // Fetch posts.json with Cache-Busting and Error Log
+        async function fetchPosts() {
+            const homeGrid = document.getElementById('home-grid');
+            try {
+                // Prevent GitHub Pages Caching with timestamp
+                const res = await fetch('./posts.json?v=' + new Date().getTime());
+                
+                if (!res.ok) {
+                    throw new Error(`posts.json file not found (HTTP Status: ${res.status})`);
+                }
+
+                allPosts = await res.json();
+
+                if (!Array.isArray(allPosts) || allPosts.length === 0) {
+                    homeGrid.innerHTML = `<div class="empty-state">⚠️ posts.json ထဲမှာ Post အချက်အလက်မရှိသေးပါ (သို့မဟုတ်) JSON format မှားယွင်းနေပါသည်။</div>`;
+                    return;
+                }
+
+                renderPosts(allPosts);
+                renderCategoryGrids();
+            } catch (err) {
+                console.error("Fetch Error:", err);
+                homeGrid.innerHTML = `
+                    <div class="empty-state">
+                        ❌ <b>Error Loading Posts:</b><br>${err.message}<br><br>
+                        <small style="color:var(--text-sub)">ကျေးဇူးပြု၍ posts.json ဖိုင်သည် index.html နှင့် Folder တစ်ခုတည်းတွင် ရှိမရှိ နှင့် JSON Code Format မှန်မမှန် စစ်ဆေးပေးပါ။</small>
+                    </div>
+                `;
+            }
         }
 
         function toggleMenu() { document.getElementById('navOverlay').classList.toggle('active'); }
@@ -298,7 +309,7 @@
             homeGrid.innerHTML = '';
 
             if (postsToRender.length === 0) {
-                homeGrid.innerHTML = `<div class="empty-state">🔍 No addons found matching your search.</div>`;
+                homeGrid.innerHTML = `<div class="empty-state" style="border-color:var(--border); color:var(--text-sub);">🔍 No items found matching your filter.</div>`;
                 return;
             }
 
@@ -306,9 +317,9 @@
         }
 
         function renderCategoryGrids() {
-            document.getElementById('addon-grid').innerHTML = allPosts.filter(p => p.category === 'addon').map(createCardHTML).join('');
-            document.getElementById('shader-grid').innerHTML = allPosts.filter(p => p.category === 'shader').map(createCardHTML).join('');
-            document.getElementById('map-grid').innerHTML = allPosts.filter(p => p.category === 'map').map(createCardHTML).join('');
+            document.getElementById('addon-grid').innerHTML = allPosts.filter(p => p.category === 'addon').map(createCardHTML).join('') || '<div class="empty-state" style="border-color:var(--border); color:var(--text-sub);">No Addons available.</div>';
+            document.getElementById('shader-grid').innerHTML = allPosts.filter(p => p.category === 'shader').map(createCardHTML).join('') || '<div class="empty-state" style="border-color:var(--border); color:var(--text-sub);">No Shaders available.</div>';
+            document.getElementById('map-grid').innerHTML = allPosts.filter(p => p.category === 'map').map(createCardHTML).join('') || '<div class="empty-state" style="border-color:var(--border); color:var(--text-sub);">No Maps available.</div>';
         }
 
         function filterCategory(cat, element) {
@@ -322,31 +333,4 @@
             const query = document.getElementById('searchInput').value.toLowerCase();
             let filtered = allPosts;
 
-            if (currentCategory !== 'all') filtered = filtered.filter(p => p.category === currentCategory);
-
-            if (query.trim() !== '') {
-                filtered = filtered.filter(p => 
-                    p.title.toLowerCase().includes(query) || 
-                    p.shortDesc.toLowerCase().includes(query)
-                );
-            }
-
-            renderPosts(filtered);
-        }
-
-        function triggerDownload(url) {
-            let currentCount = parseInt(localStorage.getItem('dl_' + url) || '853');
-            currentCount++;
-            localStorage.setItem('dl_' + url, currentCount);
-            window.open(url, '_blank');
-        }
-
-        function openLightbox(imgSrc) {
-            document.getElementById('lightboxImg').src = imgSrc;
-            document.getElementById('lightbox').classList.add('active');
-        }
-
-        function closeLightbox() { document.getElementById('lightbox').classList.remove('active'); }
-
-        function openPolicy(type) {
-            const title = document.getElementById('polic
+            if (currentCategory !== 'all') 
