@@ -3,7 +3,7 @@
     "id": "post-3",
     "title": "Newb X Stellar Vision Shader",
     "category": "shader",
-    "image": "https://raw.githubusercontent.com/minecraftlyn/Mcphoto/main/Newb-StellarVision.jpg",
+    "image": "https://github.com/minecraftlyn/Mcphoto/blob/13d071a1f50e6abbc5d763ea4cf92e403786e2a8/Newb-X-Stellar-Vision-Shader-MCPE-Head-Stealing-PvP-Addon-MCPE-Thumbnail.png?raw=true",
     "shortDesc": "Stunning sky and vibrant lighting shader for Minecraft Bedrock Edition.",
     "views": "1,245 Views",
     "downloads": 853,
@@ -13,11 +13,11 @@
     "platform": "Minecraft Bedrock",
     "fileSize": "3.16 MB",
     "screenshots": [
-      "https://github.com/minecraftlyn/Mcphoto/raw/0f568bb22fbb073abbb01f24ae862c85c4c685d8/Newb-X-StellarVision1.jpg",
-      "https://github.com/minecraftlyn/Mcphoto/raw/611df8d889672a5904280b9f610a2b323b86dbaf/Newb-X-StellarVision2.jpg"
+      "https://github.com/minecraftlyn/Mcphoto/blob/0f568bb22fbb073abbb01f24ae862c85c4c685d8/Newb-X-Stellar-Vision-Shader-MCPE-Head-Stealing-PvP-Addon-MCPE-5.png?raw=true",
+      "https://github.com/minecraftlyn/Mcphoto/blob/611df8d889672a5904280b9f610a2b323b86dbaf/Newb-X-Stellar-Vision-Shader-MCPE-Head-Stealing-PvP-Addon-MCPE-2.png?raw=true"
     ],
-    "fullReview": "<p><strong>Newb X Stellar Vision</strong> is a beautiful visual shader that gives Minecraft Bedrock edition a stunning atmosphere with smooth lighting and atmospheric sky.</p>",
-    "downloadLink": "https://github.com/minecraftlyn/Mcphoto/raw/b82242cf4f1719e4420baa6f5251266d4ecce9fa/Newb-StellarVision.mcpack"
+    "fullReview": "<p><strong>NEHA + Stellar Vision</strong> is a beautiful visual shader that gives Minecraft a completely different atmosphere. It focuses on improving the overall lighting, sky, colors, and environment while keeping the original Minecraft style.</p><p>One of the best features is the stunning sky and nighttime visuals. The night sky looks much more atmospheric, with beautiful lighting effects that make exploring at night feel more immersive.</p><p>The shader also gives forests, grass, flowers, and other natural environments a more vibrant and cinematic appearance. The combination of colorful skies and enhanced lighting makes screenshots and gameplay look much more impressive.</p><br><h4>✨ Main Features:</h4><ul><li>Beautiful sky and nighttime effects</li><li>Improved lighting and shadows</li><li>Enhanced environment and vegetation colors</li><li>More cinematic sunsets and sunrises</li><li>Vibrant and colorful visuals</li><li>Suitable for Bedrock Edition</li></ul><br><p><strong>⭐ Rating: 9/10</strong></p><p><strong>Final Verdict:</strong> If you want to make your Minecraft world look beautiful, colorful, and more cinematic, NEHA + Stellar Vision is definitely worth trying.</p>",
+    "downloadLink": "https://github.com/minecraftlyn/Mcphoto/raw/b822426cf4f1719e4420baa6f5251266d4ecce9f/Newb-X-Stellar-Vision-Shader-MCPE-1.21.mcpack.zip"
   },
   {
     "id": "herobrine-lurking",
@@ -25,28 +25,17 @@
     "category": "addon",
     "image": "https://raw.githubusercontent.com/minecraftlyn/Mcphoto/main/Herobrine-Lurking-Addon-Thumbnail-500x281.jpg",
     "shortDesc": "A horror addon that brings the mysterious Herobrine back into your world with scary events.",
-    "views": "45 Views",
-    "downloads": 120,
+    "views": "1,245 Views",
+    "downloads": 853,
     "date": "Just now",
     "mcVersion": "1.20+",
     "addonVersion": "1.3.9",
     "platform": "Minecraft Bedrock Edition",
-    "fullReview": "<p>Herobrine Lurking is a horror addon that brings the mysterious Herobrine back into your world.</p>",
+    "fileSize": "12.4 MB",
+    "screenshots": [
+      "https://raw.githubusercontent.com/minecraftlyn/Mcphoto/main/Herobrine-Lurking-Addon-Thumbnail-500x281.jpg"
+    ],
+    "fullReview": "<p>Herobrine Lurking is a horror addon that brings the mysterious Herobrine back into your world with scary events and immersive sound effects.</p>",
     "downloadLink": "https://github.com/minecraftlyn/Mcphoto/raw/f290a378c8e9e22357e6f1db1df8afc04232563e/Herobrine-Lurking.mcaddon"
-  },
-  {
-    "id": "irritator-new",
-    "title": "IRRITATOR NEW ADDON",
-    "category": "addon",
-    "image": "https://github.com/minecraftlyn/Mcphoto/raw/ae9a1f11eeb8e954f9580b782f0b0dc5786a5d1a/1000017180.jpg",
-    "shortDesc": "Experience horror in Minecraft with the terrifying Irritator creature...",
-    "views": "12 Views",
-    "downloads": 12,
-    "date": "1 day ago",
-    "mcVersion": "1.20+",
-    "addonVersion": "1.0",
-    "platform": "Minecraft Bedrock",
-    "fullReview": "<p>The IRRITATOR NEW Addon brings an intense horror survival element to Minecraft...</p>",
-    "downloadLink": "https://github.com/ayemarzin65-eng/Mc-file/raw/c882ce0711383fafb66fe3cd7fedbd1d39a716c0/IRRITATOR.mcaddon"
   }
 ]
