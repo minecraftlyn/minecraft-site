@@ -1,72 +1,25 @@
 [
-  },
- {
+  {
   "id": "post-4",
-  "title": "Verity",
+  "title": "Verity – Bedrock Edition Review",
   "category": "addon",
   "image": "https://lh3.googleusercontent.com/d/1kEm8v67kiWSw76hS4-gsGkl7uegxFdhe",
-  "shortDesc": "Real verity addon...",
+  "shortDesc": "Verity is a unique Minecraft Bedrock add-on inspired by ThatMob's Verity ARG series featuring AI & Horror elements.",
   "views": 0,
   "downloads": 0,
   "date": "2026-08-25T12:00:00",
-  "mcVersion": "1.26+",
-  "addonVersion": "v4.0.0",0
+  "mcVersion": "26.10+",
+  "addonVersion": "v4.0.0",
   "platform": "Minecraft Bedrock",
   "fileSize": "30.9MB",
   "screenshots": [
     "https://lh3.googleusercontent.com/d/1G7rVTvIo_s-leY8QQp1DI8moTYDWBqv8",
     "https://lh3.googleusercontent.com/d/1QFL3YypC57Tas_Z4OL_eVRTkJf_Ts3Rb"
   ],
-  "fullReview": "<p>Verity – Bedrock Edition Review
-
-Minecraft Version: Bedrock 26.10+
-Latest Version: Verity 4.0.0
-Latest Supported Version: 26.40
-Type: Horror / Survival / AI Companion Add-on
-Developer: PnTMC
-
-Verity is a unique Minecraft Bedrock add-on inspired by ThatMob's Verity ARG series. Unlike normal Minecraft mobs, Verity acts as a mysterious personal companion that can communicate with the player and react to different situations.
-
-Verity can answer questions, help with mathematics and ore locations, recognize sounds, and interact with the player through voice features. The add-on also includes AI, voice chat, and text-to-speech features, making Verity feel much more interactive than a normal Minecraft mob.
-
-However, Verity is not completely friendly. The add-on includes horror elements, and players should be careful about how they interact with Verity. Verity also cannot die, making the experience even more mysterious.
-
-Main Features
-
-- AI-powered companion
-- Chat and interact with Verity
-- Voice Chat and Text-to-Speech
-- Can answer different questions
-- Can help with ore locations
-- Can recognize sounds
-- Horror and mysterious events
-- Verity can be carried in your inventory
-- Verity cannot die
-- Designed for survival and roleplay
-
-Supported Versions
-
-- Bedrock 26.10+
-- Bedrock 26.20
-- Bedrock 26.30
-- Bedrock 26.40
-
-Latest Release: Verity 4.0.0 for Minecraft Bedrock 26.40
-
-Requirements
-
-The add-on requires certain Experiments / Beta APIs and additional setup because it uses AI, voice chat, and text-to-speech features.
-
-Rating: 9.5/10
-
-Final Verdict:
-
-Verity is much more than a normal Minecraft companion. Its combination of AI, voice interaction, survival gameplay, and horror elements creates a unique experience where you never really know what Verity might do next.
-
-If you want a Minecraft world that feels more alive, mysterious, and unpredictable, Verity is definitely worth trying.</p>",
+  "fullReview": "<p><b>Developer:</b> PnTMC<br><b>Type:</b> Horror / Survival / AI Companion Add-on</p><p>Verity is a unique Minecraft Bedrock add-on inspired by ThatMob's Verity ARG series. Unlike normal Minecraft mobs, Verity acts as a mysterious personal companion that can communicate with the player and react to different situations.</p><p>Verity can answer questions, help with mathematics and ore locations, recognize sounds, and interact with the player through voice features. The add-on also includes AI, voice chat, and text-to-speech features, making Verity feel much more interactive than a normal Minecraft mob.</p><p>However, Verity is not completely friendly. The add-on includes horror elements, and players should be careful about how they interact with Verity. Verity also cannot die, making the experience even more mysterious.</p><br><b>Main Features</b><ul><li>AI-powered companion</li><li>Chat and interact with Verity</li><li>Voice Chat and Text-to-Speech</li><li>Can answer different questions</li><li>Can help with ore locations</li><li>Can recognize sounds</li><li>Horror and mysterious events</li><li>Verity can be carried in your inventory</li><li>Verity cannot die</li><li>Designed for survival and roleplay</li></ul><br><p><b>Requirements:</b><br>The add-on requires certain Experiments / Beta APIs and additional setup because it uses AI, voice chat, and text-to-speech features.</p><p><b>Rating:</b> 9.5/10</p><p><b>Final Verdict:</b><br>Verity is much more than a normal Minecraft companion. Its combination of AI, voice interaction, survival gameplay, and horror elements creates a unique experience where you never really know what Verity might do next. If you want a Minecraft world that feels more alive, mysterious, and unpredictable, Verity is definitely worth trying.</p>",
   "downloadLink": "https://drive.google.com/uc?export=download&id=14T72WN0kyTzR7g87CBxpa3QSh8XmdLLC"
-  }
-  
+},
+{
     "id": "post-3",
     "title": "Newb X Stellar Vision Shader",
     "category": "shader",
