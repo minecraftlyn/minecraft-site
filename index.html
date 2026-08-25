@@ -74,7 +74,7 @@
 
         .empty-state { text-align: center; padding: 40px 20px; color: var(--text-sub); font-size: 15px; }
 
-        /* UPGRADED DETAIL PAGE V3 */
+        /* DETAIL PAGE */
         .back-btn { background: var(--card-bg); border: 1px solid var(--border); color: var(--text-sub); padding: 8px 18px; border-radius: 20px; cursor: pointer; margin-bottom: 20px; font-size: 13px; font-weight: 600; }
         .back-btn:hover { border-color: var(--cyan); color: var(--text-main); }
 
@@ -159,7 +159,7 @@
         <div id="shader-page" class="page-section"><div class="section-title">✨ Minecraft Shaders</div><div class="card-grid" id="shader-grid"></div></div>
         <div id="map-page" class="page-section"><div class="section-title">🗺️ Minecraft Maps</div><div class="card-grid" id="map-grid"></div></div>
 
-        <!-- UPGRADED DETAIL PAGE V3 -->
+        <!-- DETAIL PAGE -->
         <div id="post-detail-page" class="page-section">
             <button class="back-btn" onclick="switchPage('home')">← Back to Explore</button>
             <div id="post-detail-content"></div>
@@ -201,12 +201,36 @@
         }
         function navigate(pageId) { toggleMenu(); switchPage(pageId); }
 
+        // Dynamic Time Ago Calculator
+        function timeAgo(dateString) {
+            if (!dateString || dateString === "Just now") return "Just now";
+            const date = new Date(dateString);
+            if (isNaN(date.getTime())) return dateString;
+
+            const seconds = Math.floor((new Date() - date) / 1000);
+            let interval = Math.floor(seconds / 31536000);
+            if (interval >= 1) return interval + "y ago";
+            interval = Math.floor(seconds / 2592000);
+            if (interval >= 1) return interval + "mo ago";
+            interval = Math.floor(seconds / 86400);
+            if (interval >= 1) return interval + "d ago";
+            interval = Math.floor(seconds / 3600);
+            if (interval >= 1) return interval + "h ago";
+            interval = Math.floor(seconds / 60);
+            if (interval >= 1) return interval + "m ago";
+            return "Just now";
+        }
+
         fetch('posts.json?v=' + new Date().getTime())
             .then(res => res.json())
             .then(data => { allPosts = data; renderPosts(allPosts); renderCategoryGrids(); })
             .catch(err => console.error("Error loading posts:", err));
 
         function createCardHTML(post) {
+            let views = parseInt(localStorage.getItem('views_' + post.id) || post.views || 0);
+            let downloads = parseInt(localStorage.getItem('dl_' + post.id) || post.downloads || 0);
+            let displayTime = timeAgo(post.date);
+
             return `
                 <div class="card" onclick="openPost('${post.id}')">
                     <img src="${post.image}" alt="${post.title}">
@@ -214,8 +238,8 @@
                         <div class="card-title">${post.title}</div>
                         <div class="card-desc">${post.shortDesc}</div>
                         <div class="card-footer">
-                            <span>⬇ ${post.downloads || 0}</span>
-                            <span>👁 ${post.views}</span>
+                            <span>⬇ ${downloads.toLocaleString()}</span>
+                            <span>👁 ${views.toLocaleString()} • ${displayTime}</span>
                         </div>
                     </div>
                 </div>
@@ -267,10 +291,13 @@
             renderPosts(filtered);
         }
 
-        function triggerDownload(url) {
-            let currentCount = parseInt(localStorage.getItem('dl_' + url) || '853');
-            currentCount++;
-            localStorage.setItem('dl_' + url, currentCount);
+        function triggerDownload(postId, url) {
+            let downloads = parseInt(localStorage.getItem('dl_' + postId) || '0') + 1;
+            localStorage.setItem('dl_' + postId, downloads);
+
+            const dlElem = document.getElementById('dlCountDisp');
+            if(dlElem) dlElem.innerHTML = `⬇ ${downloads.toLocaleString()}`;
+
             window.open(url, '_blank');
         }
 
@@ -289,7 +316,11 @@
             const post = allPosts.find(p => p.id === postId);
             if (!post) return;
 
-            let downloadCount = parseInt(localStorage.getItem('dl_' + post.downloadLink) || (post.downloads || 853));
+            // Increment & Save Views
+            let views = parseInt(localStorage.getItem('views_' + post.id) || post.views || 0) + 1;
+            localStorage.setItem('views_' + post.id, views);
+
+            let downloads = parseInt(localStorage.getItem('dl_' + post.id) || post.downloads || 0);
 
             let screenshotsHTML = '';
             if (post.screenshots && post.screenshots.length > 0) {
@@ -325,12 +356,12 @@
                         <div class="meta-grid">
                             <div class="meta-card"><div class="meta-label">MINECRAFT</div><div class="meta-val">${post.mcVersion || '1.20+'}</div></div>
                             <div class="meta-card"><div class="meta-label">PLATFORM</div><div class="meta-val">${post.platform || 'Bedrock'}</div></div>
-                            <div class="meta-card"><div class="meta-label">DOWNLOADS</div><div class="meta-val" id="dlCountDisp">⬇ ${downloadCount}</div></div>
+                            <div class="meta-card"><div class="meta-label">DOWNLOADS</div><div class="meta-val" id="dlCountDisp">⬇ ${downloads.toLocaleString()}</div></div>
                             <div class="meta-card"><div class="meta-label">FILE SIZE</div><div class="meta-val">${post.fileSize || 'N/A'}</div></div>
                         </div>
 
                         <div class="download-box">
-                            <a onclick="triggerDownload('${post.downloadLink}')" class="hero-download-btn">📥 DOWNLOAD</a>
+                            <a onclick="triggerDownload('${post.id}', '${post.downloadLink}')" class="hero-download-btn">📥 DOWNLOAD</a>
                             <div class="download-subtext">Free Direct Download • Safe & Verified</div>
                         </div>
                     </div>
@@ -351,6 +382,9 @@
 
                 ${relatedHTML}
             `;
+            
+            // Re-render home grid to update view count display on card
+            renderPosts(allPosts);
             switchPage('post-detail');
         }
     </script>
