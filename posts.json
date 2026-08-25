@@ -23,7 +23,7 @@
     "id": "post-3",
     "title": "Newb X Stellar Vision Shader",
     "category": "shader",
-    "image": "https://github.com/minecraftlyn/Mcphoto/blob/13d071a1f9e8d47be85bf09c0587d559feee075a/IMG_20260216_205621_508.jpg?raw=true",
+    "image": "https://raw.githubusercontent.com/minecraftlyn/Mcphoto/13d071a1f9e8d47be85bf09c0587d559feee075a/IMG_20260216_205621_508.jpg",
     "shortDesc": "Stunning sky and vibrant lighting shader for Minecraft Bedrock.",
     "views": 1245,
     "downloads": 853,
@@ -33,7 +33,7 @@
     "platform": "Minecraft Bedrock",
     "fileSize": "5.2 MB",
     "screenshots": [
-      "https://github.com/minecraftlyn/Mcphoto/blob/13d071a1f9e8d47be85bf09c0587d559feee075a/IMG_20260216_205621_508.jpg?raw=true"
+      "https://raw.githubusercontent.com/minecraftlyn/Mcphoto/13d071a1f9e8d47be85bf09c0587d559feee075a/IMG_20260216_205621_508.jpg"
     ],
     "fullReview": "<p>Newb X Stellar Vision is a powerful shader designed for Bedrock Edition.</p>",
     "downloadLink": "https://example.com"
