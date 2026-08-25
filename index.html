@@ -235,8 +235,30 @@
     </footer>
 
     <script>
-        let allPosts = [];
+        // Data hardcoded directly to fix fetch error
+        const allPosts = [
+            {
+                "id": "new-shader-2026",
+                "title": "Ultra Realistic Shader 2026",
+                "category": "shader",
+                "image": "https://raw.githubusercontent.com/minecraftlyn/Mcphoto/main/shader.jpg",
+                "shortDesc": "High quality realistic lighting, dynamic water, and soft shadows for Minecraft Bedrock.",
+                "fullReview": "Ultra Realistic Shader brings realistic graphics to your Minecraft Bedrock edition with minimal lag. Features dynamic lighting, real water reflection, and vibrant sky colors.",
+                "downloadLink": "https://t.me/minecraftlynweb",
+                "mcVersion": "1.20+",
+                "platform": "Android / iOS / Win",
+                "fileSize": "12 MB",
+                "views": 1540,
+                "downloads": 920
+            }
+        ];
+
         let currentCategory = 'all';
+
+        function initApp() {
+            renderPosts(allPosts);
+            renderCategoryGrids();
+        }
 
         function toggleMenu() { document.getElementById('navOverlay').classList.toggle('active'); }
         function switchPage(pageId) {
@@ -246,11 +268,6 @@
             window.scrollTo(0, 0);
         }
         function navigate(pageId) { toggleMenu(); switchPage(pageId); }
-
-        fetch('posts.json')
-            .then(res => res.json())
-            .then(data => { allPosts = data; renderPosts(allPosts); renderCategoryGrids(); })
-            .catch(err => console.error("Error loading posts:", err));
 
         function getDynamicViews(post) {
             let baseViews = parseInt((post.views || '1000').toString().replace(/[^0-9]/g, ''));
@@ -332,16 +349,4 @@
         function closeLightbox() { document.getElementById('lightbox').classList.remove('active'); }
 
         function openPolicy(type) {
-            const title = document.getElementById('policyTitle');
-            const body = document.getElementById('policyBody');
-
-            if (type === 'about') {
-                title.innerText = "About Minecraft LYN";
-                body.innerHTML = `
-                    <p>Welcome to <strong>Minecraft LYN</strong>, your ultimate destination for high-quality Minecraft Bedrock Edition content!</p>
-                    <br>
-                    <p>Our mission is to provide Minecraft players, creators, and enthusiasts with a clean, fast, and safe platform to discover and download the best Addons, Shaders, Texture Packs, and Custom Maps.</p>
-                    <br>
-                    <h4 style="color:var(--cyan);">✨ Why Choose Us?</h4>
-                    <ul>
-                        <li><strong>Safe & Verified Downloads:</strong>
+            const title = document.getElementById('polic
