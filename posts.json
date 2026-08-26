@@ -1,5 +1,65 @@
 [
   {
+    "id": "irritator-dweller-addon",
+    "title": "IRRITATOR DWELLER",
+    "category": "addon",
+    "shortDesc": "A horror-focused Minecraft Bedrock add-on introducing a terrifying cave-dwelling creature with unique AI, attacks, and dynamic thunderstorm effects.",
+    "fullReview": "IRRITATOR DWELLER is a horror-focused Minecraft Bedrock add-on designed to make survival much more tense and unpredictable. It introduces a terrifying cave-dwelling creature with unique animations, attacks, and improved AI, creating a much darker atmosphere while exploring underground areas.\n\nThe add-on focuses on making the Dweller feel like a serious threat rather than just another ordinary Minecraft mob. Its appearance, animations, and behavior are designed to create a creepy atmosphere, especially when exploring dark caves.\n\nOne of the most interesting features is the improved thunderstorm system. Thunderstorms include more atmospheric sounds and bright flashes in the sky, making bad weather feel much more intense.\n\nGameplay:\nThe IRRITATOR DWELLER can appear in caves during Survival. Only one creature can exist in the world at a time, making encounters less frequent but more unpredictable. It can also hang upside down when there are blocks above it, allowing it to blend into dark cave areas.\n\nThe creature has several different attacks, including normal hand attacks, a roar that knocks the player back, and a powerful leap attack. The add-on is mainly designed around atmosphere and survival tension rather than giving players unique loot.\n\nRating: 9/10",
+    "image": "https://raw.githubusercontent.com/minecraftlyn/Mcphoto/main/1000011603_orig.png",
+    "screenshots": [
+      "https://raw.githubusercontent.com/minecraftlyn/Mcphoto/main/The-IRRITATOR-Dweller-Addon-MCPE-3.jpeg",
+      "https://raw.githubusercontent.com/minecraftlyn/Mcphoto/main/The-IRRITATOR-Dweller-Addon-MCPE-2.jpeg"
+    ],
+    "mcVersion": "26.30+",
+    "supportedVersions": [
+      "26.30",
+      "26.x"
+    ],
+    "addonVersion": "NEW",
+    "platform": "Bedrock / MCPE",
+    "fileFormat": ".mcaddon",
+    "fileSize": "N/A",
+    "creator": "OvertRegularity13",
+    "tags": [
+      "horror",
+      "dweller",
+      "survival",
+      "mob"
+    ],
+    "features": [
+      "Terrifying IRRITATOR DWELLER mob with improved AI",
+      "Multiple attack types (Hand attack, Knockback Roar, Powerful Leap)",
+      "Unique ceiling-hanging animations for dark caves",
+      "Enhanced thunderstorm effects with white sky flashes",
+      "More atmospheric thunder sounds",
+      "Single-spawn mechanic for unpredictable encounters"
+    ],
+    "requirements": [
+      "Minecraft Bedrock 26.30+"
+    ],
+    "experimental": true,
+    "experimentalNote": "Turn on Holiday Creator Features and Custom Mobs in World Settings.",
+    "featured": true,
+    "trending": true,
+    "rising": false,
+    "status": "new",
+    "downloadLink": "https://github.com/minecraftlyn/Mcphoto/raw/refs/heads/main/IRRITATOR%20NEW.mcaddon",
+    "views": 120,
+    "downloads": 30,
+    "date": "2026-08-26",
+    "lastUpdated": "2026-08-26",
+    "changelog": [
+      {
+        "version": "NEW",
+        "date": "2026-08-26",
+        "changes": [
+          "Initial release for Minecraft Bedrock 26.30",
+          "Added Dweller AI and custom atmospheric thunderstorm visuals"
+        ]
+      }
+    ]
+  },
+  {
     "id": "newb-x-stellar-vision-shader",
     "title": "Newb X Stellar Vision Shader",
     "category": "shader",
