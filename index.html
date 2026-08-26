@@ -11,12 +11,13 @@
             --card-bg: #151A23;
             --cyan: #00D0FF;
             --cyan-hover: #00B8D0;
-            --text-main: #F1FSFR;
+            --text-main: #FFFFFF;
             --text-sub: #94A3B8;
             --border: #222B3A;
         }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
-        body { background-color: var(--bg-black); color: #FFFFFF; line-height: 1.6; }
+        body { background-color: var(--bg-black); color: var(--text-main); line-height: 1.6; }
+        
         header {
             background: rgba(11, 14, 20, 0.95);
             backdrop-filter: blur(12px);
@@ -26,6 +27,20 @@
         }
         .menu-btn { background: none; border: none; color: var(--cyan); font-size: 22px; cursor: pointer; }
         .logo-img { height: 34px; object-fit: contain; cursor: pointer; }
+
+        /* Sidebar Overlay */
+        .nav-overlay {
+            position: fixed; top: 0; left: -280px; width: 280px; height: 100%;
+            background: var(--card-bg); z-index: 1000; transition: 0.3s;
+            border-right: 1px solid var(--border); padding: 20px;
+        }
+        .nav-overlay.active { left: 0; }
+        .nav-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; font-weight: bold; color: var(--cyan); }
+        .close-btn { background: none; border: none; color: var(--text-sub); font-size: 20px; cursor: pointer; }
+        .nav-links { list-style: none; }
+        .nav-links li { padding: 12px 0; border-bottom: 1px solid var(--border); cursor: pointer; color: var(--text-main); font-size: 14px; }
+        .nav-links li:hover { color: var(--cyan); }
+
         .main-container { max-width: 900px; margin: 0 auto; padding: 20px 15px; }
         .hero {
             background: linear-gradient(180deg, rgba(11,14,20,0.6), var(--bg-black));
@@ -34,16 +49,20 @@
         .hero h1 { font-size: 22px; color: #fff; }
         .hero h1 span { color: var(--cyan); }
         .hero p { font-size: 13px; color: var(--text-sub); margin-top: 6px; }
+
         .search-box input {
             width: 100%; padding: 12px 20px; background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; color: #fff; font-size: 14px; margin-bottom: 20px; outline: none;
         }
         .search-box input:focus { border-color: var(--cyan); }
+
         .category-chips { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 10px; margin-bottom: 25px; }
         .chip { background: var(--card-bg); border: 1px solid var(--border); color: var(--text-sub); padding: 8px 16px; border-radius: 20px; font-size: 13px; cursor: pointer; white-space: nowrap; }
         .chip.active { background: var(--cyan); color: #0B0E14; border-color: var(--cyan); font-weight: 600; }
+
         .page-section { display: none; }
         .page-section.active { display: block; }
         .section-title { font-size: 18px; font-weight: bold; color: #fff; margin-bottom: 20px; border-left: 3px solid var(--cyan); padding-left: 10px; }
+
         .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 18px; }
         .card { background: var(--card-bg); border-radius: 12px; overflow: hidden; border: 1px solid var(--border); cursor: pointer; transition: 0.2s; }
         .card:hover { border-color: var(--cyan); transform: translateY(-2px); }
@@ -53,10 +72,33 @@
         .card-title { font-size: 14px; font-weight: bold; color: #fff; margin-bottom: 6px; }
         .card-desc { font-size: 12px; color: var(--text-sub); margin-bottom: 12px; height: 36px; overflow: hidden; }
         .card-footer { font-size: 11px; color: var(--text-sub); display: flex; justify-content: space-between; align-items: center; }
+
+        /* Detail View Styling */
+        .detail-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 20px; }
+        .back-btn { background: var(--border); color: #fff; border: none; padding: 8px 15px; border-radius: 6px; cursor: pointer; margin-bottom: 15px; font-size: 13px; }
+        .detail-title { font-size: 20px; font-weight: bold; margin-bottom: 10px; color: var(--cyan); }
+        .detail-img { width: 100%; max-height: 300px; object-fit: cover; border-radius: 8px; margin-bottom: 15px; }
+        .detail-desc { font-size: 14px; color: var(--text-sub); white-space: pre-line; margin-bottom: 20px; }
+        .download-btn { display: inline-block; background: var(--cyan); color: #0B0E14; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 14px; }
+
         footer { text-align: center; padding: 30px 15px; color: var(--text-sub); font-size: 12px; border-top: 1px solid var(--border); margin-top: 40px; }
     </style>
 </head>
 <body>
+
+    <!-- SIDEBAR MENU -->
+    <div id="navOverlay" class="nav-overlay">
+        <div class="nav-header">
+            <span>MINECRAFT LYN</span>
+            <button class="close-btn" onclick="toggleMenu()"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <ul class="nav-links">
+            <li onclick="navigate('home')"><i class="fa-solid fa-house"></i> Home</li>
+            <li onclick="navigate('home'); filterCategory('addon')"><i class="fa-solid fa-puzzle-piece"></i> Addons</li>
+            <li onclick="navigate('home'); filterCategory('shader')"><i class="fa-solid fa-wand-magic-sparkles"></i> Shaders</li>
+            <li onclick="navigate('home'); filterCategory('maps')"><i class="fa-solid fa-map-location-dot"></i> Maps</li>
+        </ul>
+    </div>
 
     <header>
         <button class="menu-btn" onclick="toggleMenu()"><i class="fa-solid fa-bars"></i></button>
@@ -87,6 +129,12 @@
                 <p style="color: var(--text-sub);">Loading content...</p>
             </div>
         </section>
+
+        <!-- DETAIL SECTION -->
+        <section id="detail-page" class="page-section">
+            <button class="back-btn" onclick="navigate('home')"><i class="fa-solid fa-arrow-left"></i> Back</button>
+            <div id="detail-content"></div>
+        </section>
     </div>
 
     <footer>
@@ -96,6 +144,11 @@
     <script>
         let allPosts = [];
         let currentCategory = 'all';
+
+        function toggleMenu() {
+            const nav = document.getElementById('navOverlay');
+            nav.classList.toggle('active');
+        }
 
         async function loadJSONData() {
             try {
@@ -107,9 +160,7 @@
                 console.error(err);
                 document.getElementById('home-grid').innerHTML = `
                     <div style="color: #ef4444; background: rgba(239, 68, 68, 0.1); border: 1px solid #ef4444; padding: 15px; border-radius: 8px; width: 100%;">
-                        <b>Data Loading Error!</b><br>
-                        1. posts.json ဖိုင်နာမည်နှင့် လမ်းကြောင်း မှန်ကန်မှု ရှိမရှိ စစ်ဆေးပါ။<br>
-                        2. JSON Format အတွင်း ကော်မာ သို့မဟုတ် စကွင်း အမှားအယွင်း ရှိမရှိ စစ်ဆေးပါ။
+                        <b>Data Loading Error!</b><br>posts.json ဖိုင် သို့မဟုတ် လမ်းကြောင်း စစ်ဆေးပါ။
                     </div>
                 `;
             }
@@ -120,7 +171,7 @@
             let downloads = parseInt(localStorage.getItem('dl_' + post.id)) || post.downloads || 0;
 
             return `
-                <div class="card" onclick="alert('${post.title}')">
+                <div class="card" onclick="openPost('${post.id}')">
                     <div class="card-img-wrap">
                         <img src="${post.image}" alt="${post.title}" onerror="this.src='https://via.placeholder.com/300x150?text=No+Image'">
                     </div>
@@ -146,10 +197,41 @@
             grid.innerHTML = postsToRender.map(post => createCardHTML(post)).join('');
         }
 
+        function openPost(postId) {
+            const post = allPosts.find(p => p.id === postId);
+            if (!post) return;
+
+            // Update views count
+            let viewsKey = 'views_' + post.id;
+            let currentViews = parseInt(localStorage.getItem(viewsKey)) || post.views || 0;
+            localStorage.setItem(viewsKey, currentViews + 1);
+
+            const detailContainer = document.getElementById('detail-content');
+            detailContainer.innerHTML = `
+                <div class="detail-card">
+                    <div class="detail-title">${post.title}</div>
+                    <img src="${post.image}" class="detail-img" alt="${post.title}">
+                    <div class="detail-desc">${post.fullReview || post.shortDesc}</div>
+                    <a href="${post.downloadLink}" class="download-btn" target="_blank" onclick="incrementDownload('${post.id}')">
+                        <i class="fa-solid fa-download"></i> Download File
+                    </a>
+                </div>
+            `;
+            navigate('detail');
+        }
+
+        function incrementDownload(postId) {
+            let dlKey = 'dl_' + postId;
+            let currentDl = parseInt(localStorage.getItem(dlKey)) || 45;
+            localStorage.setItem(dlKey, currentDl + 1);
+        }
+
         function filterCategory(category, element) {
             currentCategory = category;
-            document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
-            if(element) element.classList.add('active');
+            if (element) {
+                document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+                element.classList.add('active');
+            }
             filterPosts();
         }
 
@@ -167,6 +249,7 @@
             document.querySelectorAll('.page-section').forEach(p => p.classList.remove('active'));
             document.getElementById(pageId + '-page').classList.add('active');
             window.scrollTo(0, 0);
+            if(pageId === 'home') toggleMenu(); // Close menu if open
         }
 
         window.onload = function() {
