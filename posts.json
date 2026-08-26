@@ -3,20 +3,94 @@
     "id": "newb-x-stellar-vision-shader",
     "title": "Newb X Stellar Vision Shader",
     "category": "shader",
+
     "shortDesc": "Enhance your Minecraft Bedrock graphics with realistic lighting and stellar sky visuals.",
+
     "fullReview": "Newb X Stellar Vision Shader is an amazing graphics enhancement shader designed for Minecraft Bedrock (MCPE) 1.21+. It features gorgeous sky visuals, vibrant colors, realistic lighting, and smooth performance optimized for mobile devices.",
+
     "image": "https://github.com/minecraftlyn/Mcphoto/raw/main/Newb-X-Stellar-Vision-Shader-MCPE-Head-Stealing-PvP-Addon-MCPE-Thumbnail.png",
+
     "screenshots": [
-      "https://github.com/minecraftlyn/Mcphoto/raw/main/Newb-X-Stellar-Vision-Shader-MCPE-Head-Stealing-PvP-Addon-MCPE-5.png",
-      "https://github.com/minecraftlyn/Mcphoto/raw/main/Newb-X-Stellar-Vision-Shader-MCPE-Head-Stealing-PvP-Addon-MCPE-2.png"
+      "https://github.com/minecraftlyn/Mcphoto/raw/main/Newb-X-Stellar-Vision-Shader-MCPE-5.png",
+      "https://github.com/minecraftlyn/Mcphoto/raw/main/Newb-X-Stellar-Vision-Shader-MCPE-2.png"
     ],
+
     "mcVersion": "1.21+",
+
+    "supportedVersions": [
+      "1.21.101",
+      "1.21.100",
+      "1.21.80",
+      "1.21.70"
+    ],
+
     "addonVersion": "v1.0",
+
     "platform": "Bedrock / MCPE",
+
+    "fileFormat": ".mcpack",
+
     "fileSize": "3.5 MB",
+
+    "creator": "Newb",
+
+    "tags": [
+      "shader",
+      "realistic",
+      "graphics",
+      "pvp",
+      "mobile",
+      "sky",
+      "lighting"
+    ],
+
+    "features": [
+      "Realistic lighting",
+      "Stellar sky visuals",
+      "Vibrant colors",
+      "Improved graphics",
+      "Mobile optimized",
+      "Smooth performance"
+    ],
+
+    "requirements": [
+      "Minecraft Bedrock Edition 1.21+",
+      "Compatible Android or Windows device"
+    ],
+
+    "experimental": false,
+
+    "experimentalNote": "",
+
+    "featured": true,
+
+    "trending": true,
+
+    "rising": false,
+
+    "status": "featured",
+
     "downloadLink": "https://github.com/minecraftlyn/Mcphoto/raw/main/Newb-X-Stellar-Vision-Shader-MCPE-1.21.mcpack.zip",
+
     "views": 150,
+
     "downloads": 45,
-    "date": "2026-08-26"
+
+    "date": "2026-08-26",
+
+    "lastUpdated": "2026-08-26",
+
+    "changelog": [
+      {
+        "version": "v1.0",
+        "date": "2026-08-26",
+        "changes": [
+          "Initial release",
+          "Added stellar sky visuals",
+          "Improved lighting",
+          "Optimized mobile performance"
+        ]
+      }
+    ]
   }
 ]
