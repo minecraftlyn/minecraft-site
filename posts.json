@@ -5,8 +5,8 @@
     "category": "addon",
     "image": "https://lh3.googleusercontent.com/d/1kEm8v67kiWSw76hS4-gsGkl7uegxFdhe",
     "shortDesc": "Verity is a unique Minecraft Bedrock add-on inspired by ThatMob's Verity ARG series featuring AI & Horror elements.",
-    "views": 0,
-    "downloads": 0,
+    "views": 150,
+    "downloads": 45,
     "date": "2026-08-25T12:00:00",
     "mcVersion": "26.10+",
     "addonVersion": "v4.0.0",
@@ -18,24 +18,5 @@
     ],
     "fullReview": "Developer: PnTMC\nType: Horror / Survival / AI Companion Add-on\n\nVerity is a unique Minecraft Bedrock add-on inspired by ThatMob's Verity ARG series. Unlike normal Minecraft mobs, Verity acts as a mysterious personal companion that can communicate with the player and react to different situations.\n\nVerity can answer questions, help with mathematics and ore locations, recognize sounds, and interact with the player through voice features.\n\nMain Features:\n- AI-powered companion\n- Chat and interact with Verity\n- Voice Chat and Text-to-Speech\n- Can answer different questions\n- Can help with ore locations\n- Cannot die\n\nRequirements: Requires certain Experiments / Beta APIs.",
     "downloadLink": "https://drive.google.com/uc?export=download&id=14T72WN0kyTzR7g87CBxpa3QSh8XmdLLC"
-  },
-  {
-    "id": "post-3",
-    "title": "Newb X Stellar Vision Shader",
-    "category": "shader",
-    "image": "https://raw.githubusercontent.com/minecraftlyn/Mcphoto/13d071a1f9e8d47be85bf09c0587d559feee075a/IMG_20260216_205621_508.jpg",
-    "shortDesc": "Stunning sky and vibrant lighting shader for Minecraft Bedrock.",
-    "views": 1245,
-    "downloads": 853,
-    "date": "2026-08-20T10:00:00",
-    "mcVersion": "1.20+",
-    "addonVersion": "v1.2",
-    "platform": "Minecraft Bedrock",
-    "fileSize": "5.2 MB",
-    "screenshots": [
-      "https://raw.githubusercontent.com/minecraftlyn/Mcphoto/13d071a1f9e8d47be85bf09c0587d559feee075a/IMG_20260216_205621_508.jpg"
-    ],
-    "fullReview": "Newb X Stellar Vision is a powerful shader designed for Bedrock Edition.",
-    "downloadLink": "https://example.com"
   }
 ]
