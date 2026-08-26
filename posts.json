@@ -1,22 +1,20 @@
-[
   {
-    "id": "post-1",
-    "title": "Verity – Bedrock Edition Review",
-    "category": "addon",
-    "image": "https://lh3.googleusercontent.com/d/1kEm8v67kiWSw76hS4-gsGkl7uegxFdhe",
-    "shortDesc": "Verity is a unique Minecraft Bedrock add-on inspired by ThatMob's Verity ARG series featuring AI & Horror elements.",
+    "id": "newb-x-stellar-vision-shader",
+    "title": "Newb X Stellar Vision Shader",
+    "category": "shader",
+    "shortDesc": "Enhance your Minecraft Bedrock graphics with realistic lighting and stellar sky visuals.",
+    "fullReview": "Newb X Stellar Vision Shader is an amazing graphics enhancement shader designed for Minecraft Bedrock (MCPE) 1.21+. It features gorgeous sky visuals, vibrant colors, realistic lighting, and smooth performance optimized for mobile devices.",
+    "image": "https://github.com/minecraftlyn/Mcphoto/raw/main/Newb-X-Stellar-Vision-Shader-MCPE-Head-Stealing-PvP-Addon-MCPE-Thumbnail.png",
+    "screenshots": [
+      "https://github.com/minecraftlyn/Mcphoto/raw/main/Newb-X-Stellar-Vision-Shader-MCPE-Head-Stealing-PvP-Addon-MCPE-5.png",
+      "https://github.com/minecraftlyn/Mcphoto/raw/main/Newb-X-Stellar-Vision-Shader-MCPE-Head-Stealing-PvP-Addon-MCPE-2.png"
+    ],
+    "mcVersion": "1.21+",
+    "addonVersion": "v1.0",
+    "platform": "Bedrock / MCPE",
+    "fileSize": "3.5 MB",
+    "downloadLink": "https://github.com/minecraftlyn/Mcphoto/raw/main/Newb-X-Stellar-Vision-Shader-MCPE-1.21.mcpack.zip",
     "views": 150,
     "downloads": 45,
-    "date": "2026-08-25T12:00:00",
-    "mcVersion": "26.10+",
-    "addonVersion": "v4.0.0",
-    "platform": "Minecraft Bedrock",
-    "fileSize": "30.9 MB",
-    "screenshots": [
-      "https://lh3.googleusercontent.com/d/1G7rVTvIo_s-leY8QQp1DI8moTYDWBqv8",
-      "https://lh3.googleusercontent.com/d/1QFL3YypC57Tas_Z4OL_eVRTkJf_Ts3Rb"
-    ],
-    "fullReview": "Developer: PnTMC Type: Horror / Survival / AI Companion Add-on. Verity is a unique Minecraft Bedrock add-on inspired by ThatMob's Verity ARG series.",
-    "downloadLink": "https://drive.google.com/uc?export=download&id=14T72WN0kyTzR7g87CBxpa3QSh8XmdLLC"
+    "date": "2026-08-26"
   }
-]
