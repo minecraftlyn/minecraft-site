@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="site-title">Minecraft LYN - Premium Bedrock Resources</title>
-    <!-- FontAwesome Icons -->
+    <title id="site-title">Minecraft LYN - Bedrock Resources</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -37,19 +36,17 @@
                         url('https://github.com/minecraftlyn/Mcphoto/blob/1f9da41800bc4e29cdea3b6a12b25b1ee239b5c9/pixel-minecraft-style-land-background-concept-game-ground-pixelated-horizontal-blue-sky-sun-cloud-vector-illustration-212305683.jpg?raw=true') center/cover; 
             padding: 35px 20px; border-radius: 12px; border: 1px solid var(--border); text-align: center; margin-bottom: 25px;
         }
-        .hero h1 { font-size: 22px; color: #fff; letter-spacing: 0.5px; }
+        .hero h1 { font-size: 22px; color: #fff; }
         .hero h1 span { color: var(--cyan); }
         .hero p { font-size: 13px; color: var(--text-sub); margin-top: 6px; }
 
         .search-box input { 
             width: 100%; padding: 12px 20px; background: var(--card-bg); border: 1px solid var(--border); border-radius: 25px; outline: none; color: #fff; font-size: 13px; margin-bottom: 20px; transition: 0.2s;
         }
-        .search-box input:focus { border-color: var(--cyan); box-shadow: 0 0 10px rgba(0,217,255,0.2); }
+        .search-box input:focus { border-color: var(--cyan); }
 
-        .category-chips { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 10px; margin-bottom: 25px; scrollbar-width: none; }
-        .category-chips::-webkit-scrollbar { display: none; }
-        .chip { background: var(--card-bg); border: 1px solid var(--border); color: var(--text-sub); padding: 8px 16px; border-radius: 20px; font-size: 12px; font-weight: 600; white-space: nowrap; cursor: pointer; transition: 0.2s; display: flex; align-items: center; gap: 6px; }
-        .chip i { font-size: 13px; }
+        .category-chips { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 10px; margin-bottom: 25px; }
+        .chip { background: var(--card-bg); border: 1px solid var(--border); color: var(--text-sub); padding: 8px 16px; border-radius: 20px; font-size: 12px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 6px; white-space: nowrap; }
         .chip.active { background: rgba(0, 217, 255, 0.15); border-color: var(--cyan); color: var(--cyan); }
 
         .page-section { display: none; }
@@ -80,13 +77,11 @@
         .meta-label { font-size: 11px; color: var(--text-sub); }
         .meta-val { font-size: 13px; font-weight: bold; color: #fff; margin-top: 2px; }
 
-        .hero-download-btn { display: flex; justify-content: center; align-items: center; gap: 8px; width: 100%; background: var(--cyan); color: #000; padding: 14px; font-weight: bold; text-decoration: none; border-radius: 8px; font-size: 14px; border: none; cursor: pointer; transition: 0.2s; }
+        .hero-download-btn { display: flex; justify-content: center; align-items: center; gap: 8px; width: 100%; background: var(--cyan); color: #000; padding: 14px; font-weight: bold; text-decoration: none; border-radius: 8px; font-size: 14px; border: none; cursor: pointer; }
         .hero-download-btn:hover { background: var(--cyan-hover); }
 
         .info-block { background: var(--card-bg); border: 1px solid var(--border); padding: 20px; border-radius: 10px; font-size: 13px; color: var(--text-sub); line-height: 1.7; margin-top: 12px; white-space: pre-line; }
         .info-block h3 { color: #fff; margin: 15px 0 8px 0; font-size: 15px; }
-        .info-block p { margin-bottom: 12px; }
-        .info-block ul { margin-left: 20px; margin-bottom: 12px; }
 
         .screenshots-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 12px; }
         .screenshots-grid img { width: 100%; height: 120px; object-fit: cover; border-radius: 8px; border: 1px solid var(--border); cursor: pointer; }
@@ -104,12 +99,11 @@
         .close-btn { position: absolute; top: 20px; right: 20px; background: none; border: none; color: var(--cyan); font-size: 24px; cursor: pointer; }
         .nav-links { list-style: none; text-align: center; width: 100%; max-width: 280px; }
         .nav-links li { margin: 12px 0; }
-        .nav-links a { color: var(--text-main); text-decoration: none; font-size: 15px; font-weight: 600; display: flex; align-items: center; gap: 12px; padding: 10px 16px; border-radius: 8px; transition: 0.2s; cursor: pointer; }
+        .nav-links a { color: var(--text-main); text-decoration: none; font-size: 15px; font-weight: 600; display: flex; align-items: center; gap: 12px; padding: 10px 16px; border-radius: 8px; cursor: pointer; }
         .nav-links a:hover { background: var(--card-bg); color: var(--cyan); }
 
         .social-links { display: flex; gap: 15px; margin-top: 30px; }
-        .social-icon { width: 40px; height: 40px; border-radius: 50%; background: var(--card-bg); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; color: var(--cyan); text-decoration: none; font-size: 18px; transition: 0.2s; }
-        .social-icon:hover { border-color: var(--cyan); transform: translateY(-2px); }
+        .social-icon { width: 40px; height: 40px; border-radius: 50%; background: var(--card-bg); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; color: var(--cyan); text-decoration: none; font-size: 18px; }
 
         footer { text-align: center; padding: 25px; font-size: 12px; color: var(--text-sub); border-top: 1px solid var(--border); margin-top: 50px; }
         footer a { color: var(--cyan); text-decoration: none; cursor: pointer; }
@@ -151,7 +145,7 @@
         <div id="shader-page" class="page-section"><div class="section-title"><i class="fa-solid fa-wand-magic-sparkles"></i> Minecraft Shaders</div><div class="card-grid" id="shader-grid"></div></div>
         <div id="map-page" class="page-section"><div class="section-title"><i class="fa-solid fa-map-location-dot"></i> Minecraft Maps</div><div class="card-grid" id="map-grid"></div></div>
 
-        <!-- ABOUT US PAGE -->
+        <!-- ABOUT PAGE -->
         <div id="about-page" class="page-section">
             <button class="back-btn" onclick="switchPage('home')"><i class="fa-solid fa-arrow-left"></i> Back to Home</button>
             <div class="section-title"><i class="fa-solid fa-circle-info"></i> About Minecraft LYN</div>
@@ -173,10 +167,10 @@ Connect with thousands of active players and developers through our social chann
             </div>
         </div>
 
-        <!-- DMCA POLICY PAGE -->
+        <!-- DMCA PAGE -->
         <div id="dmca-page" class="page-section">
             <button class="back-btn" onclick="switchPage('home')"><i class="fa-solid fa-arrow-left"></i> Back to Home</button>
-            <div class="section-title"><i class="fa-solid fa-scale-balanced"></i> DMCA Copyright Policy</div>
+            <div class="section-title"><i class="fa-solid fa-scale-balanced"></i> DMCA Policy</div>
             <div class="info-block">
 <h3>Digital Millennium Copyright Act Compliance</h3>
 Minecraft LYN respects the intellectual property rights of content creators, developers, and artists. We strictly adhere to the Digital Millennium Copyright Act (DMCA) and international copyright laws.
@@ -233,9 +227,6 @@ Upon receipt of a valid notice, Minecraft LYN will take appropriate actions, inc
     </footer>
 
     <script>
-        let allPosts = [];
-        let currentCategory = 'all';
-
         function toggleMenu() { 
             const nav = document.getElementById('navOverlay');
             if(nav) nav.classList.toggle('active'); 
@@ -249,7 +240,7 @@ Upon receipt of a valid notice, Minecraft LYN will take appropriate actions, inc
             if (pageId === 'home') document.title = "Minecraft LYN - Premium Bedrock Resources";
             else if (pageId === 'about') document.title = "About Us - Minecraft LYN";
             else if (pageId === 'dmca') document.title = "DMCA Policy - Minecraft LYN";
-            
+
             window.scrollTo(0, 0);
         }
 
@@ -258,33 +249,27 @@ Upon receipt of a valid notice, Minecraft LYN will take appropriate actions, inc
             switchPage(pageId); 
         }
 
-        function timeAgo(dateString) {
-            if (!dateString) return "Recently";
-            const date = new Date(dateString);
-            if (isNaN(date.getTime())) return "Recently";
-            const seconds = Math.floor((new Date() - date) / 1000);
-            let interval = Math.floor(seconds / 86400);
-            if (interval >= 1) return interval + "d ago";
-            interval = Math.floor(seconds / 3600);
-            if (interval >= 1) return interval + "h ago";
-            return "Just now";
-        }
+        let allPosts = [];
+        let currentCategory = 'all';
 
-        fetch('posts.json?v=' + Date.now())
-            .then(res => {
-                if(!res.ok) throw new Error("JSON Fetch Failed");
-                return res.json();
-            })
-            .then(data => { 
-                allPosts = data || []; 
-                renderPosts(allPosts); 
+        async function loadJSONData() {
+            try {
+                const res = await fetch('posts.json?v=' + new Date().getTime());
+                if (!res.ok) throw new Error("File not found");
+                allPosts = await res.json();
+                renderPosts(allPosts);
                 renderCategoryGrids();
-                checkURLHash();
-            })
-            .catch(err => {
+            } catch (err) {
                 console.error(err);
-                document.getElementById('home-grid').innerHTML = `<div style="color:red; padding:20px;">Cannot load posts.json. Please check your GitHub repository file path and syntax.</div>`;
-            });
+                document.getElementById('home-grid').innerHTML = `
+                    <div style="color: #ef4444; background: rgba(239, 68, 68, 0.1); border: 1px solid #ef4444; padding: 15px; border-radius: 8px; font-size: 13px;">
+                        <b>Data Loading Error!</b><br>
+                        1. posts.json ဖိုင်အမည်နှင့် လမ်းကြောင်း မှန်မမှန် စစ်ပါ။<br>
+                        2. JSON Format အတွင်း ၊ သို့မဟုတ် } ကျန်ခဲ့ခြင်း ရှိမရှိ စစ်ပါ။
+                    </div>
+                `;
+            }
+        }
 
         function createCardHTML(post) {
             let views = parseInt(localStorage.getItem('views_' + post.id) || post.views || 0);
@@ -293,4 +278,21 @@ Upon receipt of a valid notice, Minecraft LYN will take appropriate actions, inc
             return `
                 <div class="card" onclick="openPost('${post.id}')">
                     <div class="card-img-wrap">
-                        <img src="${post.image}" alt="${post.title}" o
+                        <img src="${post.image}" alt="${post.title}" onerror="this.src='https://via.placeholder.com/300x150?text=No+Image'">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-title">${post.title}</div>
+                        <div class="card-desc">${post.shortDesc}</div>
+                        <div class="card-footer">
+                            <span><i class="fa-solid fa-download"></i> ${downloads}</span>
+                            <span><i class="fa-solid fa-eye"></i> ${views}</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderPosts(posts) {
+            const grid = document.getElementById('home-grid');
+            if(!grid) return;
+            if(!posts || posts.length 
