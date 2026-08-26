@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title id="site-title">Minecraft LYN - Premium Bedrock Resources</title>
-    <!-- FontAwesome Vector Icons CDN -->
+    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -27,7 +27,7 @@
             display: flex; justify-content: space-between; align-items: center; 
             position: sticky; top: 0; z-index: 100; border-bottom: 1px solid var(--border); 
         }
-        .menu-btn { background: none; border: none; color: var(--cyan); font-size: 20px; cursor: pointer; padding: 5px; }
+        .menu-btn { background: none; border: none; color: var(--cyan); font-size: 22px; cursor: pointer; padding: 5px; }
         .logo-img { height: 34px; object-fit: contain; cursor: pointer; }
 
         .main-container { max-width: 900px; margin: 0 auto; padding: 20px 15px; }
@@ -83,7 +83,7 @@
         .hero-download-btn { display: flex; justify-content: center; align-items: center; gap: 8px; width: 100%; background: var(--cyan); color: #000; padding: 14px; font-weight: bold; text-decoration: none; border-radius: 8px; font-size: 14px; border: none; cursor: pointer; transition: 0.2s; }
         .hero-download-btn:hover { background: var(--cyan-hover); }
 
-        .info-block { background: var(--card-bg); border: 1px solid var(--border); padding: 20px; border-radius: 10px; font-size: 13px; color: var(--text-sub); line-height: 1.7; margin-top: 12px; }
+        .info-block { background: var(--card-bg); border: 1px solid var(--border); padding: 20px; border-radius: 10px; font-size: 13px; color: var(--text-sub); line-height: 1.7; margin-top: 12px; white-space: pre-line; }
         .info-block h3 { color: #fff; margin: 15px 0 8px 0; font-size: 15px; }
         .info-block p { margin-bottom: 12px; }
         .info-block ul { margin-left: 20px; margin-bottom: 12px; }
@@ -156,22 +156,20 @@
             <button class="back-btn" onclick="switchPage('home')"><i class="fa-solid fa-arrow-left"></i> Back to Home</button>
             <div class="section-title"><i class="fa-solid fa-circle-info"></i> About Minecraft LYN</div>
             <div class="info-block">
-                <h3>Welcome to Minecraft LYN</h3>
-                <p>Minecraft LYN is a premier digital platform dedicated exclusively to providing high-quality, verified, and safe modifications for <b>Minecraft Bedrock Edition (MCPE/Windows 10/11)</b>. Founded by passionate Minecraft enthusiasts, our goal is to enhance the gameplay experience of players globally by offering easy access to top-tier custom content.</p>
-                
-                <h3>What We Offer</h3>
-                <p>Our library is updated regularly to ensure compatibility with the latest Minecraft updates. We organize content into three core categories:</p>
-                <ul>
-                    <li><b>Addons & Mods:</b> Custom entities, AI companions, survival enhancements, and advanced gameplay mechanics.</li>
-                    <li><b>Shaders & Graphics:</b> High-performance graphics mods, realistic skyboxes, dynamic lighting, and visual shaders tailored for mobile and low-end devices.</li>
-                    <li><b>Custom Maps:</b> Unique survival challenges, adventure maps, mini-games, and detailed architecture builds.</li>
-                </ul>
+<h3>Welcome to Minecraft LYN</h3>
+Minecraft LYN is a premier digital platform dedicated exclusively to providing high-quality, verified, and safe modifications for Minecraft Bedrock Edition (MCPE/Windows 10/11). Founded by passionate Minecraft enthusiasts, our goal is to enhance the gameplay experience of players globally by offering easy access to top-tier custom content.
 
-                <h3>Quality & Security Commitment</h3>
-                <p>We prioritize security and user trust above all. Every submission hosted or linked on Minecraft LYN undergoes structural testing for stability, performance checks across multiple Bedrock versions, and malicious link inspection. We directly support community creators by attributing original developers and adhering to proper distribution policies.</p>
+<h3>What We Offer</h3>
+Our library is updated regularly to ensure compatibility with the latest Minecraft updates. We organize content into three core categories:
+- Addons & Mods: Custom entities, AI companions, survival enhancements, and advanced gameplay mechanics.
+- Shaders & Graphics: High-performance graphics mods, realistic skyboxes, dynamic lighting, and visual shaders tailored for mobile and low-end devices.
+- Custom Maps: Unique survival challenges, adventure maps, mini-games, and detailed architecture builds.
 
-                <h3>Join Our Community</h3>
-                <p>Connect with thousands of active players and developers through our social channels on Telegram, Discord, Facebook, and YouTube for immediate updates, patch reviews, and direct support.</p>
+<h3>Quality & Security Commitment</h3>
+We prioritize security and user trust above all. Every submission hosted or linked on Minecraft LYN undergoes structural testing for stability, performance checks across multiple Bedrock versions, and malicious link inspection. We directly support community creators by attributing original developers and adhering to proper distribution policies.
+
+<h3>Join Our Community</h3>
+Connect with thousands of active players and developers through our social channels on Telegram, Discord, Facebook, and YouTube for immediate updates, patch reviews, and direct support.
             </div>
         </div>
 
@@ -180,23 +178,22 @@
             <button class="back-btn" onclick="switchPage('home')"><i class="fa-solid fa-arrow-left"></i> Back to Home</button>
             <div class="section-title"><i class="fa-solid fa-scale-balanced"></i> DMCA Copyright Policy</div>
             <div class="info-block">
-                <h3>Digital Millennium Copyright Act Compliance</h3>
-                <p>Minecraft LYN respects the intellectual property rights of content creators, developers, and artists. We strictly adhere to the Digital Millennium Copyright Act (DMCA) and international copyright laws.</p>
-                
-                <h3>Notice of Copyright Infringement</h3>
-                <p>If you are a copyright owner or an agent authorized to act on behalf of one, and you believe that any material available on Minecraft LYN infringes upon your copyright, you may submit a formal notification containing the following details:</p>
-                <ul>
-                    <li>A physical or electronic signature of a person authorized to act on behalf of the owner of an exclusive right that is allegedly infringed.</li>
-                    <li>Identification of the copyrighted work claimed to have been infringed, or a representative list of such works.</li>
-                    <li>Identification of the material that is claimed to be infringing and direct URLs leading to the specific location of the content on our site.</li>
-                    <li>Information reasonably sufficient to permit us to contact you, such as an address, telephone number, and email address.</li>
-                    <li>A statement that you have a good faith belief that use of the material in the manner complained of is not authorized by the copyright owner, its agent, or the law.</li>
-                </ul>
+<h3>Digital Millennium Copyright Act Compliance</h3>
+Minecraft LYN respects the intellectual property rights of content creators, developers, and artists. We strictly adhere to the Digital Millennium Copyright Act (DMCA) and international copyright laws.
 
-                <h3>Take-down Request Submission</h3>
-                <p>Please send formal written DMCA takedown requests to our designated copyright officer at:</p>
-                <p><b style="color:var(--cyan);">Email:</b> knightlbo36@gmail.com</p>
-                <p>Upon receipt of a valid notice, Minecraft LYN will take appropriate actions, including the immediate removal of the contested resource within 24–48 hours.</p>
+<h3>Notice of Copyright Infringement</h3>
+If you are a copyright owner or an agent authorized to act on behalf of one, and you believe that any material available on Minecraft LYN infringes upon your copyright, you may submit a formal notification containing the following details:
+- A physical or electronic signature of a person authorized to act on behalf of the owner of an exclusive right that is allegedly infringed.
+- Identification of the copyrighted work claimed to have been infringed, or a representative list of such works.
+- Identification of the material that is claimed to be infringing and direct URLs leading to the specific location of the content on our site.
+- Information reasonably sufficient to permit us to contact you, such as an address, telephone number, and email address.
+- A statement that you have a good faith belief that use of the material in the manner complained of is not authorized by the copyright owner, its agent, or the law.
+
+<h3>Take-down Request Submission</h3>
+Please send formal written DMCA takedown requests to our designated copyright officer at:
+Email: knightlbo36@gmail.com
+
+Upon receipt of a valid notice, Minecraft LYN will take appropriate actions, including the immediate removal of the contested resource within 24–48 hours.
             </div>
         </div>
 
@@ -239,7 +236,10 @@
         let allPosts = [];
         let currentCategory = 'all';
 
-        function toggleMenu() { document.getElementById('navOverlay').classList.toggle('active'); }
+        function toggleMenu() { 
+            const nav = document.getElementById('navOverlay');
+            if(nav) nav.classList.toggle('active'); 
+        }
         
         function switchPage(pageId) {
             document.querySelectorAll('.page-section').forEach(p => p.classList.remove('active'));
@@ -271,15 +271,26 @@
         }
 
         fetch('posts.json?v=' + Date.now())
-            .then(res => res.json())
+            .then(res => {
+                if(!res.ok) throw new Error("JSON Fetch Failed");
+                return res.json();
+            })
             .then(data => { 
-                allPosts = data; 
+                allPosts = data || []; 
                 renderPosts(allPosts); 
                 renderCategoryGrids();
                 checkURLHash();
             })
-            .catch(err => console.error(err));
+            .catch(err => {
+                console.error(err);
+                document.getElementById('home-grid').innerHTML = `<div style="color:red; padding:20px;">Cannot load posts.json. Please check your GitHub repository file path and syntax.</div>`;
+            });
 
         function createCardHTML(post) {
             let views = parseInt(localStorage.getItem('views_' + post.id) || post.views || 0);
-    
+            let downloads = parseInt(localStorage.getItem('dl_' + post.id) || post.downloads || 0);
+
+            return `
+                <div class="card" onclick="openPost('${post.id}')">
+                    <div class="card-img-wrap">
+                        <img src="${post.image}" alt="${post.title}" o
