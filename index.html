@@ -63,7 +63,7 @@
         .page-section.active { display: block; }
         .section-title { font-size: 18px; font-weight: bold; color: var(--text-main); margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
         .section-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
-        .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; }
+        .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; margin-bottom: 30px; }
         
         .card { background: var(--card-bg); border-radius: 14px; overflow: hidden; border: 1px solid var(--border); transition: 0.25s ease; cursor: pointer; }
         .card:hover { transform: translateY(-4px); border-color: var(--cyan); box-shadow: var(--glow); }
@@ -73,7 +73,7 @@
         .card-desc { font-size: 13px; color: var(--text-sub); margin-bottom: 15px; line-height: 1.4; }
         .card-footer { font-size: 12px; color: var(--text-sub); display: flex; justify-content: space-between; border-top: 1px solid var(--border); padding-top: 10px; }
 
-        .empty-state { text-align: center; padding: 40px 20px; color: var(--text-sub); font-size: 15px; }
+        .empty-state { text-align: center; padding: 40px 20px; color: var(--text-sub); font-size: 15px; grid-column: 1 / -1; }
 
         /* DETAIL PAGE */
         .breadcrumbs { font-size: 12px; color: var(--text-sub); margin-bottom: 15px; display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
@@ -162,7 +162,9 @@
             </div>
 
             <div class="section-title" id="grid-title">🆕 Latest Updates</div>
-            <div class="card-grid" id="home-grid"></div>
+            <div class="card-grid" id="home-grid">
+                <div class="empty-state">Loading posts...</div>
+            </div>
 
             <!-- ABOUT SECTION INFO -->
             <div style="margin-top: 50px;">
@@ -234,7 +236,9 @@
         let allPosts = [];
         let currentCategory = 'all';
 
-        function toggleMenu() { document.getElementById('navOverlay').classList.toggle('active'); }
+        function toggleMenu() { 
+            document.getElementById('navOverlay').classList.toggle('active'); 
+        }
         
         function switchPage(pageId) {
             document.querySelectorAll('.page-section').forEach(p => p.classList.remove('active'));
@@ -248,7 +252,10 @@
             }
         }
 
-        function navigate(pageId) { toggleMenu(); switchPage(pageId); }
+        function navigate(pageId) { 
+            toggleMenu(); 
+            switchPage(pageId); 
+        }
 
         function timeAgo(dateString) {
             if (!dateString || dateString === "Just now") return "Just now";
@@ -275,11 +282,12 @@
                 allPosts = data; 
                 renderPosts(allPosts); 
                 renderCategoryGrids();
-                
-                // Check if URL has hash for direct post sharing/linking
                 checkUrlHash();
             })
-            .catch(err => console.error("Error loading posts:", err));
+            .catch(err => {
+                console.error("Error loading posts:", err);
+                document.getElementById('home-grid').innerHTML = `<div class="empty-state">⚠️ posts.json ဖိုင်ကို ရှာမတွေ့ပါ။ လမ်းကြောင်းစစ်ဆေးပါ။</div>`;
+            });
 
         window.addEventListener('hashchange', checkUrlHash);
 
@@ -298,7 +306,7 @@
 
             return `
                 <div class="card" onclick="openPost('${post.id}', true)">
-                    <img src="${post.image}" alt="${post.title}">
+                    <img src="${post.image}" alt="${post.title}" onerror="this.src='https://via.placeholder.com/300x160?text=No+Image'">
                     <div class="card-content">
                         <div class="card-title">${post.title}</div>
                         <div class="card-desc">${post.shortDesc}</div>
@@ -313,9 +321,10 @@
 
         function renderPosts(postsToRender) {
             const homeGrid = document.getElementById('home-grid');
+            if(!homeGrid) return;
             homeGrid.innerHTML = '';
 
-            if (postsToRender.length === 0) {
+            if (!postsToRender || postsToRender.length === 0) {
                 homeGrid.innerHTML = `<div class="empty-state">🔍 No addons found matching your search.</div>`;
                 return;
             }
@@ -326,10 +335,5 @@
         }
 
         function renderCategoryGrids() {
-            document.getElementById('addon-grid').innerHTML = allPosts.filter(p => p.category === 'addon').map(createCardHTML).join('');
-            document.getElementById('shader-grid').innerHTML = allPosts.filter(p => p.category === 'shader').map(createCardHTML).join('');
-            document.getElementById('map-grid').innerHTML = allPosts.filter(p => p.category === 'map').map(createCardHTML).join('');
-        }
-
-        function filterCategory(cat, element) {
-         
+            const addonGrid = document.getElementById('addon-grid');
+           
