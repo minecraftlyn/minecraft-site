@@ -161,18 +161,6 @@
         <button class="search-icon-btn" onclick="switchPage('home')"><i class="fa-solid fa-magnifying-glass"></i></button>
     </header>
 
-    <!-- Nav Overlay Menu -->
-    <div class="nav-overlay" id="navOverlay">
-        <button class="close-btn" onclick="toggleMenu()"><i class="fa-solid fa-xmark"></i></button>
-        <ul class="nav-links">
-            <li><a onclick="navigate('home')"><i class="fa-solid fa-house"></i> Home</a></li>
-            <li><a onclick="navigate('saved')"><i class="fa-solid fa-heart"></i> Saved Resources</a></li>
-            <li><a onclick="surpriseMe()"><i class="fa-solid fa-shuffle"></i> Surprise Me</a></li>
-            <li><a onclick="navigate('servers')"><i class="fa-solid fa-server"></i> Featured Servers</a></li>
-            <li><a onclick="navigate('about')"><i class="fa-solid fa-circle-info"></i> About Us</a></li>
-        </ul>
-    </div>
-
     <div class="main-container">
         <!-- HOME PAGE -->
         <div id="home-page" class="page-section active">
@@ -248,29 +236,91 @@
             <div class="section-title">ℹ️ Welcome to Minecraft LYN — Your Ultimate Bedrock Resource Hub</div>
             <div class="info-block" style="line-height: 1.8;">
                 <p style="margin-bottom: 15px;">Welcome to <b>Minecraft LYN</b>, the premier digital ecosystem built explicitly for Minecraft Bedrock Edition (MCPE) enthusiasts, creators, and gamers worldwide. We are a dedicated, community-driven platform engineered to elevate your block-building adventures by offering a curated catalog of high-quality addons, stunning shaders, custom maps, immersive texture packs, refined UI overlays, and indispensable game utilities.</p>
-                <p style="margin-bottom: 15px;">At Minecraft LYN, our ethos revolves around one fundamental mission: <b>To simplify, accelerate, and enrich the way Bedrock players discover and download their favorite game modifications.</b></p>
+                <p style="margin-bottom: 15px;">At Minecraft LYN, our ethos revolves around one fundamental mission: <b>To simplify, accelerate, and enrich the way Bedrock players discover and experience custom Minecraft content.</b></p>
+
+                <h4 style="color: var(--cyan); margin: 20px 0 10px 0;">The Problem We Solve</h4>
+                <p style="margin-bottom: 15px;">Finding the exact resource that matches your specific device (Mobile, Console, Windows), game version, and personal gameplay preference shouldn't feel like a chore. <b>Minecraft LYN bridges this gap.</b> We consolidate the finest Bedrock resources into one sleek, highly organized, and reliable dynamic directory—ensuring that you get transparent details on everything before hitting the download button.</p>
+
+                <h4 style="color: var(--cyan); margin: 20px 0 10px 0;">What You Will Discover on Minecraft LYN</h4>
+                <ul class="feature-list-ui" style="margin-bottom: 15px;">
+                    <li><i class="fa-solid fa-puzzle-piece"></i> <b>Gameplay Addons & Mods:</b> Transform survival with new entity behaviors, custom mobs, weaponry, automated machinery, and quality-of-life utilities.</li>
+                    <li><i class="fa-solid fa-wand-magic-sparkles"></i> <b>Shaders & Visual FX:</b> Atmospheric lighting, dynamic shadows, realistic water reflections, swaying vegetation, custom skies, and optimized performance shaders.</li>
+                    <li><i class="fa-solid fa-map"></i> <b>Custom Maps & Worlds:</b> Breathtaking landscapes, parkour courses, mini-games, story-driven adventure maps, automated redstone creations, and survival spawns.</li>
+                    <li><i class="fa-solid fa-image"></i> <b>Texture & Resource Packs:</b> High-definition realistic textures, low-poly designs, retro graphics, and PVP-optimized resource packs.</li>
+                    <li><i class="fa-solid fa-desktop"></i> <b>Custom UI & HUD Packs:</b> Overhaul in-game menus, inventory screens, status bars, and buttons for a cleaner user experience.</li>
+                    <li><i class="fa-solid fa-screwdriver-wrench"></i> <b>Creator Tools & Practical Guides:</b> Helpful tutorials, installation guides, and utility tools for seamless modding.</li>
+                </ul>
+
+                <h4 style="color: var(--cyan); margin: 20px 0 10px 0;">Introducing LYN DROP — Curated Highlights</h4>
+                <p style="margin-bottom: 15px;">To help you discover hidden gems without searching through hundreds of pages, we created <b>LYN DROP</b>. LYN DROP is our signature highlight showcase—a curated spotlight featuring hand-picked content, trending community releases, game-changing updates, and editor-recommended packs.</p>
+
+                <h4 style="color: var(--cyan); margin: 20px 0 10px 0;">Commitment to Safe & Seamless Downloads</h4>
+                <p style="margin-bottom: 15px;">Your device security and peace of mind are top priorities. Minecraft LYN strives to maintain a clean, transparent downloading process without misleading redirection paths or hidden scripts.</p>
+
+                <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid var(--border); text-align: center;">
+                    <blockquote style="font-style: italic; color: var(--text-main); margin-bottom: 15px;">
+                        "Minecraft LYN is more than a resource website. We are building a community, one update at a time."
+                    </blockquote>
+                    <p style="font-weight: bold; color: var(--cyan);">Minecraft LYN — Explore. Download. Play. Create.</p>
+                    
+                    <div style="display: flex; gap: 15px; margin-top: 15px; font-size: 22px; justify-content: center;">
+                        <a href="https://t.me/minecraftlynweb" target="_blank" style="color: var(--cyan);"><i class="fa-brands fa-telegram"></i></a>
+                        <a href="https://www.facebook.com/share/14nfNZ1pyvm/" target="_blank" style="color: var(--cyan);"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="https://www.youtube.com/@LYNcrafrerMC" target="_blank" style="color: var(--cyan);"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="https://discord.gg/CXQvqRsvH" target="_blank" style="color: var(--cyan);"><i class="fa-brands fa-discord"></i></a>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <!-- POST DETAIL PAGE -->
+        <!-- DETAIL PAGE -->
         <div id="post-detail-page" class="page-section">
-            <button class="back-btn" onclick="switchPage('home')"><i class="fa-solid fa-arrow-left"></i> Back to Home</button>
+            <div class="breadcrumbs">
+                <a onclick="switchPage('home')">Home</a> » <span id="bcCategory">Addon</span> » <span id="bcTitle" style="color:var(--text-main);">Post</span>
+            </div>
+            <button class="back-btn" onclick="switchPage('home')"><i class="fa-solid fa-arrow-left"></i> Back to Explore</button>
             <div id="post-detail-content"></div>
         </div>
-
     </div>
 
-    <!-- Lightbox Modal -->
+    <!-- LIGHTBOX MODAL -->
     <div class="lightbox" id="lightbox" onclick="closeLightbox()">
         <span class="lightbox-close">&times;</span>
-        <img id="lightboxImg" src="" alt="Preview">
+        <img id="lightboxImg">
+    </div>
+
+    <!-- MENU OVERLAY -->
+    <div class="nav-overlay" id="navOverlay">
+        <button class="close-btn" onclick="toggleMenu()"><i class="fa-solid fa-xmark"></i></button>
+        <ul class="nav-links">
+            <li><a onclick="navigate('home')"><i class="fa-solid fa-house"></i> Home</a></li>
+            <li><a onclick="navigate('addon')"><i class="fa-solid fa-puzzle-piece"></i> Addons</a></li>
+            <li><a onclick="navigate('shader')"><i class="fa-solid fa-wand-magic-sparkles"></i> Shaders</a></li>
+            <li><a onclick="navigate('map')"><i class="fa-solid fa-map-location-dot"></i> Maps</a></li>
+            <li><a onclick="navigate('saved')"><i class="fa-solid fa-bookmark"></i> Saved Resources</a></li>
+            <li><a onclick="navigate('servers')"><i class="fa-solid fa-server"></i> Minecraft Servers</a></li>
+            <li><a onclick="navigate('about')"><i class="fa-solid fa-circle-info"></i> About Us</a></li>
+            <li><a onclick="surpriseMe()"><i class="fa-solid fa-dice"></i> Surprise Me!</a></li>
+        </ul>
+        <div class="social-icons-menu">
+            <a href="https://t.me/minecraftlynweb" target="_blank"><i class="fa-brands fa-telegram"></i></a>
+            <a href="https://www.facebook.com/share/14nfNZ1pyvm/" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+            <a href="https://www.youtube.com/@LYNcrafrerMC" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+            <a href="https://discord.gg/CXQvqRsvH" target="_blank"><i class="fa-brands fa-discord"></i></a>
+        </div>
     </div>
 
     <footer>
-        <div>© 2026 Minecraft LYN. All Rights Reserved.</div>
+        <div class="footer-social">
+            <a href="https://t.me/minecraftlynweb" target="_blank"><i class="fa-brands fa-telegram"></i></a>
+            <a href="https://www.facebook.com/share/14nfNZ1pyvm/" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+            <a href="https://www.youtube.com/@LYNcrafrerMC" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+            <a href="https://discord.gg/CXQvqRsvH" target="_blank"><i class="fa-brands fa-discord"></i></a>
+        </div>
+        <p><b>MINECRAFT LYN</b> — Best Bedrock Resource Platform</p>
+        <p style="margin-top: 6px; opacity: 0.6;">&copy; 2026 Minecraft LYN. All rights reserved.</p>
     </footer>
 
-    <!-- JAVASCRIPT LOGIC -->
     <script>
         let allPosts = [];
         let currentCategory = 'all';
@@ -288,6 +338,10 @@
                 if(history.pushState) history.pushState("", document.title, window.location.pathname);
             } else if(pageId === 'saved') {
                 renderSavedGrid();
+            } else if(pageId === 'about') {
+                document.getElementById('page-title').innerText = "About Us - Minecraft LYN";
+            } else if(pageId === 'servers') {
+                document.getElementById('page-title').innerText = "Minecraft Servers - Minecraft LYN";
             }
         }
 
@@ -314,7 +368,7 @@
                 saved.push(postId);
             }
             localStorage.setItem('saved_posts', JSON.stringify(saved));
-            handleSearch();
+            renderPosts(allPosts);
             renderTrendingAndRising();
             if(document.getElementById('saved-page').classList.contains('active')) renderSavedGrid();
         }
@@ -331,6 +385,7 @@
                 renderPosts(allPosts); 
                 renderTrendingAndRising();
                 renderLynDrop();
+                renderCategoryGrids();
                 checkUrlHash();
             })
             .catch(err => {
@@ -429,7 +484,12 @@
             }
         }
 
-        // CATEGORY FILTER FIX FUNCTION
+        function renderCategoryGrids() {
+            document.getElementById('addon-grid').innerHTML = allPosts.filter(p => p.category === 'addon').map(p => createCardHTML(p)).join('');
+            document.getElementById('shader-grid').innerHTML = allPosts.filter(p => p.category === 'shader').map(p => createCardHTML(p)).join('');
+            document.getElementById('map-grid').innerHTML = allPosts.filter(p => p.category === 'map').map(p => createCardHTML(p)).join('');
+        }
+
         function filterCategory(cat, element) {
             currentCategory = cat;
             document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
@@ -437,24 +497,13 @@
             handleSearch();
         }
 
-        // SEARCH & FILTER LOGIC
         function handleSearch() {
-            const searchInput = document.getElementById('searchInput');
-            const query = searchInput ? searchInput.value.toLowerCase().trim() : '';
-            
-            let filtered = [...allPosts];
-
-            if (currentCategory !== 'all') {
-                filtered = filtered.filter(p => p.category && p.category.toLowerCase() === currentCategory.toLowerCase());
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            let filtered = allPosts;
+            if (currentCategory !== 'all') filtered = filtered.filter(p => p.category === currentCategory);
+            if (query.trim() !== '') {
+                filtered = filtered.filter(p => p.title.toLowerCase().includes(query) || p.shortDesc.toLowerCase().includes(query));
             }
-
-            if (query !== '') {
-                filtered = filtered.filter(p => 
-                    p.title.toLowerCase().includes(query) || 
-                    (p.shortDesc && p.shortDesc.toLowerCase().includes(query))
-                );
-            }
-
             renderPosts(filtered);
         }
 
@@ -479,6 +528,8 @@
             if (updateHash) window.location.hash = 'post/' + post.id;
 
             document.getElementById('page-title').innerText = post.title + " - Minecraft LYN";
+            document.getElementById('bcCategory').innerText = (post.category || 'addon').toUpperCase();
+            document.getElementById('bcTitle').innerText = post.title;
 
             let views = parseInt(localStorage.getItem('views_' + post.id) || post.views || 0) + 1;
             localStorage.setItem('views_' + post.id, views);
