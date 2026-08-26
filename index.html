@@ -97,7 +97,6 @@
 
         .empty-state { text-align: center; padding: 40px 20px; color: var(--text-sub); font-size: 15px; grid-column: 1 / -1; }
 
-        /* DETAIL PAGE ADVANCED STYLES */
         .breadcrumbs { font-size: 12px; color: var(--text-sub); margin-bottom: 15px; display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
         .breadcrumbs a { color: var(--cyan); text-decoration: none; cursor: pointer; }
         .back-btn { background: var(--card-bg); border: 1px solid var(--border); color: var(--text-sub); padding: 8px 18px; border-radius: 20px; cursor: pointer; margin-bottom: 15px; font-size: 13px; font-weight: 600; display: inline-flex; align-items: center; gap: 6px; }
@@ -118,7 +117,6 @@
         .detail-section-title { font-size: 16px; font-weight: bold; color: var(--cyan); margin: 25px 0 12px 0; display: flex; align-items: center; gap: 8px; }
         .info-block { background: var(--card-bg); border: 1px solid var(--border); padding: 18px; border-radius: 12px; font-size: 14px; color: var(--text-sub); line-height: 1.6; }
 
-        /* ADVANCED DETAIL COMPONENTS */
         .feature-list-ui { list-style: none; }
         .feature-list-ui li { padding: 8px 0; border-bottom: 1px solid rgba(43, 58, 82, 0.5); display: flex; align-items: center; gap: 10px; color: var(--text-main); }
         .feature-list-ui li:last-child { border-bottom: none; }
@@ -200,6 +198,41 @@
         <div id="map-page" class="page-section"><div class="section-title">🗺️ Minecraft Maps</div><div class="card-grid" id="map-grid"></div></div>
         <div id="saved-page" class="page-section"><div class="section-title">❤️ Saved Resources</div><div class="card-grid" id="saved-grid"></div></div>
 
+        <!-- SERVERS PAGE -->
+        <div id="servers-page" class="page-section">
+            <div class="section-title">🌐 Minecraft 24/7 Servers</div>
+            <div class="info-block" style="text-align: center; padding: 40px 20px;">
+                <i class="fa-solid fa-server" style="font-size: 48px; color: var(--cyan); margin-bottom: 15px;"></i>
+                <h3 style="color: var(--text-main); margin-bottom: 8px;">Official Servers Coming Soon!</h3>
+                <p style="color: var(--text-sub); font-size: 13px;">
+                    ကျနော်တို့ရဲ့ 24/7 Minecraft Bedrock & Java Crossplay Servers များကို မကြာမီ အချိန်အတွင်း ဖွင့်လှစ်ပြသသွားပါမည်။
+                </p>
+            </div>
+        </div>
+
+        <!-- ABOUT US PAGE -->
+        <div id="about-page" class="page-section">
+            <div class="section-title">ℹ️ About Minecraft LYN</div>
+            <div class="info-block" style="line-height: 1.8;">
+                <h3 style="color: var(--cyan); margin-bottom: 10px;">Welcome to Minecraft LYN!</h3>
+                <p style="margin-bottom: 12px;">
+                    <b>Minecraft LYN</b> သည် Minecraft Bedrock (MCPE) Player များအတွက် အကောင်းဆုံး Addons, Shaders, Maps နဲ့ Textures များကို တစ်နေရာတည်းမှာ လွယ်ကူစွာ ရှာဖွေဒေါင်းလုဒ်ဆွဲနိုင်ရန် ပြုလုပ်ထားသော Platform ဖြစ်ပါတယ်။
+                </p>
+                <p style="margin-bottom: 12px;">
+                    ကျွန်ုပ်တို့၏ ရည်ရွယ်ချက်မှာ Safe, Fast & Direct Downloads များကို ကောင်းမွန်သော User Experience နှင့်အတူ ဝန်ဆောင်မှုပေးရန် ဖြစ်ပါသည်။
+                </p>
+                <div style="margin-top: 20px; padding-top: 15px; border-top: 1px solid var(--border);">
+                    <b>Follow Us:</b>
+                    <div style="display: flex; gap: 12px; margin-top: 10px; font-size: 20px;">
+                        <a href="https://t.me/minecraftlynweb" target="_blank" style="color: var(--cyan);"><i class="fa-brands fa-telegram"></i></a>
+                        <a href="https://www.facebook.com/share/14nfNZ1pyvm/" target="_blank" style="color: var(--cyan);"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="https://www.youtube.com/@LYNcrafrerMC" target="_blank" style="color: var(--cyan);"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="https://discord.gg/CXQvqRsvH" target="_blank" style="color: var(--cyan);"><i class="fa-brands fa-discord"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- DETAIL PAGE -->
         <div id="post-detail-page" class="page-section">
             <div class="breadcrumbs">
@@ -225,6 +258,8 @@
             <li><a onclick="navigate('shader')"><i class="fa-solid fa-wand-magic-sparkles"></i> Shaders</a></li>
             <li><a onclick="navigate('map')"><i class="fa-solid fa-map-location-dot"></i> Maps</a></li>
             <li><a onclick="navigate('saved')"><i class="fa-solid fa-bookmark"></i> Saved Resources</a></li>
+            <li><a onclick="navigate('servers')"><i class="fa-solid fa-server"></i> Minecraft Servers</a></li>
+            <li><a onclick="navigate('about')"><i class="fa-solid fa-circle-info"></i> About Us</a></li>
             <li><a onclick="surpriseMe()"><i class="fa-solid fa-dice"></i> Surprise Me!</a></li>
         </ul>
         <div class="social-icons-menu">
@@ -263,6 +298,10 @@
                 if(history.pushState) history.pushState("", document.title, window.location.pathname);
             } else if(pageId === 'saved') {
                 renderSavedGrid();
+            } else if(pageId === 'about') {
+                document.getElementById('page-title').innerText = "About Us - Minecraft LYN";
+            } else if(pageId === 'servers') {
+                document.getElementById('page-title').innerText = "Minecraft Servers - Minecraft LYN";
             }
         }
 
@@ -443,7 +482,6 @@
 
         function closeLightbox() { document.getElementById('lightbox').classList.remove('active'); }
 
-        /* ADVANCED DETAIL PAGE RENDERING */
         function openPost(postId, updateHash = true) {
             const post = allPosts.find(p => p.id === postId);
             if (!post) return;
@@ -457,14 +495,12 @@
             localStorage.setItem('views_' + post.id, views);
             let downloads = parseInt(localStorage.getItem('dl_' + post.id) || post.downloads || 0);
 
-            // 1. Experimental Warning Block
             let expHTML = post.experimental ? `
                 <div class="exp-warning-box">
                     <i class="fa-solid fa-triangle-exclamation" style="font-size:18px;"></i>
                     <div><b>Experimental Features Required:</b> ${post.experimentalNote || 'Turn on Experimental Gameplay features in world settings.'}</div>
                 </div>` : '';
 
-            // 2. Features List Block
             let featuresHTML = '';
             if (post.features && post.features.length > 0) {
                 let items = post.features.map(f => `<li><i class="fa-solid fa-check"></i> ${f}</li>`).join('');
@@ -473,7 +509,6 @@
                     <div class="info-block"><ul class="feature-list-ui">${items}</ul></div>`;
             }
 
-            // 3. Supported Versions Block
             let supportedVerHTML = '';
             if (post.supportedVersions && post.supportedVersions.length > 0) {
                 let chips = post.supportedVersions.map(v => `<span class="version-chip">✓ ${v}</span>`).join('');
@@ -484,14 +519,12 @@
                     </div>`;
             }
 
-            // 4. Screenshots Block
             let screenshotsHTML = '';
             if (post.screenshots && post.screenshots.length > 0) {
                 let imgList = post.screenshots.map(s => `<img src="${s}" onclick="openLightbox('${s}')">`).join('');
                 screenshotsHTML = `<div class="detail-section-title"><i class="fa-solid fa-camera"></i> SCREENSHOTS</div><div class="screenshots-grid">${imgList}</div>`;
             }
 
-            // 5. Changelog Block
             let changelogHTML = '';
             if (post.changelog && post.changelog.length > 0) {
                 let logs = post.changelog.map(log => `
