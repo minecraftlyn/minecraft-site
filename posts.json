@@ -1,5 +1,45 @@
 [
    {
+    "id": "emotion-mask-addon",
+    "title": "Emotion Mask Addon",
+    "category": "addon",
+    "shortDesc": "Express your emotions in Minecraft Bedrock with custom interactive emotion masks!",
+    "fullReview": "The Emotion Mask Addon introduces unique, wearable masks that allow players to display various emotional expressions right inside Minecraft Bedrock. Perfect for roleplay, multiplayer servers, and fun gameplay moments with friends!",
+    "image": "https://raw.githubusercontent.com/minecraftlyn/Mcphoto/main/Emotion-Mask-Addon-Thumbnail.jpg",
+    "downloadLink": "https://github.com/minecraftlyn/Mcphoto/raw/9d6f8391ced9094fed7accec8a207bec698f3c56/Emotion-Mask-Addon-26x.mcaddon",
+    "fileFormat": ".mcaddon",
+    "addonVersion": "v1.0",
+    "mcVersion": "1.21+",
+    "platform": "Bedrock / MCPE",
+    "creator": "Minecraft LYN",
+    "fileSize": "N/A",
+    "downloads": 0,
+    "views": 0,
+    "date": "2026-08-27",
+    "experimental": true,
+    "experimentalNote": "Turn on Holiday Creator Features & Custom Biomes in World Settings.",
+    "features": [
+      "Multiple unique Emotion Masks to craft and wear",
+      "Express different emotions visually in multiplayer",
+      "Compatible with Minecraft Bedrock 1.21+",
+      "Easy installation with direct .mcaddon file"
+    ],
+    "supportedVersions": [
+      "1.21",
+      "1.21.20"
+    ],
+    "screenshots": [],
+    "changelog": [
+      {
+        "version": "v1.0",
+        "date": "2026-08-27",
+        "changes": [
+          "Initial release of Emotion Mask Addon"
+        ]
+      }
+    ]
+  },
+  {
     "id": "prisma-bedrock-shader-pack",
     "title": "PRISMA [Bedrock] Shader Pack",
     "category": "shader",
