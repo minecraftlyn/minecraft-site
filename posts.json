@@ -9,24 +9,24 @@
     "downloadLink": "https://github.com/minecraftlyn/Mcphoto/raw/9d6f8391ced9094fed7accec8a207bec698f3c56/Emotion-Mask-Addon-26x.mcaddon",
     "fileFormat": ".mcaddon",
     "addonVersion": "v1.0",
-    "mcVersion": "1.21+",
+    "mcVersion": "1.26+",
     "platform": "Bedrock / MCPE",
     "creator": "Minecraft LYN",
     "fileSize": "N/A",
-    "downloads": 0,
-    "views": 0,
+    "downloads": 100,
+    "views": 100,
     "date": "2026-08-27",
     "experimental": true,
     "experimentalNote": "Turn on Holiday Creator Features & Custom Biomes in World Settings.",
     "features": [
       "Multiple unique Emotion Masks to craft and wear",
       "Express different emotions visually in multiplayer",
-      "Compatible with Minecraft Bedrock 1.21+",
+      "Compatible with Minecraft Bedrock 1.26+",
       "Easy installation with direct .mcaddon file"
     ],
     "supportedVersions": [
-      "1.21",
-      "1.21.20"
+      "1.26",
+      "1.26.."
     ],
     "screenshots": [],
     "changelog": [
@@ -94,8 +94,8 @@
     "rising": false,
     "status": "new",
     "downloadLink": "https://github.com/minecraftlyn/Mcphoto/raw/refs/heads/main/PrizmaVisuals%201.3.10.mcpack",
-    "views": 95,
-    "downloads": 15,
+    "views": 99,
+    "downloads": 100,
     "date": "2026-08-27",
     "lastUpdated": "2026-08-27",
     "changelog": [
