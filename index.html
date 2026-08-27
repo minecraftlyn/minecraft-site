@@ -324,6 +324,19 @@
     <script>
         let allPosts = [];
         let currentCategory = 'all';
+    
+    function filterCategory(category, el) {
+        document.querySelectorAll('.category-chips .chip').forEach(c => c.classList.remove('active'));
+        if (el) el.classList.add('active');
+
+        currentCategory = category;
+        if (category === 'all') {
+            renderPosts(allPosts);
+        } else {
+            const filtered = allPosts.filter(p => p.category && p.category.toLowerCase() === category.toLowerCase());
+            renderPosts(filtered);
+        }
+    }
 
         function toggleMenu() { document.getElementById('navOverlay').classList.toggle('active'); }
         
