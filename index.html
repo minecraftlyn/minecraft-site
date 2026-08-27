@@ -326,31 +326,39 @@
         let currentCategory = 'all';
     
         function filterCategory(category, el) {
-        document.querySelectorAll('.category-chips .chip').forEach(c => c.classList.remove('active'));
-        if (el) el.classList.add('active');
+    document.querySelectorAll('.category-chips .chip').forEach(c => c.classList.remove('active'));
+    if (el) el.classList.add('active');
 
-        const trendingSection = document.getElementById('trending-grid')?.previousElementSibling;
-        const risingSection = document.getElementById('rising-grid')?.previousElementSibling;
-        const trendingGrid = document.getElementById('trending-grid');
-        const risingGrid = document.getElementById('rising-grid');
+    // Title နှင့် Grid နှစ်ခုစလုံး ပါသော Container များကို ဖျောက်ရန်
+    const trendingSection = document.getElementById('trending-grid')?.closest('.section-title, div');
+    const risingSection = document.getElementById('rising-grid')?.closest('.section-title, div');
+    const trendingGrid = document.getElementById('trending-grid');
+    const risingGrid = document.getElementById('rising-grid');
 
-        currentCategory = category;
-        if (category === 'all') {
-            if (trendingSection) trendingSection.style.display = 'block';
-            if (risingSection) risingSection.style.display = 'block';
-            if (trendingGrid) trendingGrid.style.display = 'grid';
-            if (risingGrid) risingGrid.style.display = 'grid';
-            renderPosts(allPosts);
-        } else {
-            if (trendingSection) trendingSection.style.display = 'none';
-            if (risingSection) risingSection.style.display = 'none';
-            if (trendingGrid) trendingGrid.style.display = 'none';
-            if (risingGrid) risingGrid.style.display = 'none';
+    // Section Title စာသားများကို ရှာရန်
+    const sectionTitles = document.querySelectorAll('.section-title');
 
-            const filtered = allPosts.filter(p => p.category && p.category.toLowerCase() === category.toLowerCase());
-            renderPosts(filtered);
-        }
+    currentCategory = category;
+    if (category === 'all') {
+        sectionTitles.forEach(title => title.style.display = 'block');
+        if (trendingGrid) trendingGrid.style.display = 'grid';
+        if (risingGrid) risingGrid.style.display = 'grid';
+        renderPosts(allPosts);
+    } else {
+        // Trending Now နှင့် Rising Resources စာသားများနှင့် Grid များကို ဖျောက်မည်
+        sectionTitles.forEach(title => {
+            if (!title.innerText.includes('Latest Updates')) {
+                title.style.display = 'none';
+            }
+        });
+        if (trendingGrid) trendingGrid.style.display = 'none';
+        if (risingGrid) risingGrid.style.display = 'none';
+
+        const filtered = allPosts.filter(p => p.category && p.category.toLowerCase() === category.toLowerCase());
+        renderPosts(filtered);
     }
+}
+
 
         function toggleMenu() { document.getElementById('navOverlay').classList.toggle('active'); }
         
