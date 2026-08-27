@@ -1,4 +1,74 @@
 [
+   {
+    "id": "prisma-bedrock-shader-pack",
+    "title": "PRISMA [Bedrock] Shader Pack",
+    "category": "shader",
+    "shortDesc": "A colorful Minecraft Bedrock texture pack designed around a vibrant prism-themed visual style with redesigned GUI and controls.",
+    "fullReview": "PRISMA is a colorful Minecraft Bedrock texture pack designed around a vibrant prism-themed visual style. It gives Minecraft a fresh and eye-catching appearance with bright colors, pink and purple tones, and a redesigned interface.\n\nThe pack focuses mainly on the game's visual interface rather than completely replacing every Minecraft texture. It includes a redesigned Start Screen, Settings Screen, buttons, GUI, hotbar, and different control layouts for mobile players.\n\nOne of the strongest points of PRISMA is its consistent visual style. The colorful interface combined with the redesigned HUD gives Minecraft a much more unique and modern feeling while keeping the basic Minecraft gameplay familiar.\n\nPerformance:\nBecause PRISMA is a 16x texture/UI pack, it is relatively lightweight compared with high-resolution texture packs. It can be a good option for players who want a colorful visual upgrade without using an extremely heavy texture pack.\n\nRating: 8.5/10",
+    "image": "https://raw.githubusercontent.com/minecraftlyn/Mcphoto/main/description_c735b139-3e11-48f5-9ad2-356b58675082.png",
+    "screenshots": [
+      "https://raw.githubusercontent.com/minecraftlyn/Mcphoto/main/description_84ceab17-9038-4e2b-b28d-f15acad3e01b.png",
+      "https://raw.githubusercontent.com/minecraftlyn/Mcphoto/main/description_8c4f0421-be5f-42fb-8e19-903f6a4ed7b8.png",
+      "https://raw.githubusercontent.com/minecraftlyn/Mcphoto/main/description_cb638e8b-f550-473a-b3b2-176a2bafa0b0.png"
+    ],
+    "mcVersion": "1.18 - 1.21",
+    "supportedVersions": [
+      "1.18",
+      "1.18.10",
+      "1.18.12",
+      "1.18.30",
+      "1.18.31",
+      "1.20",
+      "1.20.1",
+      "1.20.40",
+      "1.20.50+",
+      "1.20.80",
+      "1.21"
+    ],
+    "addonVersion": "1.3.10",
+    "platform": "Bedrock / MCPE",
+    "fileFormat": ".mcpack",
+    "fileSize": "16x Resolution",
+    "creator": "znygames",
+    "tags": [
+      "shader",
+      "texture",
+      "gui",
+      "ui",
+      "prism"
+    ],
+    "features": [
+      "Vibrant prism-themed visuals (pink & purple tones)",
+      "Redesigned Start Screen & Settings Screen",
+      "Custom buttons, GUI, and hotbar",
+      "Multiple control layouts (Joystick, D-Pad, Tap controls)",
+      "Lightweight 16x resolution optimized for mobile devices"
+    ],
+    "requirements": [
+      "Minecraft Bedrock 1.18+"
+    ],
+    "experimental": false,
+    "experimentalNote": "",
+    "featured": true,
+    "trending": true,
+    "rising": false,
+    "status": "new",
+    "downloadLink": "https://github.com/minecraftlyn/Mcphoto/raw/refs/heads/main/PrizmaVisuals%201.3.10.mcpack",
+    "views": 95,
+    "downloads": 15,
+    "date": "2026-08-27",
+    "lastUpdated": "2026-08-27",
+    "changelog": [
+      {
+        "version": "1.3.10",
+        "date": "2026-08-27",
+        "changes": [
+          "Prism UI updates",
+          "Minecraft 1.21 Bedrock support"
+        ]
+      }
+    ]
+  },
   {
     "id": "irritator-dweller-addon",
     "title": "IRRITATOR DWELLER",
