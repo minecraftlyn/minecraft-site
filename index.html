@@ -152,7 +152,23 @@
     </style>
 </head>
 <body>
+<script>
+  const SUPABASE_URL = 'https://ajdycfejspyolnzsacwv.supabase.co';
+  const SUPABASE_KEY = 'sb_publishable_JmaK4GoZnrcp-yLno3n8Tg_Fx89cg1E';
+  const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
+  async function loadResources() {
+    const { data, error } = await supabase.from('resources').select('*');
+    if (error) {
+      console.error('Error:', error.message);
+      return;
+    }
+    console.log('Fetched Data:', data);
+  }
+
+  document.addEventListener('DOMContentLoaded', loadResources);
+</script>
+    
     <header>
         <button class="menu-btn" onclick="toggleMenu()"><i class="fa-solid fa-bars"></i></button>
         <img src="https://raw.githubusercontent.com/minecraftlyn/Mcphoto/fadf178b72cb6a942deb3105ba06118e7a2d030f/bitmap2216761670976185018.png" alt="Minecraft LYN" class="logo-img" onclick="switchPage('home')">
