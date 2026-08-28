@@ -158,16 +158,47 @@
   const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
   async function loadResources() {
-    const { data, error } = await supabase.from('resources').select('*');
+    const { data: posts, error } = await supabase
+      .from('posts')
+      .select('*')
+      .order('id', { ascending: false });
+
     if (error) {
-      console.error('Error:', error.message);
+      console.error('Error fetching data:', error.message);
       return;
     }
-    console.log('Fetched Data:', data);
+
+    const homeGrid = document.getElementById('home-grid');
+    if (!homeGrid) return;
+
+    if (!posts || posts.length === 0) {
+      homeGrid.innerHTML = '<div class="empty-state">No resources uploaded yet.</div>';
+      return;
+    }
+
+    homeGrid.innerHTML = '';
+
+    posts.forEach(item => {
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.innerHTML = `
+        <img src="${item.image || 'https://via.placeholder.com/300x160'}" class="card-img" alt="${item.title}">
+        <div class="card-content">
+          <div class="card-title">${item.title}</div>
+          <div class="card-desc">${item.description || ''}</div>
+          <div class="card-footer">
+            <span class="badge">${item.category || 'Resource'}</span>
+            <a href="${item.download_url || '#'}" target="_blank" style="color: var(--cyan); text-decoration: none; font-weight: bold;">Download</a>
+          </div>
+        </div>
+      `;
+      homeGrid.appendChild(card);
+    });
   }
 
   document.addEventListener('DOMContentLoaded', loadResources);
 </script>
+    
     
     <header>
         <button class="menu-btn" onclick="toggleMenu()"><i class="fa-solid fa-bars"></i></button>
