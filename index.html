@@ -2,414 +2,982 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
 <meta name="theme-color" content="#0B1426">
-<meta name="description" content="Minecraft LYN - Premium Minecraft Bedrock addons, shaders, maps and resources.">
-<title id="page-title">Minecraft LYN - Premium Bedrock Resources</title>
+<meta name="description" content="Minecraft LYN - Minecraft Bedrock addons, shaders, maps and resources.">
+<title>Minecraft LYN - Premium Bedrock Resources</title>
 
 <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
 <style>
 :root{
- --bg:#0B1426;
- --card:#1A273B;
- --card2:#111D31;
- --cyan:#00D9FF;
- --text:#F1F5F9;
- --sub:#94A3B8;
- --border:#2B3A52;
- --danger:#FF4757;
- --warning:#FF9800;
- --success:#35D07F;
- --glow:0 0 18px rgba(0,217,255,.32);
+  --bg:#08111f;
+  --bg2:#0d1829;
+  --card:#17263a;
+  --card2:#1d3048;
+  --cyan:#00d9ff;
+  --cyan2:#00aeda;
+  --text:#f1f5f9;
+  --muted:#91a2b8;
+  --border:#263a55;
+  --danger:#ff4757;
+  --warning:#ffb020;
+  --success:#35d07f;
+  --shadow:0 12px 35px rgba(0,0,0,.28);
+  --glow:0 0 22px rgba(0,217,255,.28);
 }
+
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{
- background:var(--bg);color:var(--text);
- font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
- line-height:1.6;min-height:100vh;
+  min-height:100vh;background:var(--bg);color:var(--text);
+  font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+  line-height:1.55;
 }
 button,input{font:inherit}
 button{cursor:pointer}
 a{text-decoration:none;color:inherit}
-header{
- height:66px;background:rgba(11,20,38,.96);
- backdrop-filter:blur(14px);
- border-bottom:1px solid var(--border);
- display:flex;align-items:center;justify-content:space-between;
- padding:0 22px;position:sticky;top:0;z-index:500;
+.hidden{display:none!important}
+
+/* HEADER */
+.site-header{
+  position:sticky;top:0;z-index:900;height:68px;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 22px;background:rgba(8,17,31,.94);
+  backdrop-filter:blur(16px);border-bottom:1px solid var(--border);
 }
-.logo-img{height:38px;max-width:150px;object-fit:contain;cursor:pointer}
-.icon-btn{
- background:none;border:0;color:var(--cyan);font-size:24px;
- width:42px;height:42px;border-radius:10px;display:grid;place-items:center;
- transition:.2s
+.header-btn{
+  width:42px;height:42px;border:0;background:transparent;color:var(--cyan);
+  font-size:23px;border-radius:50%;display:grid;place-items:center;
 }
-.icon-btn:hover{background:rgba(0,217,255,.08);transform:scale(1.06)}
-.main{max-width:1050px;margin:auto;padding:20px 15px 55px;min-height:calc(100vh - 130px)}
-.page{display:none}.page.active{display:block}
+.header-btn:active{transform:scale(.94)}
+.logo{height:40px;width:auto;object-fit:contain;cursor:pointer}
+
+/* LAYOUT */
+.container{width:min(1050px,100%);margin:auto;padding:22px 16px 70px}
+.page{display:none;animation:fade .22s ease}
+.page.active{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+
+/* HERO */
 .hero{
- min-height:205px;border:1px solid var(--border);border-radius:18px;
- padding:42px 22px;display:flex;flex-direction:column;justify-content:center;
- text-align:center;overflow:hidden;margin-bottom:24px;
- background:
- linear-gradient(180deg,rgba(11,20,38,.42),rgba(11,20,38,.97)),
- url('https://github.com/minecraftlyn/Mcphoto/blob/1f9da41800bc4e29cdea3b6a12b25b1ee239b5c9/pixel-minecraft-style-land-background-concept-game-ground-pixelated-horizontal-blue-sky-sun-cloud-vector-illustration-212305683.jpg?raw=true') center/cover;
+  min-height:245px;border:1px solid var(--border);border-radius:20px;
+  overflow:hidden;position:relative;display:grid;place-items:center;text-align:center;
+  padding:35px 20px;margin-bottom:24px;
+  background:
+    linear-gradient(180deg,rgba(8,17,31,.15),rgba(8,17,31,.94)),
+    url("https://github.com/minecraftlyn/Mcphoto/blob/1f9da41800bc4e29cdea3b6a12b25b1ee239b5c9/pixel-minecraft-style-land-background-concept-game-ground-pixelated-horizontal-blue-sky-sun-cloud-vector-illustration-212305683.jpg?raw=true")
+    center/cover no-repeat;
+  box-shadow:var(--shadow);
 }
-.hero h1{font-size:28px;line-height:1.2;font-weight:900}
-.hero h1 span{color:var(--cyan);text-shadow:var(--glow)}
-.hero p{color:var(--sub);font-size:14px;margin-top:10px}
-.search{position:relative;margin-bottom:14px}
-.search input{
- width:100%;padding:14px 48px 14px 20px;border-radius:30px;
- border:1px solid var(--border);outline:0;background:var(--card);
- color:white;font-size:14px
+.hero-content{max-width:760px}
+.hero h1{font-size:clamp(25px,6vw,42px);line-height:1.15;font-weight:950;text-shadow:0 4px 18px #000;margin-bottom:12px}
+.hero h1 span{color:var(--cyan);text-shadow:0 0 18px rgba(0,217,255,.5)}
+.hero p{font-size:clamp(14px,3.5vw,18px);color:#d4deea;text-shadow:0 2px 10px #000}
+.hero-buttons{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:20px}
+.btn{
+  border:1px solid var(--border);background:rgba(23,38,58,.88);color:var(--text);
+  border-radius:12px;padding:10px 16px;font-weight:750;transition:.2s;
 }
-.search i{position:absolute;right:18px;top:50%;transform:translateY(-50%);color:var(--cyan)}
-.search input:focus{border-color:var(--cyan);box-shadow:var(--glow)}
-.chips{display:flex;gap:9px;overflow-x:auto;padding:3px 2px 10px;margin-bottom:20px;scrollbar-width:none}
-.chips::-webkit-scrollbar{display:none}
-.chip{
- flex:0 0 auto;background:var(--card);border:1px solid var(--border);
- color:var(--sub);padding:8px 16px;border-radius:22px;font-size:13px;font-weight:700
+.btn.primary{background:var(--cyan);border-color:var(--cyan);color:#06121d;box-shadow:var(--glow)}
+.btn:hover{transform:translateY(-2px);border-color:var(--cyan)}
+
+/* SEARCH */
+.search-wrap{position:relative;margin-bottom:14px}
+.search-wrap input{
+  width:100%;height:58px;border-radius:30px;border:1px solid var(--border);
+  background:var(--card);color:var(--text);outline:none;padding:0 55px 0 21px;
+  font-size:15px;box-shadow:var(--shadow);
 }
-.chip.active,.chip:hover{color:var(--cyan);border-color:var(--cyan);background:rgba(0,217,255,.08);box-shadow:var(--glow)}
-.section-title{
- display:flex;align-items:center;gap:9px;margin:25px 0 14px;
- font-size:18px;font-weight:850
+.search-wrap input:focus{border-color:var(--cyan);box-shadow:var(--glow)}
+.search-wrap i{position:absolute;right:21px;top:20px;color:var(--cyan);font-size:19px}
+
+/* FILTERS */
+.filters{display:flex;gap:10px;overflow-x:auto;padding:2px 1px 12px;margin-bottom:20px;scrollbar-width:none}
+.filters::-webkit-scrollbar{display:none}
+.filter{
+  flex:0 0 auto;border:1px solid var(--border);background:var(--card);color:var(--muted);
+  padding:10px 19px;border-radius:24px;font-size:13px;font-weight:800;
 }
-.section-title i{color:var(--cyan)}
-.section-title:after{content:"";height:1px;background:var(--border);flex:1}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px}
+.filter.active,.filter:hover{color:var(--cyan);border-color:var(--cyan);background:rgba(0,217,255,.08);box-shadow:var(--glow)}
+
+/* SECTIONS */
+.section-head{
+  display:flex;align-items:center;gap:11px;margin:27px 0 14px;
+  font-size:19px;font-weight:900;
+}
+.section-head i{color:var(--cyan)}
+.section-head:after{content:"";height:1px;background:var(--border);flex:1}
+
+/* GRID / CARDS */
+.grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));
+  gap:17px;margin-bottom:28px;
+}
 .card{
- position:relative;background:var(--card);border:1px solid var(--border);
- border-radius:15px;overflow:hidden;cursor:pointer;transition:.22s;
- display:flex;flex-direction:column;min-width:0
+  position:relative;overflow:hidden;background:var(--card);border:1px solid var(--border);
+  border-radius:15px;cursor:pointer;transition:.22s;box-shadow:0 5px 18px rgba(0,0,0,.12);
 }
 .card:hover{transform:translateY(-4px);border-color:var(--cyan);box-shadow:var(--glow)}
-.card-img{width:100%;height:165px;object-fit:cover;background:var(--card2)}
-.card-body{padding:15px;display:flex;flex-direction:column;flex:1}
-.card-title{font-size:16px;font-weight:800;margin-bottom:6px}
+.card-image{width:100%;height:165px;object-fit:cover;display:block;background:#0e1a2b}
+.card-body{padding:15px}
+.card-title{font-size:16px;font-weight:850;margin-bottom:7px}
 .card-desc{
- color:var(--sub);font-size:13px;line-height:1.45;
- display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;
- min-height:38px
+  color:var(--muted);font-size:13px;line-height:1.45;margin-bottom:13px;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
 }
-.card-foot{
- border-top:1px solid var(--border);margin-top:14px;padding-top:10px;
- display:flex;justify-content:space-between;gap:8px;color:var(--sub);font-size:11px
+.card-meta{
+  display:flex;align-items:center;justify-content:space-between;gap:8px;
+  padding-top:10px;border-top:1px solid var(--border);color:var(--muted);font-size:11px;
 }
 .tag{
- display:inline-flex;align-items:center;width:max-content;
- color:var(--cyan);border:1px solid var(--cyan);
- background:rgba(0,217,255,.08);padding:3px 8px;border-radius:6px;
- font-size:10px;font-weight:800;text-transform:uppercase;margin-bottom:8px
+  display:inline-flex;align-items:center;border:1px solid var(--cyan);color:var(--cyan);
+  background:rgba(0,217,255,.07);padding:3px 8px;border-radius:6px;font-size:10px;font-weight:850;
+  text-transform:uppercase;
 }
 .save{
- position:absolute;right:10px;top:10px;width:34px;height:34px;border-radius:50%;
- border:1px solid var(--border);background:rgba(11,20,38,.85);color:var(--sub);
- z-index:2
+  position:absolute;right:10px;top:10px;width:35px;height:35px;border-radius:50%;
+  display:grid;place-items:center;background:rgba(8,17,31,.86);border:1px solid var(--border);
+  color:#b5c0cf;z-index:3;
 }
 .save.active{color:var(--danger);border-color:var(--danger)}
-.badges{position:absolute;left:10px;top:10px;display:flex;gap:5px;z-index:2}
-.small-badge{
- background:rgba(11,20,38,.9);border:1px solid var(--cyan);color:var(--cyan);
- padding:3px 7px;border-radius:5px;font-size:9px;font-weight:800
-}
-.small-badge.warn{background:var(--warning);border-color:var(--warning);color:#111}
-.empty{text-align:center;padding:45px 20px;color:var(--sub);grid-column:1/-1}
+.card-badges{position:absolute;left:10px;top:10px;display:flex;gap:5px;z-index:2}
+.small-badge{background:rgba(8,17,31,.9);border:1px solid var(--cyan);color:var(--cyan);border-radius:5px;padding:3px 6px;font-size:9px;font-weight:900}
+.small-badge.warn{background:var(--warning);border-color:var(--warning);color:#171008}
+
+/* SPECIAL DROP */
 .drop{
- display:none;background:linear-gradient(135deg,rgba(0,217,255,.14),var(--card));
- border:1px solid var(--cyan);box-shadow:var(--glow);border-radius:15px;
- padding:13px;margin-bottom:22px;gap:13px;align-items:center;cursor:pointer
+  display:flex;gap:14px;align-items:center;padding:14px;margin-bottom:23px;
+  border:1px solid var(--cyan);border-radius:15px;
+  background:linear-gradient(135deg,rgba(0,217,255,.12),var(--card));
+  box-shadow:var(--glow);cursor:pointer;
 }
-.drop.show{display:flex}
-.drop img{width:76px;height:76px;object-fit:cover;border-radius:10px}
-.drop-info{flex:1;min-width:0}.drop-title{font-weight:800;font-size:15px}
-.drop-badge{font-size:9px;font-weight:900;background:var(--cyan);color:var(--bg);padding:3px 7px;border-radius:4px}
-.breadcrumbs{font-size:13px;color:var(--sub);margin:4px 0 14px}
-.breadcrumbs span:first-child{color:var(--cyan);cursor:pointer}
+.drop img{width:82px;height:82px;border-radius:10px;object-fit:cover}
+.drop-info{min-width:0;flex:1}
+.drop-label{display:inline-block;background:var(--cyan);color:#06121d;border-radius:5px;padding:2px 7px;font-size:9px;font-weight:950;margin-bottom:4px}
+.drop-title{font-size:15px;font-weight:850}
+.drop-desc{font-size:12px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+/* EMPTY / ERROR */
+.empty{
+  grid-column:1/-1;text-align:center;padding:42px 18px;border:1px dashed var(--border);
+  border-radius:14px;color:var(--muted);background:rgba(23,38,58,.35)
+}
+.empty i{font-size:30px;color:var(--cyan);margin-bottom:10px}
+.error-box{
+  margin:15px 0;padding:14px;border:1px solid var(--danger);border-radius:12px;
+  background:rgba(255,71,87,.07);color:#ffb3bb;font-size:13px
+}
+
+/* PAGE TOP */
+.breadcrumb{font-size:13px;color:var(--muted);margin:3px 0 14px}
+.breadcrumb span{color:var(--cyan);cursor:pointer}
 .back{
- background:var(--card);border:1px solid var(--border);color:var(--sub);
- padding:8px 17px;border-radius:22px;margin-bottom:15px;font-weight:700
+  border:1px solid var(--border);background:var(--card);color:var(--muted);
+  padding:9px 15px;border-radius:22px;font-size:13px;font-weight:750;margin-bottom:16px
 }
-.back:hover{border-color:var(--cyan);color:white}
-.detail{
- background:var(--card);border:1px solid var(--border);border-radius:17px;
- overflow:hidden;margin-bottom:22px
-}
-.detail-cover{width:100%;max-height:430px;object-fit:cover;display:block}
+.back:hover{border-color:var(--cyan);color:var(--text)}
+
+/* DETAIL */
+.detail-card{background:var(--card);border:1px solid var(--border);border-radius:17px;overflow:hidden;box-shadow:var(--shadow)}
+.detail-cover{width:100%;max-height:440px;object-fit:cover;display:block}
 .detail-content{padding:20px}
-.detail-title{font-size:25px;line-height:1.25;font-weight:900}
-.byline{color:var(--sub);font-size:13px;margin-top:4px}.byline b{color:var(--cyan)}
-.pills{display:flex;gap:7px;flex-wrap:wrap;margin-top:12px}
-.pill{
- border:1px solid var(--cyan);color:var(--cyan);border-radius:7px;
- padding:4px 9px;font-size:11px;font-weight:800
+.detail-title{font-size:clamp(23px,6vw,34px);line-height:1.2;font-weight:950}
+.creator{color:var(--muted);font-size:13px;margin-top:7px}
+.creator b{color:var(--cyan)}
+.pills{display:flex;gap:7px;flex-wrap:wrap;margin:13px 0}
+.pill{border:1px solid var(--cyan);background:rgba(0,217,255,.07);color:var(--cyan);padding:4px 9px;border-radius:7px;font-size:11px;font-weight:850}
+.meta{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:11px;margin:18px 0
 }
-.meta{display:grid;grid-template-columns:repeat(2,1fr);gap:11px;margin:20px 0}
-.meta-box{
- background:rgba(11,20,38,.65);border:1px solid var(--border);
- padding:12px;border-radius:11px;text-align:center
-}
-.meta-label{color:var(--sub);font-size:10px;text-transform:uppercase}
-.meta-value{font-size:14px;font-weight:850;margin-top:2px}
-.versions{display:flex;gap:7px;flex-wrap:wrap;margin-top:8px}
-.version{background:var(--bg);border:1px solid var(--border);color:var(--sub);padding:4px 9px;border-radius:6px;font-size:11px}
+.meta-box{background:rgba(8,17,31,.58);border:1px solid var(--border);border-radius:11px;padding:12px;text-align:center}
+.meta-label{font-size:10px;color:var(--muted);text-transform:uppercase;margin-bottom:3px}
+.meta-value{font-size:14px;font-weight:850;word-break:break-word}
 .download{
- display:block;text-align:center;background:var(--cyan);color:var(--bg);
- padding:15px;border-radius:12px;font-weight:900;margin-top:17px;
- box-shadow:var(--glow);transition:.2s
+  display:block;text-align:center;background:var(--cyan);color:#06121d;border-radius:12px;
+  padding:15px;font-size:16px;font-weight:950;box-shadow:var(--glow);margin-top:13px
 }
-.download:hover{transform:scale(1.01)}
-.subtext{text-align:center;color:var(--sub);font-size:11px;margin-top:7px}
-.detail-section{
- color:var(--cyan);font-size:17px;font-weight:900;margin:24px 0 10px;
- display:flex;align-items:center;gap:8px
-}
-.info{
- background:var(--card);border:1px solid var(--border);padding:18px;
- border-radius:12px;color:var(--sub);font-size:14px;line-height:1.65
-}
-.info p{margin-bottom:8px}.info p:last-child{margin-bottom:0}
+.download:hover{filter:brightness(1.05);transform:translateY(-1px)}
+.subtext{text-align:center;color:var(--muted);font-size:11px;margin-top:7px}
+.detail-section{margin-top:25px}
+.detail-section h2{font-size:18px;color:var(--cyan);margin-bottom:11px}
+.info{background:var(--card);border:1px solid var(--border);border-radius:13px;padding:17px;color:var(--muted);font-size:14px;line-height:1.7;white-space:pre-line}
 .features{list-style:none}
-.features li{padding:9px 0;border-bottom:1px solid rgba(43,58,82,.55);display:flex;gap:10px;color:var(--text)}
-.features li:last-child{border-bottom:0}.features i{color:var(--cyan);margin-top:4px}
-.warning{
- background:rgba(255,152,0,.1);border:1px solid var(--warning);color:#ffb74d;
- padding:13px;border-radius:10px;font-size:13px;margin-bottom:12px
+.features li{display:flex;gap:10px;padding:9px 0;border-bottom:1px solid rgba(38,58,85,.65);color:var(--text)}
+.features li:last-child{border:0}
+.features i{color:var(--cyan);margin-top:4px}
+.warning{padding:13px;border:1px solid var(--warning);border-radius:11px;background:rgba(255,176,32,.08);color:#ffc75e;font-size:13px;margin-bottom:12px}
+.versions{display:flex;flex-wrap:wrap;gap:7px}
+.version{padding:5px 9px;border-radius:7px;background:#0b1728;border:1px solid var(--border);color:#b9c6d6;font-size:11px}
+.change{background:#0b1728;border:1px solid var(--border);border-radius:10px;padding:12px;margin-bottom:9px}
+.change strong{color:var(--cyan);display:block;margin-bottom:4px}
+.change ul{margin-left:19px;color:var(--muted);font-size:12px}
+.screens{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.screens img{width:100%;height:145px;object-fit:cover;border-radius:9px;border:1px solid var(--border);cursor:pointer}
+.install li{margin-left:20px;padding:3px 0}
+
+/* ABOUT / SERVER */
+.info-page{max-width:900px;margin:auto}
+.info-page .hero-mini{
+  text-align:center;padding:30px 18px;border:1px solid var(--border);border-radius:17px;
+  background:linear-gradient(135deg,rgba(0,217,255,.08),var(--card));margin-bottom:18px
 }
-.changelog{
- background:var(--bg);border:1px solid var(--border);border-radius:9px;padding:13px;margin-top:8px
+.hero-mini h1{font-size:28px;margin-bottom:7px}.hero-mini p{color:var(--muted)}
+.prose{
+  background:var(--card);border:1px solid var(--border);border-radius:15px;padding:20px;
+  color:var(--muted);font-size:14px;line-height:1.8
 }
-.change-ver{color:var(--cyan);font-weight:850;font-size:13px}
-.change-list{padding-left:20px;color:var(--sub);font-size:12px;margin-top:5px}
-.shots{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
-.shots img{width:100%;height:150px;object-fit:cover;border-radius:9px;border:1px solid var(--border);cursor:pointer}
-.about-box,.server-box{
- background:var(--card);border:1px solid var(--border);border-radius:16px;padding:22px
-}
-.about-box h1,.server-box h1{font-size:25px;margin-bottom:8px}
-.about-box h1 span,.server-box h1 span{color:var(--cyan)}
-.about-box h2{font-size:17px;color:var(--cyan);margin:23px 0 8px}
-.about-box p,.about-box li,.server-box p{color:var(--sub);font-size:14px;line-height:1.75}
-.about-box ul{padding-left:20px}
+.prose h2{color:var(--cyan);font-size:18px;margin:20px 0 8px}
+.prose h2:first-child{margin-top:0}
+.prose ul{margin:7px 0 0 21px}
 .server-status{
- display:flex;align-items:center;gap:10px;background:rgba(255,152,0,.1);
- border:1px solid var(--warning);border-radius:12px;padding:15px;margin:18px 0
+  display:flex;gap:12px;align-items:center;padding:15px;border-radius:13px;
+  border:1px solid var(--warning);background:rgba(255,176,32,.07);margin-bottom:17px
 }
-.status-dot{width:11px;height:11px;background:var(--warning);border-radius:50%;box-shadow:0 0 10px rgba(255,152,0,.7)}
-.server-features{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:17px}
-.server-feature{border:1px solid var(--border);background:var(--bg);border-radius:10px;padding:13px;color:var(--sub)}
-.server-feature i{color:var(--cyan);margin-right:7px}
-.menu{
- position:fixed;inset:0;background:rgba(11,20,38,.97);backdrop-filter:blur(16px);
- z-index:1000;display:none;align-items:center;justify-content:center
+.server-dot{width:12px;height:12px;border-radius:50%;background:var(--warning);box-shadow:0 0 12px var(--warning);flex:0 0 auto}
+
+/* MENU */
+.overlay{
+  position:fixed;inset:0;background:rgba(8,17,31,.97);backdrop-filter:blur(18px);
+  z-index:2000;display:none;align-items:center;justify-content:center;padding:25px
 }
-.menu.active{display:flex}
-.menu-close{position:absolute;right:20px;top:18px}
+.overlay.open{display:flex}
+.close-menu{position:absolute;right:20px;top:18px;border:0;background:none;color:var(--cyan);font-size:29px}
 .menu-list{list-style:none;text-align:center}
-.menu-list li{margin:17px 0}
-.menu-list button{
- background:none;border:0;color:var(--text);font-size:19px;font-weight:800
+.menu-list li{margin:15px 0}
+.menu-link{
+  border:0;background:none;color:var(--text);font-size:19px;font-weight:850;
+  display:flex;align-items:center;gap:13px;margin:auto
 }
-.menu-list button:hover{color:var(--cyan)}
-.menu-social{display:flex;justify-content:center;gap:12px;margin-top:25px}
-.menu-social a{
- width:40px;height:40px;border:1px solid var(--border);border-radius:50%;
- display:grid;place-items:center;color:var(--cyan);background:var(--card)
+.menu-link i{color:var(--cyan);width:25px}
+.menu-link:hover{color:var(--cyan)}
+.social{display:flex;justify-content:center;gap:13px;margin-top:25px}
+.social a{
+  width:42px;height:42px;border:1px solid var(--border);border-radius:50%;
+  display:grid;place-items:center;color:var(--cyan);background:var(--card)
 }
+
+/* LIGHTBOX */
 .lightbox{
- position:fixed;inset:0;background:rgba(0,0,0,.92);display:none;
- align-items:center;justify-content:center;padding:20px;z-index:2000
+  position:fixed;inset:0;background:rgba(0,0,0,.94);z-index:3000;display:none;
+  align-items:center;justify-content:center;padding:20px
 }
-.lightbox.active{display:flex}
+.lightbox.open{display:flex}
 .lightbox img{max-width:100%;max-height:88vh;border:1px solid var(--cyan);border-radius:9px}
-.light-close{position:absolute;right:22px;top:15px;font-size:35px;color:white}
-footer{
- border-top:1px solid var(--border);padding:28px 20px;text-align:center;color:var(--sub);
- font-size:12px
-}
-.footer-social{display:flex;justify-content:center;gap:17px;font-size:18px;margin-bottom:12px}
+.lightbox button{position:absolute;right:18px;top:16px;border:0;background:none;color:#fff;font-size:33px}
+
+/* FOOTER */
+footer{text-align:center;border-top:1px solid var(--border);padding:28px 18px;color:var(--muted);font-size:11px}
+.footer-social{display:flex;justify-content:center;gap:16px;font-size:18px;margin-bottom:13px}
 .footer-social a:hover{color:var(--cyan)}
-.toast{
- position:fixed;left:50%;bottom:22px;transform:translate(-50%,20px);
- background:var(--card);border:1px solid var(--cyan);box-shadow:var(--glow);
- color:white;padding:10px 15px;border-radius:10px;font-size:12px;
- opacity:0;pointer-events:none;transition:.25s;z-index:3000
-}
-.toast.show{opacity:1;transform:translate(-50%,0)}
+
 @media(max-width:600px){
- header{padding:0 15px}
- .hero{min-height:185px;padding:32px 16px}
- .hero h1{font-size:23px}
- .grid{grid-template-columns:1fr}
- .detail-title{font-size:21px}
- .meta{gap:8px}
- .shots img{height:115px}
- .server-features{grid-template-columns:1fr}
+  .site-header{padding:0 15px}
+  .container{padding:16px 12px 55px}
+  .hero{min-height:225px;padding:28px 14px}
+  .grid{grid-template-columns:1fr 1fr;gap:11px}
+  .card-image{height:125px}
+  .card-body{padding:11px}
+  .card-title{font-size:14px}
+  .card-desc{font-size:11px}
+  .card-meta{font-size:9px}
+  .tag{font-size:8px;padding:3px 6px}
+  .save{width:31px;height:31px}
+  .drop img{width:70px;height:70px}
+  .drop-title{font-size:13px}
+  .drop-desc{font-size:10px}
+  .detail-content{padding:16px}
+  .screens img{height:110px}
+}
+@media(max-width:360px){
+  .grid{grid-template-columns:1fr}
+  .card-image{height:160px}
 }
 </style>
 </head>
 
 <body>
 
-<header>
- <button class="icon-btn" onclick="toggleMenu()" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
- <img class="logo-img" onclick="go('home')" src="https://raw.githubusercontent.com/minecraftlyn/Mcphoto/fadf178b72cb6a942deb3105ba06118e7a2d030f/bitmap2216761670976185018.png" alt="Minecraft LYN">
- <button class="icon-btn" onclick="focusSearch()" aria-label="Search"><i class="fa-solid fa-magnifying-glass"></i></button>
+<header class="site-header">
+  <button class="header-btn" onclick="openMenu()" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
+  <img class="logo" src="https://raw.githubusercontent.com/minecraftlyn/Mcphoto/fadf178b72cb6a942deb3105ba06118e7a2d030f/bitmap2216761670976185018.png" alt="Minecraft LYN" onclick="go('home')">
+  <button class="header-btn" onclick="focusSearch()" aria-label="Search"><i class="fa-solid fa-magnifying-glass"></i></button>
 </header>
 
-<div class="menu" id="menu">
- <button class="icon-btn menu-close" onclick="toggleMenu()"><i class="fa-solid fa-xmark"></i></button>
- <div>
-  <ul class="menu-list">
-   <li><button onclick="nav('home')"><i class="fa-solid fa-house"></i> Home</button></li>
-   <li><button onclick="nav('addon')"><i class="fa-solid fa-puzzle-piece"></i> Addons</button></li>
-   <li><button onclick="nav('shader')"><i class="fa-solid fa-wand-magic-sparkles"></i> Shaders</button></li>
-   <li><button onclick="nav('map')"><i class="fa-solid fa-map"></i> Maps</button></li>
-   <li><button onclick="nav('saved')"><i class="fa-solid fa-bookmark"></i> Saved Resources</button></li>
-   <li><button onclick="nav('about')"><i class="fa-solid fa-circle-info"></i> About Minecraft LYN</button></li>
-   <li><button onclick="nav('servers')"><i class="fa-solid fa-server"></i> 24/7 Server</button></li>
-   <li><button onclick="surprise()"><i class="fa-solid fa-dice"></i> Surprise Me!</button></li>
-  </ul>
-  <div class="menu-social">
-   <a href="https://t.me/minecraftlynweb" target="_blank"><i class="fa-brands fa-telegram"></i></a>
-   <a href="https://www.facebook.com/share/14nfNZ1pyvm/" target="_blank"><i class="fa-brands fa-facebook"></i></a>
-   <a href="https://www.youtube.com/@LYNcrafrerMC" target="_blank"><i class="fa-brands fa-youtube"></i></a>
-   <a href="https://discord.gg/CXQvqRsvH" target="_blank"><i class="fa-brands fa-discord"></i></a>
-  </div>
- </div>
-</div>
+<main class="container">
 
-<main class="main">
+  <!-- HOME -->
+  <section id="home-page" class="page active">
+    <div class="hero">
+      <div class="hero-content">
+        <h1>WELCOME TO <span>MINECRAFT LYN</span></h1>
+        <p>Download Minecraft Bedrock Addons, Shaders, Maps & More</p>
+        <div class="hero-buttons">
+          <button class="btn primary" onclick="go('addon')"><i class="fa-solid fa-puzzle-piece"></i> Explore Addons</button>
+          <button class="btn" onclick="go('about')">About LYN</button>
+        </div>
+      </div>
+    </div>
 
-<section id="home-page" class="page active">
- <div class="hero">
-  <h1>WELCOME TO <span>MINECRAFT LYN</span></h1>
-  <p>Download Minecraft Bedrock Addons, Shaders, Maps & More</p>
- </div>
+    <div id="drop"></div>
 
- <div id="drop" class="drop" onclick="openPost(dropPost)">
-  <img id="drop-img" src="" alt="">
-  <div class="drop-info">
-   <span class="drop-badge">LYN DROP</span>
-   <div class="drop-title" id="drop-title"></div>
-   <div style="font-size:11px;color:var(--sub)">Latest resource from Minecraft LYN</div>
-  </div>
-  <i class="fa-solid fa-chevron-right" style="color:var(--cyan)"></i>
- </div>
+    <div class="search-wrap">
+      <input id="searchInput" type="search" placeholder="Search addons, shaders, maps..." autocomplete="off">
+      <i class="fa-solid fa-magnifying-glass"></i>
+    </div>
 
- <div class="search">
-  <input id="searchInput" type="search" placeholder="Search addons, shaders, maps..." oninput="renderHome()">
-  <i class="fa-solid fa-magnifying-glass"></i>
- </div>
+    <div class="filters">
+      <button class="filter active" data-cat="all">All</button>
+      <button class="filter" data-cat="addon">Addons</button>
+      <button class="filter" data-cat="shader">Shaders</button>
+      <button class="filter" data-cat="map">Maps</button>
+    </div>
 
- <div class="chips">
-  <button class="chip active" onclick="setCategory('all',this)">All</button>
-  <button class="chip" onclick="setCategory('addon',this)">Addons</button>
-  <button class="chip" onclick="setCategory('shader',this)">Shaders</button>
-  <button class="chip" onclick="setCategory('map',this)">Maps</button>
- </div>
+    <div class="section-head"><i class="fa-solid fa-fire"></i><span>Trending Now</span></div>
+    <div class="grid" id="trending-grid"></div>
 
- <div class="section-title"><i class="fa-solid fa-fire"></i> Trending Now</div>
- <div class="grid" id="trending-grid"></div>
+    <div class="section-head"><i class="fa-solid fa-clock"></i><span>Latest Updates</span></div>
+    <div class="grid" id="latest-grid"></div>
+  </section>
 
- <div class="section-title"><i class="fa-solid fa-clock"></i> Latest Updates</div>
- <div class="grid" id="home-grid"></div>
-</section>
+  <!-- CATEGORY -->
+  <section id="addon-page" class="page">
+    <div class="breadcrumb"><span onclick="go('home')">Home</span> / Addons</div>
+    <div class="section-head"><i class="fa-solid fa-puzzle-piece"></i><span>Minecraft Addons</span></div>
+    <div class="grid" id="addon-grid"></div>
+  </section>
 
-<section id="addon-page" class="page">
- <div class="breadcrumbs"><span onclick="go('home')">Home</span> / Addons</div>
- <div class="section-title"><i class="fa-solid fa-puzzle-piece"></i> Minecraft Addons</div>
- <div class="grid" id="addon-grid"></div>
-</section>
+  <section id="shader-page" class="page">
+    <div class="breadcrumb"><span onclick="go('home')">Home</span> / Shaders</div>
+    <div class="section-head"><i class="fa-solid fa-wand-magic-sparkles"></i><span>Minecraft Shaders</span></div>
+    <div class="grid" id="shader-grid"></div>
+  </section>
 
-<section id="shader-page" class="page">
- <div class="breadcrumbs"><span onclick="go('home')">Home</span> / Shaders</div>
- <div class="section-title"><i class="fa-solid fa-wand-magic-sparkles"></i> Minecraft Shaders</div>
- <div class="grid" id="shader-grid"></div>
-</section>
+  <section id="map-page" class="page">
+    <div class="breadcrumb"><span onclick="go('home')">Home</span> / Maps</div>
+    <div class="section-head"><i class="fa-solid fa-map"></i><span>Minecraft Maps</span></div>
+    <div class="grid" id="map-grid"></div>
+  </section>
 
-<section id="map-page" class="page">
- <div class="breadcrumbs"><span onclick="go('home')">Home</span> / Maps</div>
- <div class="section-title"><i class="fa-solid fa-map"></i> Minecraft Maps</div>
- <div class="grid" id="map-grid"></div>
-</section>
+  <section id="saved-page" class="page">
+    <div class="breadcrumb"><span onclick="go('home')">Home</span> / Saved</div>
+    <div class="section-head"><i class="fa-solid fa-heart"></i><span>Saved Resources</span></div>
+    <div class="grid" id="saved-grid"></div>
+  </section>
 
-<section id="saved-page" class="page">
- <div class="breadcrumbs"><span onclick="go('home')">Home</span> / Saved</div>
- <div class="section-title"><i class="fa-solid fa-heart"></i> Saved Resources</div>
- <div class="grid" id="saved-grid"></div>
-</section>
+  <!-- ABOUT -->
+  <section id="about-page" class="page info-page">
+    <div class="breadcrumb"><span onclick="go('home')">Home</span> / About</div>
+    <div class="hero-mini">
+      <h1>About Minecraft LYN</h1>
+      <p>A community-focused platform for Minecraft Bedrock resources.</p>
+    </div>
+    <div class="prose">
+      <h2>What is Minecraft LYN?</h2>
+      <p>
+        Minecraft LYN is a dedicated resource platform created for Minecraft Bedrock Edition
+        players. Our goal is to make it easier for players to discover, explore and download
+        useful and interesting Bedrock resources from one clean and simple website.
+      </p>
 
-<section id="about-page" class="page">
- <div class="breadcrumbs"><span onclick="go('home')">Home</span> / About</div>
- <div class="about-box">
-  <h1>About <span>Minecraft LYN</span></h1>
-  <p>Minecraft LYN is a community-focused platform created for Minecraft Bedrock players who want a simple, clean and convenient place to discover useful resources.</p>
+      <h2>What can you find here?</h2>
+      <p>
+        The website is designed to collect different types of Minecraft Bedrock resources,
+        including Addons, Shaders, Maps and other community-made content. Each resource can
+        have its own cover image, description, supported Minecraft versions, creator information,
+        file format, file size, features, screenshots, version history and direct download link.
+      </p>
 
-  <h2>What does Minecraft LYN provide?</h2>
-  <p>Our website collects and presents Minecraft Bedrock resources such as addons, shaders, maps and other useful content in an organized way. Each resource can have its own detailed page containing its description, supported Minecraft versions, platform information, features, screenshots, version history and a direct download button.</p>
+      <h2>Built for Bedrock players</h2>
+      <p>
+        Minecraft LYN focuses mainly on Bedrock / MCPE users, especially mobile players.
+        The website is designed to work comfortably on phones while still providing a useful
+        experience on tablets and desktop browsers.
+      </p>
 
-  <h2>Our Goal</h2>
-  <p>The goal of Minecraft LYN is to make finding Bedrock resources easier. Instead of searching through many different pages, users can browse categories, search for a resource, save interesting posts and open a complete resource page from one place.</p>
+      <h2>Simple discovery</h2>
+      <p>
+        Instead of searching through many different pages, visitors can use categories and
+        search to quickly find the type of resource they want. Resources can also be saved
+        locally in the browser so they can be found again later on the same device.
+      </p>
 
-  <h2>Why Minecraft LYN?</h2>
-  <ul>
-   <li>Clean and mobile-friendly resource website.</li>
-   <li>Organized Addons, Shaders and Maps categories.</li>
-   <li>Detailed resource information and supported versions.</li>
-   <li>Direct download links for available files.</li>
-   <li>Search and saved-resource features.</li>
-   <li>Regularly updated Minecraft Bedrock resources.</li>
-  </ul>
+      <h2>Our goal</h2>
+      <p>
+        Minecraft LYN is being developed as a growing resource hub. We want to continue improving
+        the website, adding more resources, improving download information and making navigation
+        faster and easier for the community.
+      </p>
 
-  <h2>Community</h2>
-  <p>Minecraft LYN is also connected with its community through Telegram, Facebook, YouTube and Discord. These platforms can be used for updates, announcements, new resources and community communication.</p>
+      <h2>Important note</h2>
+      <p>
+        Minecraft LYN is an independent community project and is not affiliated with Mojang
+        Studios or Microsoft. Resource ownership and creator rights remain with their respective
+        creators. Please respect the original creators and their download terms.
+      </p>
+    </div>
+  </section>
 
-  <h2>Disclaimer</h2>
-  <p>Minecraft LYN is an independent resource platform and is not affiliated with or endorsed by Mojang Studios or Microsoft. Minecraft and related trademarks belong to their respective owners.</p>
- </div>
-</section>
+  <!-- SERVER -->
+  <section id="servers-page" class="page info-page">
+    <div class="breadcrumb"><span onclick="go('home')">Home</span> / 24/7 Server</div>
+    <div class="hero-mini">
+      <h1>Minecraft LYN 24/7 Server</h1>
+      <p>A dedicated Minecraft Bedrock server is coming soon.</p>
+    </div>
 
-<section id="servers-page" class="page">
- <div class="breadcrumbs"><span onclick="go('home')">Home</span> / 24/7 Server</div>
- <div class="server-box">
-  <h1>Minecraft LYN <span>24/7 Server</span></h1>
-  <p>We are preparing a dedicated Minecraft Bedrock 24/7 server for the Minecraft LYN community.</p>
+    <div class="server-status">
+      <span class="server-dot"></span>
+      <div>
+        <b>SERVER STATUS: IN DEVELOPMENT</b>
+        <div style="color:var(--muted);font-size:12px;margin-top:2px">
+          The public server is not available yet.
+        </div>
+      </div>
+    </div>
 
-  <div class="server-status">
-   <span class="status-dot"></span>
-   <div><b>COMING SOON</b><br><small style="color:var(--sub)">The server is currently under development.</small></div>
-  </div>
+    <div class="prose">
+      <h2>Coming Soon</h2>
+      <p>
+        Minecraft LYN is working toward launching a dedicated 24/7 Minecraft Bedrock server
+        for the community. The server is planned to provide a place where players can join,
+        play together and enjoy multiplayer gameplay with other members.
+      </p>
 
-  <p>The server is planned to provide a stable and enjoyable multiplayer environment where players can meet friends, explore worlds, play together and take part in future community activities. We are working on the server setup, configuration, gameplay experience and other important details before opening it to the public.</p>
+      <h2>What we are preparing</h2>
+      <ul>
+        <li>24/7 availability with reliable server hosting.</li>
+        <li>Minecraft Bedrock / MCPE support.</li>
+        <li>A simple system for joining the server.</li>
+        <li>Community-focused multiplayer gameplay.</li>
+        <li>Server rules and moderation to keep the community enjoyable.</li>
+        <li>Future events and activities for players.</li>
+      </ul>
 
-  <p style="margin-top:12px">We want the server to be reliable and easy to join, so we are taking some time to prepare everything properly. More information such as the server address, port, supported Minecraft version, rules, game modes and launch announcement will be published here when the server is ready.</p>
+      <h2>When will it launch?</h2>
+      <p>
+        The exact launch date has not been announced yet. We are still preparing the server
+        infrastructure and testing everything before opening it to the public. We would rather
+        release a stable server than launch too early with connection or gameplay problems.
+      </p>
 
-  <div class="server-features">
-   <div class="server-feature"><i class="fa-solid fa-server"></i> Dedicated Bedrock Server</div>
-   <div class="server-feature"><i class="fa-solid fa-clock"></i> 24/7 Availability</div>
-   <div class="server-feature"><i class="fa-solid fa-users"></i> Community Multiplayer</div>
-   <div class="server-feature"><i class="fa-solid fa-shield-halved"></i> Server Rules & Protection</div>
-  </div>
+      <h2>Stay updated</h2>
+      <p>
+        When the server is ready, the server address, port, supported version and joining
+        instructions will be published on this page. Follow the official Minecraft LYN
+        community channels for announcements and updates.
+      </p>
+    </div>
+  </section>
 
-  <p style="margin-top:18px;text-align:center"><b>Stay connected with Minecraft LYN for the official launch announcement.</b></p>
- </div>
-</section>
-
-<section id="detail-page" class="page">
- <div class="breadcrumbs"><span onclick="go('home')">Home</span> » <span id="bc"></span></div>
- <button class="back" onclick="go(lastPage || 'home')"><i class="fa-solid fa-arrow-left"></i> Back</button>
- <div id="detail-content"></div>
-</section>
+  <!-- DETAIL -->
+  <section id="detail-page" class="page">
+    <div class="breadcrumb">
+      <span onclick="go('home')">Home</span> » <span id="detail-bc-cat">Resource</span> » <b id="detail-bc-title">Post</b>
+    </div>
+    <button class="back" onclick="history.length>1 ? history.back() : go('home')">
+      <i class="fa-solid fa-arrow-left"></i> Back
+    </button>
+    <div id="detail-root"></div>
+  </section>
 
 </main>
 
+<!-- MENU -->
+<div class="overlay" id="menu">
+  <button class="close-menu" onclick="closeMenu()" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+  <div>
+    <ul class="menu-list">
+      <li><button class="menu-link" onclick="menuGo('home')"><i class="fa-solid fa-house"></i>Home</button></li>
+      <li><button class="menu-link" onclick="menuGo('addon')"><i class="fa-solid fa-puzzle-piece"></i>Addons</button></li>
+      <li><button class="menu-link" onclick="menuGo('shader')"><i class="fa-solid fa-wand-magic-sparkles"></i>Shaders</button></li>
+      <li><button class="menu-link" onclick="menuGo('map')"><i class="fa-solid fa-map"></i>Maps</button></li>
+      <li><button class="menu-link" onclick="menuGo('saved')"><i class="fa-solid fa-heart"></i>Saved Resources</button></li>
+      <li><button class="menu-link" onclick="menuGo('about')"><i class="fa-solid fa-circle-info"></i>About Minecraft LYN</button></li>
+      <li><button class="menu-link" onclick="menuGo('servers')"><i class="fa-solid fa-server"></i>24/7 Server</button></li>
+      <li><button class="menu-link" onclick="surprise()"><i class="fa-solid fa-dice"></i>Surprise Me</button></li>
+    </ul>
+    <div class="social">
+      <a href="https://t.me/minecraftlynweb" target="_blank" rel="noopener"><i class="fa-brands fa-telegram"></i></a>
+      <a href="https://www.facebook.com/share/14nfNZ1pyvm/" target="_blank" rel="noopener"><i class="fa-brands fa-facebook"></i></a>
+      <a href="https://www.youtube.com/@LYNcrafrerMC" target="_blank" rel="noopener"><i class="fa-brands fa-youtube"></i></a>
+      <a href="https://discord.gg/CXQvqRsvH" target="_blank" rel="noopener"><i class="fa-brands fa-discord"></i></a>
+    </div>
+  </div>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button onclick="closeLightbox()" aria-label="Close image">&times;</button>
+  <img id="lightbox-img" alt="Screenshot">
+</div>
+
 <footer>
- <div class="footer-social">
-  <a href="https://t.me/minecraftlynweb" target="_blank"><i class="fa-brands fa-telegram"></i></a>
- 
+  <div class="footer-social">
+    <a href="https://t.me/minecraftlynweb" target="_blank" rel="noopener"><i class="fa-brands fa-telegram"></i></a>
+    <a href="https://www.facebook.com/share/14nfNZ1pyvm/" target="_blank" rel="noopener"><i class="fa-brands fa-facebook"></i></a>
+    <a href="https://www.youtube.com/@LYNcrafrerMC" target="_blank" rel="noopener"><i class="fa-brands fa-youtube"></i></a>
+    <a href="https://discord.gg/CXQvqRsvH" target="_blank" rel="noopener"><i class="fa-brands fa-discord"></i></a>
+  </div>
+  <b>MINECRAFT LYN</b> — Premium Bedrock Resource Platform
+  <div style="margin-top:5px;opacity:.55">&copy; 2026 Minecraft LYN. All rights reserved.</div>
+</footer>
+
+<script>
+"use strict";
+
+/*
+  MINECRAFT LYN
+  Data source: posts.json
+
+  Your posts.json can use fields such as:
+  id, title, category, shortDesc, fullReview, image, downloadLink,
+  fileFormat, addonVersion, mcVersion, platform, creator, fileSize,
+  downloads, views, date, experimental, experimentalNote, features,
+  supportedVersions, screenshots, changelog, installSteps
+
+  The code also tolerates missing optional fields.
+*/
+
+let posts = [];
+let currentCategory = "all";
+let currentSearch = "";
+let currentPost = null;
+
+const FALLBACK_IMAGE =
+  "https://raw.githubusercontent.com/minecraftlyn/Mcphoto/main/bitmap2216761670976185018.png";
+
+function $(id){ return document.getElementById(id); }
+
+function escapeHTML(value){
+  return String(value ?? "").replace(/[&<>"']/g, ch => ({
+    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"
+  }[ch]));
+}
+
+function safeUrl(value){
+  if(!value) return "";
+  try{
+    const u = new URL(value, window.location.href);
+    if(["http:","https:","data:"].includes(u.protocol)) return u.href;
+  }catch(e){}
+  return "";
+}
+
+function imageUrl(value){
+  return safeUrl(value) || FALLBACK_IMAGE;
+}
+
+function categoryName(cat){
+  const c = String(cat || "").toLowerCase();
+  if(c === "addon" || c === "addons") return "Addon";
+  if(c === "shader" || c === "shaders") return "Shader";
+  if(c === "map" || c === "maps") return "Map";
+  return "Resource";
+}
+
+function normalizePost(p, index){
+  p = p || {};
+  return {
+    ...p,
+    id: String(p.id || ("resource-" + index)),
+    title: String(p.title || "Untitled Resource"),
+    category: String(p.category || "addon").toLowerCase(),
+    shortDesc: String(p.shortDesc || p.description || "Minecraft Bedrock resource."),
+    fullReview: String(p.fullReview || p.description || p.shortDesc || "No description available."),
+    image: imageUrl(p.image),
+    downloadLink: safeUrl(p.downloadLink),
+    fileFormat: String(p.fileFormat || ""),
+    addonVersion: String(p.addonVersion || p.version || ""),
+    mcVersion: String(p.mcVersion || "1.21+"),
+    platform: String(p.platform || "Bedrock / MCPE"),
+    creator: String(p.creator || "Minecraft LYN"),
+    fileSize: String(p.fileSize || "N/A"),
+    downloads: Number(p.downloads || 0),
+    views: Number(p.views || 0),
+    date: String(p.date || ""),
+    experimental: Boolean(p.experimental),
+    experimentalNote: String(p.experimentalNote || ""),
+    features: Array.isArray(p.features) ? p.features : [],
+    supportedVersions: Array.isArray(p.supportedVersions) ? p.supportedVersions : [],
+    screenshots: Array.isArray(p.screenshots) ? p.screenshots : [],
+    changelog: Array.isArray(p.changelog) ? p.changelog : [],
+    installSteps: Array.isArray(p.installSteps) ? p.installSteps : []
+  };
+}
+
+function timeAgo(date){
+  if(!date) return "Recently";
+  const d = new Date(date);
+  if(isNaN(d.getTime())) return date;
+  const sec = Math.max(0, Math.floor((Date.now()-d.getTime())/1000));
+  if(sec < 60) return "Just now";
+  if(sec < 3600) return Math.floor(sec/60) + "m ago";
+  if(sec < 86400) return Math.floor(sec/3600) + "h ago";
+  if(sec < 2592000) return Math.floor(sec/86400) + "d ago";
+  return d.toLocaleDateString();
+}
+
+function savedIds(){
+  try{
+    return JSON.parse(localStorage.getItem("minecraft_lyn_saved") || "[]");
+  }catch(e){ return []; }
+}
+
+function isSaved(id){ return savedIds().includes(String(id)); }
+
+function toggleSave(id, event){
+  if(event) event.stopPropagation();
+  const key = String(id);
+  let list = savedIds();
+  list = list.includes(key) ? list.filter(x=>x!==key) : [...list,key];
+  localStorage.setItem("minecraft_lyn_saved", JSON.stringify(list));
+  renderAll();
+  if($("detail-page").classList.contains("active") && currentPost) renderDetail(currentPost);
+}
+
+function filtered(){
+  const q = currentSearch.trim().toLowerCase();
+  return posts.filter(p=>{
+    const catOK = currentCategory === "all" || p.category === currentCategory;
+    const text = [
+      p.title,p.category,p.shortDesc,p.fullReview,p.creator,
+      p.mcVersion,p.platform,p.fileFormat
+    ].join(" ").toLowerCase();
+    return catOK && (!q || text.includes(q));
+  });
+}
+
+function sortLatest(arr){
+  return [...arr].sort((a,b)=>{
+    const da = new Date(a.date).getTime() || 0;
+    const db = new Date(b.date).getTime() || 0;
+    return db-da;
+  });
+}
+
+function sortTrending(arr){
+  return [...arr].sort((a,b)=>{
+    const scoreA = (a.downloads||0)*2 + (a.views||0);
+    const scoreB = (b.downloads||0)*2 + (b.views||0);
+    return scoreB-scoreA;
+  });
+}
+
+function emptyHTML(message="No resources found."){
+  return `<div class="empty"><i class="fa-solid fa-box-open"></i><div>${escapeHTML(message)}</div></div>`;
+}
+
+function cardHTML(p){
+  const saved = isSaved(p.id);
+  return `
+    <article class="card" onclick="openPost('${escapeHTML(p.id)}')">
+      <div class="card-badges">
+        <span class="small-badge">${escapeHTML(categoryName(p.category))}</span>
+        ${p.experimental ? `<span class="small-badge warn">Experimental</span>` : ""}
+      </div>
+      <button class="save ${saved ? "active":""}" onclick="toggleSave('${escapeHTML(p.id)}',event)" aria-label="Save">
+        <i class="fa-${saved ? "solid":"regular"} fa-heart"></i>
+      </button>
+      <img class="card-image" src="${imageUrl(p.image)}" alt="${escapeHTML(p.title)}"
+           loading="lazy" onerror="this.src='${FALLBACK_IMAGE}'">
+      <div class="card-body">
+        <div class="card-title">${escapeHTML(p.title)}</div>
+        <div class="card-desc">${escapeHTML(p.shortDesc)}</div>
+        <div class="card-meta">
+          <span>${escapeHTML(timeAgo(p.date))}</span>
+          <span class="tag">${escapeHTML(p.fileFormat || categoryName(p.category))}</span>
+        </div>
+      </div>
+    </article>
+  `;
+}
+
+function renderGrid(id, arr, emptyMessage){
+  const el = $(id);
+  if(!el) return;
+  el.innerHTML = arr.length ? arr.map(cardHTML).join("") : emptyHTML(emptyMessage);
+}
+
+function renderDrop(){
+  const el = $("drop");
+  if(!el) return;
+  const latest = sortLatest(posts)[0];
+  if(!latest){ el.innerHTML=""; return; }
+  el.innerHTML = `
+    <div class="drop" onclick="openPost('${escapeHTML(latest.id)}')">
+      <img src="${imageUrl(latest.image)}" alt="" onerror="this.src='${FALLBACK_IMAGE}'">
+      <div class="drop-info">
+        <span class="drop-label">LATEST DROP</span>
+        <div class="drop-title">${escapeHTML(latest.title)}</div>
+        <div class="drop-desc">${escapeHTML(latest.shortDesc)}</div>
+      </div>
+      <i class="fa-solid fa-chevron-right" style="color:var(--cyan)"></i>
+    </div>
+  `;
+}
+
+function renderHome(){
+  const data = filtered();
+  renderGrid("trending-grid", sortTrending(data).slice(0,6), "No trending resources found.");
+  renderGrid("latest-grid", sortLatest(data).slice(0,12), "No resources match your search.");
+}
+
+function renderCategories(){
+  renderGrid("addon-grid", sortLatest(posts.filter(p=>p.category==="addon" &&
+    matchesSearch(p)), "No addons found.");
+  renderGrid("shader-grid", sortLatest(posts.filter(p=>p.category==="shader" &&
+    matchesSearch(p)), "No shaders found.");
+  renderGrid("map-grid", sortLatest(posts.filter(p=>p.category==="map" &&
+    matchesSearch(p)), "No maps found.");
+}
+
+function matchesSearch(p){
+  const q=currentSearch.trim().toLowerCase();
+  if(!q) return true;
+  return [p.title,p.shortDesc,p.fullReview,p.creator,p.category,p.mcVersion,p.platform]
+    .join(" ").toLowerCase().includes(q);
+}
+
+function renderSaved(){
+  const ids=savedIds();
+  const data=sortLatest(posts.filter(p=>ids.includes(p.id)));
+  renderGrid("saved-grid",data,"You have not saved any resources yet.");
+}
+
+function renderAll(){
+  renderDrop();
+  renderHome();
+  renderCategories();
+  renderSaved();
+}
+
+function go(page){
+  document.querySelectorAll(".page").forEach(x=>x.classList.remove("active"));
+  const el=$(page+"-page");
+  if(!el) return;
+  el.classList.add("active");
+  window.scrollTo({top:0,behavior:"smooth"});
+  if(page==="home") document.title="Minecraft LYN - Premium Bedrock Resources";
+  if(page==="about") document.title="About Minecraft LYN";
+  if(page==="servers") document.title="Minecraft LYN 24/7 Server";
+  closeMenu();
+}
+
+function menuGo(page){ closeMenu(); go(page); }
+
+function openMenu(){ $("menu").classList.add("open"); document.body.style.overflow="hidden"; }
+function closeMenu(){ $("menu").classList.remove("open"); document.body.style.overflow=""; }
+
+function focusSearch(){
+  go("home");
+  setTimeout(()=>{$("searchInput").focus(); $("searchInput").scrollIntoView({behavior:"smooth",block:"center"})},80);
+}
+
+function openPost(id){
+  const p=posts.find(x=>String(x.id)===String(id));
+  if(!p) return;
+  currentPost=p;
+  renderDetail(p);
+  go("detail");
+  history.replaceState({post:p.id},"","#"+encodeURIComponent(p.id));
+}
+
+function renderDetail(p){
+  $("detail-bc-cat").textContent=categoryName(p.category).toUpperCase();
+  $("detail-bc-title").textContent=p.title;
+  document.title=p.title+" - Minecraft LYN";
+
+  const supported = p.supportedVersions.length
+    ? p.supportedVersions.map(v=>`<span class="version">✓ ${escapeHTML(v)}</span>`).join("")
+    : `<span class="version">${escapeHTML(p.mcVersion)}</span>`;
+
+  const features = p.features.length
+    ? `<ul class="features">${p.features.map(x=>`<li><i class="fa-solid fa-check"></i><span>${escapeHTML(x)}</span></li>`).join("")}</ul>`
+    : `<div class="info">No feature list has been provided for this resource.</div>`;
+
+  const screenshots = p.screenshots.length
+    ? `<div class="screens">${p.screenshots.map(src=>`
+        <img src="${imageUrl(src)}" alt="Screenshot" loading="lazy"
+             onclick="openLightbox('${escapeHTML(imageUrl(src))}')" onerror="this.style.display='none'">
+      `).join("")}</div>`
+    : `<div class="info">No screenshots available.</div>`;
+
+  const changelog = p.changelog.length
+    ? p.changelog.map(c=>{
+        if(typeof c==="string") return `<div class="change"><strong>Update</strong>${escapeHTML(c)}</div>`;
+        const ver=escapeHTML(c.version || c.ver || "Update");
+        const date=escapeHTML(c.date || "");
+        const changes=Array.isArray(c.changes)?c.changes:[c.change||c.description||""];
+        return `<div class="change"><strong>${ver}${date ? " — "+date:""}</strong><ul>${changes.filter(Boolean).map(x=>`<li>${escapeHTML(x)}</li>`).join("")}</ul></div>`;
+      }).join("")
+    : `<div class="info">No version history has been added yet.</div>`;
+
+  const steps = p.installSteps.length
+    ? `<ol class="install">${p.installSteps.map(x=>`<li>${escapeHTML(x)}</li>`).join("")}</ol>`
+    : `<ol class="install">
+        <li>Download the resource file.</li>
+        <li>Open the downloaded file on your device.</li>
+        <li>Allow Minecraft to import the resource.</li>
+        <li>Activate it from the appropriate world/resource settings.</li>
+      </ol>`;
+
+  const download = p.downloadLink
+    ? `<a class="download" href="${escapeHTML(p.downloadLink)}" target="_blank" rel="noopener">
+         <i class="fa-solid fa-download"></i> DOWNLOAD ${escapeHTML(p.fileFormat || "RESOURCE")}
+       </a>`
+    : `<div class="download" style="background:#32435a;color:#aab7c7;box-shadow:none;cursor:not-allowed">
+         Download link not available
+       </div>`;
+
+  $("detail-root").innerHTML=`
+    <div class="detail-card">
+      <img class="detail-cover" src="${imageUrl(p.image)}" alt="${escapeHTML(p.title)}"
+           onerror="this.src='${FALLBACK_IMAGE}'">
+      <div class="detail-content">
+        <h1 class="detail-title">${escapeHTML(p.title)}</h1>
+        <div class="creator">By <b>${escapeHTML(p.creator)}</b></div>
+        <div class="pills">
+          <span class="pill">${escapeHTML(p.addonVersion || "v1.0")}</span>
+          <span class="pill">${escapeHTML(categoryName(p.category))}</span>
+          <span class="pill">${escapeHTML(p.fileFormat || "Resource")}</span>
+        </div>
+
+        <div class="meta">
+          <div class="meta-box"><div class="meta-label">Minecraft</div><div class="meta-value">${escapeHTML(p.mcVersion)}</div></div>
+          <div class="meta-box"><div class="meta-label">Platform</div><div class="meta-value">${escapeHTML(p.platform)}</div></div>
+          <div class="meta-box"><div class="meta-label">Downloads</div><div class="meta-value">${p.downloads.toLocaleString()}</div></div>
+          <div class="meta-box"><div class="meta-label">File Size</div><div class="meta-value">${escapeHTML(p.fileSize)}</div></div>
+        </div>
+
+        <div class="meta" style="margin-top:0">
+          <div class="meta-box"><div class="meta-label">Creator</div><div class="meta-value">${escapeHTML(p.creator)}</div></div>
+          <div class="meta-box"><div class="meta-label">Updated</div><div class="meta-value">${escapeHTML(p.date || "Recently")}</div></div>
+        </div>
+
+        <div style="margin-top:8px">
+          <div class="meta-label" style="margin-bottom:7px">SUPPORTED VERSIONS</div>
+          <div class="versions">${supported}</div>
+        </div>
+
+        ${download}
+        <div class="subtext">Free Direct Download • Check the creator's terms before redistribution</div>
+      </div>
+    </div>
+
+    ${p.experimental ? `
+      <div class="detail-section">
+        <div class="warning"><i class="fa-solid fa-triangle-exclamation"></i>
+          <b>Experimental:</b> ${escapeHTML(p.experimentalNote || "This resource may require experimental features in Minecraft.")}
+        </div>
+      </div>` : ""}
+
+    <div class="detail-section">
+      <h2><i class="fa-solid fa-file-lines"></i> DESCRIPTION</h2>
+      <div class="info">${escapeHTML(p.fullReview)}</div>
+    </div>
+
+    <div class="detail-section">
+      <h2><i class="fa-solid fa-star"></i> KEY FEATURES</h2>
+      ${features}
+    </div>
+
+    <div class="detail-section">
+      <h2><i class="fa-solid fa-camera"></i> SCREENSHOTS</h2>
+      ${screenshots}
+    </div>
+
+    <div class="detail-section">
+      <h2><i class="fa-solid fa-clock-rotate-left"></i> VERSION HISTORY</h2>
+      ${changelog}
+    </div>
+
+    <div class="detail-section">
+      <h2><i class="fa-solid fa-circle-question"></i> HOW TO INSTALL</h2>
+      <div class="info">${steps}</div>
+    </div>
+  `;
+}
+
+function openLightbox(src){
+  event && event.stopPropagation();
+  $("lightbox-img").src=safeUrl(src)||FALLBACK_IMAGE;
+  $("lightbox").classList.add("open");
+  document.body.style.overflow="hidden";
+}
+function closeLightbox(){
+  $("lightbox").classList.remove("open");
+  document.body.style.overflow="";
+}
+
+function surprise(){
+  closeMenu();
+  if(!posts.length) return;
+  const p=posts[Math.floor(Math.random()*posts.length)];
+  openPost(p.id);
+}
+
+function showDataError(message){
+  ["trending-grid","latest-grid","addon-grid","shader-grid","map-grid","saved-grid"].forEach(id=>{
+    const el=$(id); if(el) el.innerHTML=emptyHTML(message);
+  });
+}
+
+async function loadPosts(){
+  try{
+    /*
+      IMPORTANT:
+      Keep posts.json in the SAME folder as index.html.
+      Example:
+      /
+        index.html
+        posts.json
+    */
+    const response=await fetch("./posts.json?v="+Date.now(),{cache:"no-store"});
+    if(!response.ok) throw new Error("posts.json returned HTTP "+response.status);
+    const data=await response.json();
+    if(!Array.isArray(data)) throw new Error("posts.json must contain an array: [ ... ]");
+    posts=data.map(normalizePost);
+    renderAll();
+
+    const hash=decodeURIComponent(location.hash.replace("#",""));
+    if(hash){
+      const found=posts.find(p=>p.id===hash);
+      if(found){ currentPost=found; renderDetail(found); go("detail"); }
+    }
+  }catch(error){
+    console.error("Minecraft LYN posts error:",error);
+    showDataError("Unable to load posts.json. Check that posts.json is valid JSON and is in the same folder as index.html.");
+  }
+}
+
+/* SEARCH */
+$("searchInput").addEventListener("input",e=>{
+  currentSearch=e.target.value;
+  renderAll();
+});
+
+/* CATEGORY BUTTONS */
+document.querySelectorAll(".filter").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    document.querySelectorAll(".filter").forEach(x=>x.classList.remove("active"));
+    btn.classList.add("active");
+    currentCategory=btn.dataset.cat;
+    renderHome();
+  });
+});
+
+/* ESC KEY */
+document.addEventListener("keydown",e=>{
+  if(e.key==="Escape"){
+    closeMenu();
+    closeLightbox();
+  }
+});
+
+/* START */
+loadPosts();
+</script>
+</body>
+</html>
