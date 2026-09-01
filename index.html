@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title id="page-title">Minecraft LYN - Premium Bedrock Resources</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <style>
         :root {
             --bg-dark: #0B1426;
@@ -293,23 +292,6 @@
             text-transform: uppercase;
         }
 
-        .badge-rising { 
-            background: var(--warning); 
-            color: #000; 
-            font-size: 10px; 
-            font-weight: bold; 
-            padding: 2px 6px; 
-            border-radius: 4px; 
-        }
-
-        .card-badges { 
-            position: absolute; 
-            top: 10px; 
-            left: 10px; 
-            display: flex; 
-            gap: 5px; 
-        }
-
         .save-btn { 
             position: absolute; 
             top: 10px; 
@@ -543,7 +525,6 @@
         <button class="search-icon-btn" onclick="switchPage('home')" aria-label="Search"><i class="fa-solid fa-magnifying-glass"></i></button>
     </header>
 
-    <!-- Navigation Overlay -->
     <div class="nav-overlay" id="navOverlay">
         <button class="close-btn" onclick="toggleMenu()" aria-label="Close Menu"><i class="fa-solid fa-xmark"></i></button>
         <ul class="nav-links">
@@ -554,11 +535,6 @@
             <li><a onclick="switchPage('saved')"><i class="fa-solid fa-bookmark"></i> Saved Items</a></li>
             <li><a onclick="switchPage('servers')"><i class="fa-solid fa-server"></i> Server 24/7</a></li>
         </ul>
-        <div class="footer-social" style="margin-top: 25px;">
-            <a href="#"><i class="fa-brands fa-youtube"></i></a>
-            <a href="#"><i class="fa-brands fa-discord"></i></a>
-            <a href="#"><i class="fa-brands fa-facebook"></i></a>
-        </div>
     </div>
 
     <div class="main-container">
@@ -614,7 +590,7 @@
             <div class="card-grid" id="saved-grid"></div>
         </div>
 
-        <!-- FULL REVIEW / DETAIL PAGE -->
+        <!-- DETAIL PAGE -->
         <div id="detail-page" class="page-section">
             <button class="back-btn" onclick="switchPage('home')"><i class="fa-solid fa-arrow-left"></i> Back</button>
             <div class="detail-header-card">
@@ -628,4 +604,19 @@
                     <div class="meta-grid">
                         <div class="meta-card">
                             <div class="meta-label">MINECRAFT</div>
-                            <d
+                            <div class="meta-val">1.18 - 1.21+</div>
+                        </div>
+                        <div class="meta-card">
+                            <div class="meta-label">PLATFORM</div>
+                            <div class="meta-val">Bedrock / MCPE</div>
+                        </div>
+                    </div>
+
+                    <a id="detail-download" href="#" target="_blank" class="hero-download-btn"><i class="fa-solid fa-download"></i> DOWNLOAD RESOURCE</a>
+                </div>
+            </div>
+            
+            <div style="color: var(--cyan); font-weight: bold; margin: 25px 0 10px 0; font-size: 16px;"><i class="fa-solid fa-file-lines"></i> DESCRIPTION</div>
+            <div class="info-block" id="detail-desc">Full description will appear here...</div>
+        </div>
+
